@@ -22,8 +22,8 @@
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -35,7 +35,8 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Dropdown</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="#">Action 1</a>
                         <a class="dropdown-item" href="#">Action 2</a>
@@ -61,7 +62,8 @@
             </div>
         </div>
         <div class="card bg-primary" style="width: 18rem; ">
-            <img class="card-img-top" src="https://is4-ssl.mzstatic.com/image/thumb/Purple124/v4/e3/9c/81/e39c8197-6cb7-334f-0f3d-ee44b3ddab62/TodoCloudAppIcon-0-1x_U007emarketing-0-0-85-220-0-10.png/246x0w.jpg" alt="">
+            <img class="card-img-top" src="https://is4-ssl.mzstatic.com/image/thumb/Purple124/v4/e3/9c/81/e39c8197-6cb7-334f-0f3d-ee44b3ddab62/TodoCloudAppIcon-0-1x_U007emarketing-0-0-85-220-0-10.png/246x0w.jpg"
+                alt="">
         </div>
     </div>
     <!--Javascript-->
@@ -76,14 +78,15 @@
         crossorigin="anonymous"></script>
     <script>
         document.getElementById("add").onclick = function () {
-                //First things first, we need our text:
-                var text = document.getElementById("idea").value; //.value gets input values
+            //First things first, we need our text:
+            let text = document.getElementById("idea").value; //.value gets input values
 
-                //Now construct a quick list element
-                var li = "<li>" + text + "</li>";
-
-                //Now use appendChild and add it to the list!
-                document.getElementById("list").appendChild(li);
+            //Now construct a quick list element
+            let li = "<li>" + text + "</li>";
+            console.log("Hello")
+            console.log(document.getElementById("list"))
+            //Now use appendChild and add it to the list!
+            document.getElementById("list").innerHTML += li;
         }
     </script>
 </body>
