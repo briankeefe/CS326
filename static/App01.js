@@ -92,37 +92,17 @@ function IssueTable(props) {
         React.createElement(
           "th",
           null,
-          "Id"
+          "Budget"
         ),
         React.createElement(
           "th",
           null,
-          "Status"
+          "Flow"
         ),
         React.createElement(
           "th",
           null,
-          "Owner"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Created"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Effort"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Completion Date"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Title"
+          "Balance"
         )
       )
     ),
