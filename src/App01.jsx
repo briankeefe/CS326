@@ -30,13 +30,9 @@ function IssueTable(props) {
     <table className="bordered-table">
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Status</th>
-          <th>Owner</th>
-          <th>Created</th>
-          <th>Effort</th>
-          <th>Completion Date</th>
-          <th>Title</th>
+          <th>Budget</th>
+          <th>Flow</th>
+          <th>Balance</th>
         </tr>
       </thead>
       <tbody>{issueRows}</tbody>
