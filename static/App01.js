@@ -79,7 +79,7 @@ function IssueTable(props) {
   });
   return React.createElement(
     "table",
-    { className: "bordered-table" },
+    { className: "bordered-table", style: "float:left" },
     React.createElement(
       "thead",
       null,
