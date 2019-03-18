@@ -13,9 +13,168 @@ var state = [];
 
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
+function Graph(props) {
+  var name = props.name;
+  return React.createElement(
+    "span",
+    null,
+    React.createElement(
+      "table",
+      { style: { float: "left" } },
+      React.createElement(
+        "tbody",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "td",
+            null,
+            "Graph of ",
+            name
+          )
+        ),
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "td",
+            null,
+            React.createElement("img", { src: "https://via.placeholder.com/300", alt: "" })
+          )
+        )
+      )
+    )
+  );
+}
 
-var MyComponent = function (_React$Component) {
-  _inherits(MyComponent, _React$Component);
+var GraphGrid = function (_React$Component) {
+  _inherits(GraphGrid, _React$Component);
+
+  function GraphGrid() {
+    _classCallCheck(this, GraphGrid);
+
+    return _possibleConstructorReturn(this, (GraphGrid.__proto__ || Object.getPrototypeOf(GraphGrid)).apply(this, arguments));
+  }
+
+  _createClass(GraphGrid, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "span",
+        null,
+        React.createElement(Graph, { name: "Income" }),
+        React.createElement(Graph, { name: "Outflows" })
+      );
+    }
+  }]);
+
+  return GraphGrid;
+}(React.Component);
+
+var Stats = function (_React$Component2) {
+  _inherits(Stats, _React$Component2);
+
+  function Stats() {
+    _classCallCheck(this, Stats);
+
+    return _possibleConstructorReturn(this, (Stats.__proto__ || Object.getPrototypeOf(Stats)).apply(this, arguments));
+  }
+
+  _createClass(Stats, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "table",
+        null,
+        React.createElement(
+          "tbody",
+          null,
+          React.createElement(
+            "tr",
+            null,
+            React.createElement("th", null),
+            React.createElement(
+              "th",
+              null,
+              "Total Income"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Total Expenditures"
+            ),
+            React.createElement(
+              "th",
+              null,
+              "Total Savings"
+            )
+          ),
+          React.createElement(
+            "tr",
+            null,
+            React.createElement("td", null),
+            React.createElement(
+              "td",
+              null,
+              "Answer"
+            ),
+            React.createElement(
+              "td",
+              null,
+              "Answer"
+            ),
+            React.createElement(
+              "td",
+              null,
+              "Answer"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Stats;
+}(React.Component);
+
+var Data = function (_React$Component3) {
+  _inherits(Data, _React$Component3);
+
+  function Data() {
+    _classCallCheck(this, Data);
+
+    return _possibleConstructorReturn(this, (Data.__proto__ || Object.getPrototypeOf(Data)).apply(this, arguments));
+  }
+
+  _createClass(Data, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h3",
+          null,
+          React.createElement(
+            "i",
+            null,
+            React.createElement(
+              "b",
+              null,
+              "Placeholder for reports"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Data;
+}(React.Component);
+
+var MyComponent = function (_React$Component4) {
+  _inherits(MyComponent, _React$Component4);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -29,11 +188,9 @@ var MyComponent = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        React.createElement(
-          "h1",
-          null,
-          "My View 02"
-        )
+        React.createElement(GraphGrid, null),
+        React.createElement(Stats, null),
+        React.createElement(Data, null)
       );
     }
   }]);

@@ -1,25 +1,34 @@
 const issues = [
-  
+  {
+    category: "Food",
+    budget: 20,
+    flow: 0
+  },
+  {
+    category: "Gas",
+    budget: 20,
+    flow: 0
+  },
+  {
+    category: "Fun",
+    budget: 20,
+    flow: 0,
+  }
 ];
 
 var contentNode = document.getElementById("contents");
 
-class IssueFilter extends React.Component {
+class Filter extends React.Component {
   render() {
-    return <div>This is a placeholder for the Issue Filter.</div>;
+    return <div>Your daily budget</div>;
   }
 }
 const IssueRow = (props) => (
   <tr>
-    <td>{props.issue.id}</td>
-    <td>{props.issue.status}</td>
-    <td>{props.issue.owner}</td>
-    <td>{props.issue.created.toDateString()}</td>
-    <td>{props.issue.effort}</td>
-    <td>
-      {props.issue.completionDate ? props.issue.completionDate.toDateString() : ""}
-    </td>
-    <td>{props.issue.title}</td>
+    <td>{props.issue.category}</td>
+    <td>{props.issue.budget}</td>
+    <td>{props.issue.flow}</td>
+    <td>{props.issue.budget - props.issue.flow}</td>
   </tr>
 );
 function IssueTable(props) {
@@ -30,6 +39,7 @@ function IssueTable(props) {
     <table className="bordered-table">
       <thead>
         <tr>
+          <th>Category</th>
           <th>Budget</th>
           <th>Flow</th>
           <th>Balance</th>
@@ -40,32 +50,33 @@ function IssueTable(props) {
   );
 }
 
-class IssueAdd extends React.Component {
+class BudgetAdd extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
 
   handleSubmit(e) {
     e.preventDefault();
-    let form = document.forms.issueAdd;
+    let form = document.forms.BudgetAdd;
     this.props.createIssue({
-      owner: form.owner.value,
-      title: form.title.value,
-      status: 'New',
-      created: new Date(),
+      category: form.category.value,
+      budget: form.budget.value,
+      flow: form.flow.value,
     });
     // Clear the form for the next input.
-    form.owner.value = '';
-    form.title.value = '';
+    form.budget.value = '';
+    form.flow.value = '';
   }
 
   render() {
     return (
       <div>
-        <form name="issueAdd" onSubmit={this.handleSubmit}>
-          <input type="text" name="owner" placeholder="Owner" />
-          <input type="text" name="title" placeholder="Title" />
+        <form name="BudgetAdd" onSubmit={this.handleSubmit}>
+          <input type="text" name="category" placeholder="Category" />
+          <input type="number" name="budget" placeholder="Budget" />
+          <input type="number" name="flow" placeholder="Flow" />
           <button>Add</button>
         </form>
       </div>
@@ -95,7 +106,26 @@ class IssueList extends React.Component {
 
   createIssue(newIssue) {
     const newIssues = this.state.issues.slice();
-    newIssue.id = this.state.issues.length + 1;
+    if(isNaN(parseInt(newIssue.flow))){
+      console.log("Test");
+      newIssue.flow = 0;
+    }
+    let i;
+    for (i in newIssues) {
+      if(newIssues[i].category === newIssue.category){
+        if(newIssues[i].flow === undefined){
+          newIssues[i].flow = parseInt(newIssue.flow);
+        }else{
+          newIssues[i].flow += parseInt(newIssue.flow);
+        }
+        if(newIssue.budget === undefined){
+        }else{
+          newIssues[i].budget = newIssue.budget;
+        }
+        this.setState({ issues: newIssues });
+        return;
+      }
+    }
     newIssues.push(newIssue);
     this.setState({ issues: newIssues });
   }
@@ -103,12 +133,12 @@ class IssueList extends React.Component {
   render() {
     return (
       <div>
-        <h1>Issue Tracker</h1>
-        <IssueFilter />
+        <h1>My Budget</h1>
+        <Filter />
         <hr />
         <IssueTable issues={this.state.issues} />
         <hr />
-        <IssueAdd createIssue={this.createIssue} />
+        <BudgetAdd createIssue={this.createIssue} />
       </div>
     );
   }

@@ -8,31 +8,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var issues = [];
+var issues = [{
+  category: "Food",
+  budget: 20,
+  flow: 0
+}, {
+  category: "Gas",
+  budget: 20,
+  flow: 0
+}, {
+  category: "Fun",
+  budget: 20,
+  flow: 0
+}];
 
 var contentNode = document.getElementById("contents");
 
-var IssueFilter = function (_React$Component) {
-  _inherits(IssueFilter, _React$Component);
+var Filter = function (_React$Component) {
+  _inherits(Filter, _React$Component);
 
-  function IssueFilter() {
-    _classCallCheck(this, IssueFilter);
+  function Filter() {
+    _classCallCheck(this, Filter);
 
-    return _possibleConstructorReturn(this, (IssueFilter.__proto__ || Object.getPrototypeOf(IssueFilter)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).apply(this, arguments));
   }
 
-  _createClass(IssueFilter, [{
+  _createClass(Filter, [{
     key: "render",
     value: function render() {
       return React.createElement(
         "div",
         null,
-        "This is a placeholder for the Issue Filter."
+        "Your daily budget"
       );
     }
   }]);
 
-  return IssueFilter;
+  return Filter;
 }(React.Component);
 
 var IssueRow = function IssueRow(props) {
@@ -42,37 +54,22 @@ var IssueRow = function IssueRow(props) {
     React.createElement(
       "td",
       null,
-      props.issue.id
+      props.issue.category
     ),
     React.createElement(
       "td",
       null,
-      props.issue.status
+      props.issue.budget
     ),
     React.createElement(
       "td",
       null,
-      props.issue.owner
+      props.issue.flow
     ),
     React.createElement(
       "td",
       null,
-      props.issue.created.toDateString()
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.effort
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.completionDate ? props.issue.completionDate.toDateString() : ""
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.title
+      props.issue.budget - props.issue.flow
     )
   );
 };
@@ -89,6 +86,11 @@ function IssueTable(props) {
       React.createElement(
         "tr",
         null,
+        React.createElement(
+          "th",
+          null,
+          "Category"
+        ),
         React.createElement(
           "th",
           null,
@@ -114,32 +116,31 @@ function IssueTable(props) {
   );
 }
 
-var IssueAdd = function (_React$Component2) {
-  _inherits(IssueAdd, _React$Component2);
+var BudgetAdd = function (_React$Component2) {
+  _inherits(BudgetAdd, _React$Component2);
 
-  function IssueAdd() {
-    _classCallCheck(this, IssueAdd);
+  function BudgetAdd() {
+    _classCallCheck(this, BudgetAdd);
 
-    var _this2 = _possibleConstructorReturn(this, (IssueAdd.__proto__ || Object.getPrototypeOf(IssueAdd)).call(this));
+    var _this2 = _possibleConstructorReturn(this, (BudgetAdd.__proto__ || Object.getPrototypeOf(BudgetAdd)).call(this));
 
     _this2.handleSubmit = _this2.handleSubmit.bind(_this2);
     return _this2;
   }
 
-  _createClass(IssueAdd, [{
+  _createClass(BudgetAdd, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var form = document.forms.issueAdd;
+      var form = document.forms.BudgetAdd;
       this.props.createIssue({
-        owner: form.owner.value,
-        title: form.title.value,
-        status: 'New',
-        created: new Date()
+        category: form.category.value,
+        budget: form.budget.value,
+        flow: form.flow.value
       });
       // Clear the form for the next input.
-      form.owner.value = '';
-      form.title.value = '';
+      form.budget.value = '';
+      form.flow.value = '';
     }
   }, {
     key: "render",
@@ -149,9 +150,10 @@ var IssueAdd = function (_React$Component2) {
         null,
         React.createElement(
           "form",
-          { name: "issueAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { type: "text", name: "owner", placeholder: "Owner" }),
-          React.createElement("input", { type: "text", name: "title", placeholder: "Title" }),
+          { name: "BudgetAdd", onSubmit: this.handleSubmit },
+          React.createElement("input", { type: "text", name: "category", placeholder: "Category" }),
+          React.createElement("input", { type: "number", name: "budget", placeholder: "Budget" }),
+          React.createElement("input", { type: "number", name: "flow", placeholder: "Flow" }),
           React.createElement(
             "button",
             null,
@@ -162,7 +164,7 @@ var IssueAdd = function (_React$Component2) {
     }
   }]);
 
-  return IssueAdd;
+  return BudgetAdd;
 }(React.Component);
 
 var IssueList = function (_React$Component3) {
@@ -199,7 +201,25 @@ var IssueList = function (_React$Component3) {
     key: "createIssue",
     value: function createIssue(newIssue) {
       var newIssues = this.state.issues.slice();
-      newIssue.id = this.state.issues.length + 1;
+      if (isNaN(parseInt(newIssue.flow))) {
+        console.log("Test");
+        newIssue.flow = 0;
+      }
+      var i = void 0;
+      for (i in newIssues) {
+        if (newIssues[i].category === newIssue.category) {
+          if (newIssues[i].flow === undefined) {
+            newIssues[i].flow = parseInt(newIssue.flow);
+          } else {
+            newIssues[i].flow += parseInt(newIssue.flow);
+          }
+          if (newIssue.budget === undefined) {} else {
+            newIssues[i].budget = newIssue.budget;
+          }
+          this.setState({ issues: newIssues });
+          return;
+        }
+      }
       newIssues.push(newIssue);
       this.setState({ issues: newIssues });
     }
@@ -212,13 +232,13 @@ var IssueList = function (_React$Component3) {
         React.createElement(
           "h1",
           null,
-          "Issue Tracker"
+          "My Budget"
         ),
-        React.createElement(IssueFilter, null),
+        React.createElement(Filter, null),
         React.createElement("hr", null),
         React.createElement(IssueTable, { issues: this.state.issues }),
         React.createElement("hr", null),
-        React.createElement(IssueAdd, { createIssue: this.createIssue })
+        React.createElement(BudgetAdd, { createIssue: this.createIssue })
       );
     }
   }]);
