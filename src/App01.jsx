@@ -50,6 +50,14 @@ function IssueTable(props) {
   );
 }
 
+function BalanceTable(props) {
+  return (
+    <table>
+
+    </table>
+  );
+}
+
 class BudgetAdd extends React.Component {
   constructor() {
     super();
@@ -118,7 +126,7 @@ class IssueList extends React.Component {
         }else{
           newIssues[i].flow += parseInt(newIssue.flow);
         }
-        if(newIssue.budget === undefined){
+        if(isNaN(parseInt(newIssue.budget))){
         }else{
           newIssues[i].budget = newIssue.budget;
         }

@@ -116,6 +116,10 @@ function IssueTable(props) {
   );
 }
 
+function BalanceTable(props) {
+  return React.createElement("table", null);
+}
+
 var BudgetAdd = function (_React$Component2) {
   _inherits(BudgetAdd, _React$Component2);
 
@@ -213,7 +217,7 @@ var IssueList = function (_React$Component3) {
           } else {
             newIssues[i].flow += parseInt(newIssue.flow);
           }
-          if (newIssue.budget === undefined) {} else {
+          if (isNaN(parseInt(newIssue.budget))) {} else {
             newIssues[i].budget = newIssue.budget;
           }
           this.setState({ issues: newIssues });
