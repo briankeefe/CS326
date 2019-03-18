@@ -36,7 +36,7 @@ function IssueTable(props) {
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <table className="bordered-table">
+    <table className="bordered-table" style="float:left">
       <thead>
         <tr>
           <th>Category</th>
