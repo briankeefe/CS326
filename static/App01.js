@@ -9,6 +9,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var issues = [{
+  category: "Savings",
+  budget: 0,
+  flow: 0
+}, {
   category: "Food",
   budget: 0,
   flow: 0
@@ -18,10 +22,6 @@ var issues = [{
   flow: 0
 }, {
   category: "Fun",
-  budget: 0,
-  flow: 0
-}, {
-  category: "Savings",
   budget: 0,
   flow: 0
 }, {
@@ -92,13 +92,13 @@ function IssueTable(props) {
   });
   return React.createElement(
     "div",
-    null,
+    { "class": "form-group" },
     React.createElement(
       "table",
-      { className: "bordered-table", style: { float: "left" } },
+      { className: "table table-striped table-dark", style: { float: "left" } },
       React.createElement(
         "thead",
-        null,
+        { className: "thead-dark" },
         React.createElement(
           "tr",
           null,
@@ -147,10 +147,10 @@ function BalanceTable(props) {
   }
   return React.createElement(
     "table",
-    { className: "bordered-table" },
+    { className: "table table-light bordered-table" },
     React.createElement(
-      "tbody",
-      null,
+      "thead",
+      { className: "thead-dark" },
       React.createElement(
         "tr",
         null,
@@ -179,7 +179,11 @@ function BalanceTable(props) {
           null,
           "Savings"
         )
-      ),
+      )
+    ),
+    React.createElement(
+      "tbody",
+      null,
       React.createElement(
         "tr",
         null,
@@ -248,13 +252,29 @@ var BudgetAdd = function (_React$Component2) {
         React.createElement(
           "form",
           { name: "BudgetAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { type: "text", name: "category", placeholder: "Category" }),
-          React.createElement("input", { type: "number", name: "budget", placeholder: "Budget (*Optional*)" }),
-          React.createElement("input", { type: "number", name: "flow", placeholder: "Out-flow" }),
           React.createElement(
-            "button",
-            null,
-            "Add"
+            "div",
+            { className: "form-row" },
+            React.createElement(
+              "div",
+              { className: "col-md-4 mb-3" },
+              React.createElement("input", { className: "form-control", type: "text", name: "category", placeholder: "Category" })
+            ),
+            React.createElement(
+              "div",
+              { className: "col-md-4 mb-3" },
+              React.createElement("input", { className: "form-control", type: "number", name: "budget", placeholder: "Budget (*Optional*)" })
+            ),
+            React.createElement(
+              "div",
+              { className: "col-md-4 mb-3" },
+              React.createElement("input", { className: "form-control", type: "number", name: "flow", placeholder: "Out-flow" })
+            ),
+            React.createElement(
+              "button",
+              { className: "form-control" },
+              "Add"
+            )
           )
         )
       );
@@ -294,10 +314,10 @@ var IncomeAdd = function (_React$Component3) {
         React.createElement(
           "form",
           { name: "IncomeAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { type: "text", name: "income", placeholder: "Income" }),
+          React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
           React.createElement(
             "button",
-            null,
+            { className: "form-control" },
             "Add"
           )
         )

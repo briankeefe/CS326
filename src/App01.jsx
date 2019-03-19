@@ -1,5 +1,10 @@
 const issues = [
   {
+    category: "Savings",
+    budget: 0,
+    flow: 0
+  },
+  {
     category: "Food",
     budget: 0,
     flow: 0
@@ -13,11 +18,6 @@ const issues = [
     category: "Fun",
     budget: 0,
     flow: 0,
-  },
-  {
-    category: "Savings",
-    budget:0,
-    flow: 0
   },
   {
     category: "Rent",
@@ -52,9 +52,9 @@ function IssueTable(props) {
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <div>
-      <table className="bordered-table" style={{float: "left"}}>
-        <thead>
+    <div class="form-group">
+      <table className="table table-striped table-dark" style={{float: "left"}}>
+        <thead className="thead-dark">
           <tr>
             <th>Category</th>
             <th>Budget</th>
@@ -81,8 +81,8 @@ function BalanceTable(props) {
     }
   }
   return (
-    <table className="bordered-table">
-      <tbody>
+    <table className="table table-light bordered-table">
+      <thead className="thead-dark">
         <tr>
           <th>Budget</th>
           <th>Income</th>
@@ -90,6 +90,8 @@ function BalanceTable(props) {
           <th>Balance</th>
           <th>Savings</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <td>{budget}</td>
           <td>{props.asset}</td>
@@ -126,10 +128,19 @@ class BudgetAdd extends React.Component {
     return (
       <div>
         <form name="BudgetAdd" onSubmit={this.handleSubmit}>
-          <input type="text" name="category" placeholder="Category" />
-          <input type="number" name="budget" placeholder="Budget (*Optional*)" />
-          <input type="number" name="flow" placeholder="Out-flow" />
-          <button>Add</button>
+          <div className="form-row">
+            <div className="col-md-4 mb-3">
+              <input className="form-control" type="text" name="category" placeholder="Category" />
+            </div>
+            <div className="col-md-4 mb-3">
+              <input className="form-control" type="number" name="budget" placeholder="Budget (*Optional*)" />
+            </div>
+            <div className="col-md-4 mb-3">
+              <input className="form-control" type="number" name="flow" placeholder="Out-flow" />
+            </div>
+            <button className="form-control">Add</button>
+          </div>
+          
         </form>
       </div>
     );
@@ -155,8 +166,8 @@ class IncomeAdd extends React.Component {
     return (
       <div>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
-          <input type="text" name="income" placeholder="Income" />
-          <button>Add</button>
+          <input className="form-control" type="text" name="income" placeholder="Income" />
+          <button className="form-control">Add</button>
         </form>
       </div>
     );
