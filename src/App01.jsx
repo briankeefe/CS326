@@ -1,18 +1,33 @@
 const issues = [
   {
     category: "Food",
-    budget: 20,
+    budget: 0,
     flow: 0
   },
   {
     category: "Gas",
-    budget: 20,
+    budget: 0,
     flow: 0
   },
   {
     category: "Fun",
-    budget: 20,
+    budget: 0,
     flow: 0,
+  },
+  {
+    category: "Savings",
+    budget:0,
+    flow: 0
+  },
+  {
+    category: "Rent",
+    budget: 0,
+    flow: 0
+  },
+  {
+    category: "Emergency",
+    budget: 0,
+    flow: 0
   }
 ];
 
@@ -21,7 +36,7 @@ var contentNode = document.getElementById("contents");
 
 class Filter extends React.Component {
   render() {
-    return <div>Your daily budget</div>;
+    return <div>Your Monthly Money Planner</div>;
   }
 }
 const IssueRow = (props) => (
@@ -56,25 +71,31 @@ function IssueTable(props) {
 function BalanceTable(props) {
   let spent = 0;
   let budget = 0;
+  let savings = 0;
   let i;
   for(i in props.issues){
     spent += parseInt(props.issues[i].flow);
     budget += parseInt(props.issues[i].budget);
+    if(props.issues[i].category === "Savings"){
+      savings += parseInt(props.issues[i].budget);
+    }
   }
   return (
-    <table className="bordered-table" style={{float: "left"}}>
+    <table className="bordered-table">
       <tbody>
         <tr>
           <th>Budget</th>
           <th>Income</th>
           <th>Outflow</th>
           <th>Balance</th>
+          <th>Savings</th>
         </tr>
         <tr>
           <td>{budget}</td>
           <td>{props.asset}</td>
           <td>{spent}</td>
           <td>{props.asset-budget}</td>
+          <td>{savings}</td>
         </tr>
       </tbody>
     </table>
@@ -91,7 +112,7 @@ class BudgetAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let form = document.forms.BudgetAdd;
-    this.props.createIssue({
+    this.props.enterInfo({
       category: form.category.value,
       budget: form.budget.value,
       flow: parseInt(form.flow.value),
@@ -106,8 +127,8 @@ class BudgetAdd extends React.Component {
       <div>
         <form name="BudgetAdd" onSubmit={this.handleSubmit}>
           <input type="text" name="category" placeholder="Category" />
-          <input type="number" name="budget" placeholder="Budget" />
-          <input type="number" name="flow" placeholder="Flow" />
+          <input type="number" name="budget" placeholder="Budget (*Optional*)" />
+          <input type="number" name="flow" placeholder="Out-flow" />
           <button>Add</button>
         </form>
       </div>
@@ -147,7 +168,7 @@ class IssueList extends React.Component {
     super();
     this.state = { issues: [], asset: -1 };
 
-    this.createIssue = this.createIssue.bind(this);
+    this.enterInfo = this.enterInfo.bind(this);
     this.createInflow = this.createInflow.bind(this);
   }
 
@@ -164,7 +185,7 @@ class IssueList extends React.Component {
     }, 500);
   }
 
-  createIssue(newIssue) {
+  enterInfo(newIssue) {
     const newIssues = this.state.issues.slice();
     if(isNaN(parseInt(newIssue.flow))){
       newIssue.flow = 0;
@@ -185,7 +206,9 @@ class IssueList extends React.Component {
         return;
       }
     }
-    newIssues.push(newIssue);
+    if(!isNaN(parseInt(newIssue.budget))){
+      newIssues.push(newIssue);
+    }
     this.setState({ issues: newIssues });
   }
 
@@ -205,11 +228,11 @@ class IssueList extends React.Component {
         <Filter />
         <hr />
         <IssueTable issues={this.state.issues} />
-        <span style={{width: "10px"}}/>
+        <IncomeAdd createInflow={this.createInflow} />
         <BalanceTable asset={this.state.asset} issues={this.state.issues}/>
-        <IncomeAdd createInflow={this.createInflow}/>
         <div style={{clear: "both"}}/>
-        <BudgetAdd createIssue={this.createIssue} />
+        <hr/>
+        <BudgetAdd enterInfo={this.enterInfo} />
       </div>
     );
   }

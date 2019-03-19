@@ -10,15 +10,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var issues = [{
   category: "Food",
-  budget: 20,
+  budget: 0,
   flow: 0
 }, {
   category: "Gas",
-  budget: 20,
+  budget: 0,
   flow: 0
 }, {
   category: "Fun",
-  budget: 20,
+  budget: 0,
+  flow: 0
+}, {
+  category: "Savings",
+  budget: 0,
+  flow: 0
+}, {
+  category: "Rent",
+  budget: 0,
+  flow: 0
+}, {
+  category: "Emergency",
+  budget: 0,
   flow: 0
 }];
 
@@ -40,7 +52,7 @@ var Filter = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        "Your daily budget"
+        "Your Monthly Money Planner"
       );
     }
   }]);
@@ -124,14 +136,18 @@ function IssueTable(props) {
 function BalanceTable(props) {
   var spent = 0;
   var budget = 0;
+  var savings = 0;
   var i = void 0;
   for (i in props.issues) {
     spent += parseInt(props.issues[i].flow);
     budget += parseInt(props.issues[i].budget);
+    if (props.issues[i].category === "Savings") {
+      savings += parseInt(props.issues[i].budget);
+    }
   }
   return React.createElement(
     "table",
-    { className: "bordered-table", style: { float: "left" } },
+    { className: "bordered-table" },
     React.createElement(
       "tbody",
       null,
@@ -157,6 +173,11 @@ function BalanceTable(props) {
           "th",
           null,
           "Balance"
+        ),
+        React.createElement(
+          "th",
+          null,
+          "Savings"
         )
       ),
       React.createElement(
@@ -181,6 +202,11 @@ function BalanceTable(props) {
           "td",
           null,
           props.asset - budget
+        ),
+        React.createElement(
+          "td",
+          null,
+          savings
         )
       )
     )
@@ -204,7 +230,7 @@ var BudgetAdd = function (_React$Component2) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.BudgetAdd;
-      this.props.createIssue({
+      this.props.enterInfo({
         category: form.category.value,
         budget: form.budget.value,
         flow: parseInt(form.flow.value)
@@ -223,8 +249,8 @@ var BudgetAdd = function (_React$Component2) {
           "form",
           { name: "BudgetAdd", onSubmit: this.handleSubmit },
           React.createElement("input", { type: "text", name: "category", placeholder: "Category" }),
-          React.createElement("input", { type: "number", name: "budget", placeholder: "Budget" }),
-          React.createElement("input", { type: "number", name: "flow", placeholder: "Flow" }),
+          React.createElement("input", { type: "number", name: "budget", placeholder: "Budget (*Optional*)" }),
+          React.createElement("input", { type: "number", name: "flow", placeholder: "Out-flow" }),
           React.createElement(
             "button",
             null,
@@ -292,7 +318,7 @@ var IssueList = function (_React$Component4) {
 
     _this4.state = { issues: [], asset: -1 };
 
-    _this4.createIssue = _this4.createIssue.bind(_this4);
+    _this4.enterInfo = _this4.enterInfo.bind(_this4);
     _this4.createInflow = _this4.createInflow.bind(_this4);
     return _this4;
   }
@@ -315,8 +341,8 @@ var IssueList = function (_React$Component4) {
       }, 500);
     }
   }, {
-    key: "createIssue",
-    value: function createIssue(newIssue) {
+    key: "enterInfo",
+    value: function enterInfo(newIssue) {
       var newIssues = this.state.issues.slice();
       if (isNaN(parseInt(newIssue.flow))) {
         newIssue.flow = 0;
@@ -336,7 +362,9 @@ var IssueList = function (_React$Component4) {
           return;
         }
       }
-      newIssues.push(newIssue);
+      if (!isNaN(parseInt(newIssue.budget))) {
+        newIssues.push(newIssue);
+      }
       this.setState({ issues: newIssues });
     }
   }, {
@@ -363,11 +391,11 @@ var IssueList = function (_React$Component4) {
         React.createElement(Filter, null),
         React.createElement("hr", null),
         React.createElement(IssueTable, { issues: this.state.issues }),
-        React.createElement("span", { style: { width: "10px" } }),
-        React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
         React.createElement(IncomeAdd, { createInflow: this.createInflow }),
+        React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
         React.createElement("div", { style: { clear: "both" } }),
-        React.createElement(BudgetAdd, { createIssue: this.createIssue })
+        React.createElement("hr", null),
+        React.createElement(BudgetAdd, { enterInfo: this.enterInfo })
       );
     }
   }]);
