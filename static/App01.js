@@ -22,6 +22,7 @@ var issues = [{
   flow: 0
 }];
 
+var asset = 0;
 var contentNode = document.getElementById("contents");
 
 var Filter = function (_React$Component) {
@@ -78,19 +79,65 @@ function IssueTable(props) {
     return React.createElement(IssueRow, { key: issue.id, issue: issue });
   });
   return React.createElement(
-    "table",
-    { className: "bordered-table" },
+    "div",
+    null,
     React.createElement(
-      "thead",
+      "table",
+      { className: "bordered-table", style: { float: "left" } },
+      React.createElement(
+        "thead",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement(
+            "th",
+            null,
+            "Category"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Budget"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Flow"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Balance"
+          )
+        )
+      ),
+      React.createElement(
+        "tbody",
+        null,
+        issueRows
+      )
+    )
+  );
+}
+
+function BalanceTable(props) {
+  var spent = 0;
+  var budget = 0;
+  var i = void 0;
+  for (i in props.issues) {
+    spent += parseInt(props.issues[i].flow);
+    budget += parseInt(props.issues[i].budget);
+  }
+  return React.createElement(
+    "table",
+    { className: "bordered-table", style: { float: "left" } },
+    React.createElement(
+      "tbody",
       null,
       React.createElement(
         "tr",
         null,
-        React.createElement(
-          "th",
-          null,
-          "Category"
-        ),
         React.createElement(
           "th",
           null,
@@ -99,25 +146,45 @@ function IssueTable(props) {
         React.createElement(
           "th",
           null,
-          "Flow"
+          "Income"
+        ),
+        React.createElement(
+          "th",
+          null,
+          "Outflow"
         ),
         React.createElement(
           "th",
           null,
           "Balance"
         )
+      ),
+      React.createElement(
+        "tr",
+        null,
+        React.createElement(
+          "td",
+          null,
+          budget
+        ),
+        React.createElement(
+          "td",
+          null,
+          props.asset
+        ),
+        React.createElement(
+          "td",
+          null,
+          spent
+        ),
+        React.createElement(
+          "td",
+          null,
+          props.asset - budget
+        )
       )
-    ),
-    React.createElement(
-      "tbody",
-      null,
-      issueRows
     )
   );
-}
-
-function BalanceTable(props) {
-  return React.createElement("table", null);
 }
 
 var BudgetAdd = function (_React$Component2) {
@@ -140,7 +207,7 @@ var BudgetAdd = function (_React$Component2) {
       this.props.createIssue({
         category: form.category.value,
         budget: form.budget.value,
-        flow: form.flow.value
+        flow: parseInt(form.flow.value)
       });
       // Clear the form for the next input.
       form.budget.value = '';
@@ -171,18 +238,63 @@ var BudgetAdd = function (_React$Component2) {
   return BudgetAdd;
 }(React.Component);
 
-var IssueList = function (_React$Component3) {
-  _inherits(IssueList, _React$Component3);
+var IncomeAdd = function (_React$Component3) {
+  _inherits(IncomeAdd, _React$Component3);
+
+  function IncomeAdd() {
+    _classCallCheck(this, IncomeAdd);
+
+    var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+
+    _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
+    return _this3;
+  }
+
+  _createClass(IncomeAdd, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var form = document.forms.IncomeAdd;
+      this.props.createInflow({ income: form.income.value });
+      // Clear the form for the next input.
+      form.income.value = '';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "form",
+          { name: "IncomeAdd", onSubmit: this.handleSubmit },
+          React.createElement("input", { type: "text", name: "income", placeholder: "Income" }),
+          React.createElement(
+            "button",
+            null,
+            "Add"
+          )
+        )
+      );
+    }
+  }]);
+
+  return IncomeAdd;
+}(React.Component);
+
+var IssueList = function (_React$Component4) {
+  _inherits(IssueList, _React$Component4);
 
   function IssueList() {
     _classCallCheck(this, IssueList);
 
-    var _this3 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
+    var _this4 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
-    _this3.state = { issues: [] };
+    _this4.state = { issues: [], asset: -1 };
 
-    _this3.createIssue = _this3.createIssue.bind(_this3);
-    return _this3;
+    _this4.createIssue = _this4.createIssue.bind(_this4);
+    _this4.createInflow = _this4.createInflow.bind(_this4);
+    return _this4;
   }
 
   _createClass(IssueList, [{
@@ -193,11 +305,12 @@ var IssueList = function (_React$Component3) {
   }, {
     key: "loadData",
     value: function loadData() {
-      var _this4 = this;
+      var _this5 = this;
 
       setTimeout(function () {
-        _this4.setState({
-          issues: issues
+        _this5.setState({
+          issues: issues,
+          asset: asset
         });
       }, 500);
     }
@@ -206,7 +319,6 @@ var IssueList = function (_React$Component3) {
     value: function createIssue(newIssue) {
       var newIssues = this.state.issues.slice();
       if (isNaN(parseInt(newIssue.flow))) {
-        console.log("Test");
         newIssue.flow = 0;
       }
       var i = void 0;
@@ -228,6 +340,16 @@ var IssueList = function (_React$Component3) {
       this.setState({ issues: newIssues });
     }
   }, {
+    key: "createInflow",
+    value: function createInflow(newFlow) {
+      var assets = this.state.asset;
+      if (isNaN(parseInt(newFlow.income))) {
+        return;
+      }
+      var total = assets + parseInt(newFlow.income);
+      this.setState({ asset: total });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -241,7 +363,10 @@ var IssueList = function (_React$Component3) {
         React.createElement(Filter, null),
         React.createElement("hr", null),
         React.createElement(IssueTable, { issues: this.state.issues }),
-        React.createElement("hr", null),
+        React.createElement("span", { style: { width: "10px" } }),
+        React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
+        React.createElement(IncomeAdd, { createInflow: this.createInflow }),
+        React.createElement("div", { style: { clear: "both" } }),
         React.createElement(BudgetAdd, { createIssue: this.createIssue })
       );
     }
