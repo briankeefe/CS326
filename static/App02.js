@@ -157,12 +157,34 @@ var Data = function (_React$Component3) {
           "h3",
           null,
           React.createElement(
-            "i",
-            null,
+            "table",
+            { className: "bordered-table", style: { border: "1px black solid" } },
             React.createElement(
-              "b",
+              "thead",
               null,
-              "Placeholder for reports"
+              React.createElement(
+                "tr",
+                null,
+                React.createElement(
+                  "i",
+                  null,
+                  React.createElement(
+                    "b",
+                    null,
+                    "Placeholder for reports"
+                  )
+                ),
+                React.createElement("hr", null)
+              )
+            ),
+            React.createElement(
+              "tbody",
+              null,
+              React.createElement(
+                "tr",
+                null,
+                React.createElement("img", { src: "https://via.placeholder.com/200", alt: "" })
+              )
             )
           )
         )
@@ -173,8 +195,101 @@ var Data = function (_React$Component3) {
   return Data;
 }(React.Component);
 
-var MyComponent = function (_React$Component4) {
-  _inherits(MyComponent, _React$Component4);
+var Results = function (_React$Component4) {
+  _inherits(Results, _React$Component4);
+
+  function Results() {
+    _classCallCheck(this, Results);
+
+    return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).apply(this, arguments));
+  }
+
+  _createClass(Results, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "b",
+          null,
+          React.createElement(
+            "i",
+            null,
+            React.createElement(
+              "u",
+              null,
+              "Table Of Recorded Purchases"
+            )
+          )
+        ),
+        React.createElement(
+          "table",
+          null,
+          React.createElement(
+            "thead",
+            null,
+            React.createElement(
+              "tr",
+              null,
+              React.createElement(
+                "th",
+                null,
+                "Place of Purchase"
+              ),
+              React.createElement(
+                "th",
+                null,
+                "Amount"
+              ),
+              React.createElement(
+                "th",
+                null,
+                "Date"
+              )
+            )
+          ),
+          React.createElement(
+            "tbody",
+            null,
+            React.createElement(
+              "tr",
+              null,
+              React.createElement(
+                "td",
+                null,
+                "McDonald's"
+              ),
+              React.createElement(
+                "td",
+                null,
+                React.createElement(
+                  "i",
+                  null,
+                  React.createElement(
+                    "b",
+                    null,
+                    "$4.28"
+                  )
+                )
+              ),
+              React.createElement(
+                "td",
+                null,
+                "3/11/19"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Results;
+}(React.Component);
+
+var MyComponent = function (_React$Component5) {
+  _inherits(MyComponent, _React$Component5);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -190,7 +305,10 @@ var MyComponent = function (_React$Component4) {
         null,
         React.createElement(GraphGrid, null),
         React.createElement(Stats, null),
-        React.createElement(Data, null)
+        React.createElement(Data, null),
+        React.createElement("div", { style: { "clear": "both" } }),
+        React.createElement("hr", null),
+        React.createElement(Results, null)
       );
     }
   }]);

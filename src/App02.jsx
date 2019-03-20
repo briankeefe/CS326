@@ -63,8 +63,44 @@ class Data extends React.Component {
     return (
       <div>
         <h3>
-          <i><b>Placeholder for reports</b></i>
+          <table className="bordered-table" style={{border: "1px black solid"}}>
+            <thead>
+              <tr>
+                 <i><b>Placeholder for reports</b></i>
+                 <hr/>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><img src="https://via.placeholder.com/200" alt="" /></tr>
+            </tbody>
+          </table>
         </h3>
+      </div>
+    )
+  }
+}
+
+class Results extends React.Component {
+  render() {
+    return (
+      <div>
+        <b><i><u>Table Of Recorded Purchases</u></i></b>
+        <table>
+          <thead>
+            <tr>
+              <th>Place of Purchase</th>
+              <th>Amount</th>
+              <th>Date</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>McDonald's</td>
+              <td><i><b>$4.28</b></i></td>
+              <td>3/11/19</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -82,6 +118,9 @@ class MyComponent extends React.Component {
         <GraphGrid/>
         <Stats />
         <Data />
+        <div style={{"clear": "both"}}/>
+        <hr/>
+        <Results />
       </div>
     );
   }
