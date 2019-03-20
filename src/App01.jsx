@@ -47,12 +47,12 @@ const IssueRow = (props) => (
     <td>{props.issue.budget - props.issue.flow}</td>
   </tr>
 );
-function IssueTable(props) {
+function BudgetTable(props) {
   const issueRows = props.issues.map(issue => (
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <div class="form-group">
+    <div class="form-group" style={{margin:"2%"}}>
       <table className="table table-striped table-dark" style={{float: "left"}}>
         <thead className="thead-dark">
           <tr>
@@ -81,10 +81,10 @@ function BalanceTable(props) {
     }
   }
   return (
-    <table className="table table-light bordered-table">
-      <thead className="thead-dark">
+    <table style={{ width: "100px", margin: "2%", marginLeft: "2%", float: "left"}} className="table table-light striped-table">
+      <thead className="text-white" style={{ backgroundColor: "black"}}> 
         <tr>
-          <th>Budget</th>
+        <th>Budget</th>
           <th>Income</th>
           <th>Outflow</th>
           <th>Balance</th>
@@ -135,10 +135,11 @@ class BudgetAdd extends React.Component {
             <div className="col-md-4 mb-3">
               <input className="form-control" type="number" name="budget" placeholder="Budget (*Optional*)" />
             </div>
-            <div className="col-md-4 mb-3">
-              <input className="form-control" type="number" name="flow" placeholder="Out-flow" />
+            <div className="col-md-4 mb-3" style={{float: "left"}}>
+              <input className="form-control" style={{width: "80%", float: "left"}} type="number" name="flow" placeholder="Out-flow" />
+              <button className="form-control btn-outline-success" style={{ float: "left", width: "15%", marginLeft: "3%" }}>Add</button>
             </div>
-            <button className="form-control">Add</button>
+            
           </div>
           
         </form>
@@ -146,6 +147,37 @@ class BudgetAdd extends React.Component {
     );
   }
 }
+
+class Navbar extends React.Component {
+  constructor(props){
+    super()
+  }
+  render() {
+    return (
+      <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
+          <div className="nav navbar-nav">
+              <a className="nav-item nav-link active bg-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+          </div>
+      </nav>
+    )
+  }
+}
+
+class Jumbo extends React.Component {
+  render() {
+    return (
+      <div className="jumbotron">
+        <h1 className="display-3">My Budget</h1>
+        <p className="lead">Your personalized financial reports</p>
+        <hr className="my-2"/>
+        <p className="lead">
+          <a className="btn btn-success btn-lg" href="/view02.html" role="button">Jump to My Reports</a>
+        </p>
+      </div>
+    )
+  }
+}
+
 
 class IncomeAdd extends React.Component {
   constructor() {
@@ -164,7 +196,7 @@ class IncomeAdd extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%"}}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input className="form-control" type="text" name="income" placeholder="Income" />
           <button className="form-control">Add</button>
@@ -234,16 +266,19 @@ class IssueList extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>My Budget</h1>
-        <Filter />
-        <hr />
-        <IssueTable issues={this.state.issues} />
-        <IncomeAdd createInflow={this.createInflow} />
-        <BalanceTable asset={this.state.asset} issues={this.state.issues}/>
+      <div className="bg-success">
+        <Navbar/>
+        <div style={{width: "600px", float: "left"}}>
+          <BudgetTable issues={this.state.issues} />
+        </div>
+        <div style={{width: "400px", float: "left", marginTop: "2%"}}>
+          <BalanceTable asset={this.state.asset} issues={this.state.issues} />
+          <IncomeAdd createInflow={this.createInflow} />
+        </div>
         <div style={{clear: "both"}}/>
-        <hr/>
+        
         <BudgetAdd enterInfo={this.enterInfo} />
+        <Jumbo />
       </div>
     );
   }
