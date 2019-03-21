@@ -92,7 +92,7 @@ function BudgetTable(props) {
   });
   return React.createElement(
     "div",
-    { "class": "form-group", style: { margin: "2%" } },
+    { "class": "form-group", style: { margin: "2%", border: "3px solid white" } },
     React.createElement(
       "table",
       { className: "table table-striped table-dark", style: { float: "left" } },
@@ -147,10 +147,10 @@ function BalanceTable(props) {
   }
   return React.createElement(
     "table",
-    { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "left" }, className: "table table-light striped-table" },
+    { style: { width: "100px", margin: "auto" }, className: "table table-light striped-table" },
     React.createElement(
       "thead",
-      { className: "text-white", style: { backgroundColor: "black" } },
+      { className: "text-white", style: { backgroundColor: "darkGreen" } },
       React.createElement(
         "tr",
         null,
@@ -248,7 +248,7 @@ var BudgetAdd = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { style: { width: "100%", marginTop: "3%" } },
         React.createElement(
           "form",
           { name: "BudgetAdd", onSubmit: this.handleSubmit },
@@ -267,11 +267,15 @@ var BudgetAdd = function (_React$Component2) {
             ),
             React.createElement(
               "div",
-              { className: "col-md-4 mb-3", style: { float: "left" } },
-              React.createElement("input", { className: "form-control", style: { width: "80%", float: "left" }, type: "number", name: "flow", placeholder: "Out-flow" }),
+              { className: "col-md-3 mb-3", style: { float: "left" } },
+              React.createElement("input", { className: "form-control", style: { width: "100%", float: "left" }, type: "number", name: "flow", placeholder: "Out-flow" })
+            ),
+            React.createElement(
+              "div",
+              { className: "col " },
               React.createElement(
                 "button",
-                { className: "form-control btn-outline-success", style: { float: "left", width: "15%", marginLeft: "3%" } },
+                { className: "form-control text-white btn-success", style: { backgroundColor: "darkGreen", border: "1px solid white", float: "right", width: "100%", margin: "auto" } },
                 "Add"
               )
             )
@@ -304,7 +308,7 @@ var Navbar = function (_React$Component3) {
           { className: "nav navbar-nav" },
           React.createElement(
             "a",
-            { className: "nav-item nav-link active bg-success", href: "/view02.html" },
+            { className: "btn btn-success", href: "/view02.html" },
             "Reports",
             React.createElement(
               "span",
@@ -334,25 +338,29 @@ var Jumbo = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "jumbotron" },
+        { className: "jumbotron", style: { margin: "auto", padding: "5%" } },
         React.createElement(
-          "h1",
-          { className: "display-3" },
-          "My Budget"
-        ),
-        React.createElement(
-          "p",
-          { className: "lead" },
-          "Your personalized financial reports"
-        ),
-        React.createElement("hr", { className: "my-2" }),
-        React.createElement(
-          "p",
-          { className: "lead" },
+          "div",
+          { "class": "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%" } },
           React.createElement(
-            "a",
-            { className: "btn btn-success btn-lg", href: "/view02.html", role: "button" },
-            "Jump to My Reports"
+            "h1",
+            { className: "display-3" },
+            "My Budget"
+          ),
+          React.createElement(
+            "p",
+            { className: "lead" },
+            "Your Budgeting Calculator"
+          ),
+          React.createElement("hr", { className: "my-2" }),
+          React.createElement(
+            "p",
+            { className: "lead", style: { paddingTop: "6px" } },
+            React.createElement(
+              "a",
+              { className: "btn btn-success btn-lg", href: "/view02.html", role: "button" },
+              "Jump to My Reports"
+            )
           )
         )
       );
@@ -388,14 +396,14 @@ var IncomeAdd = function (_React$Component5) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%" } },
+        { style: { width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white" } },
         React.createElement(
           "form",
           { name: "IncomeAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
+          React.createElement("input", { style: { width: "90%", margin: "auto" }, className: "form-control", type: "text", name: "income", placeholder: "Income" }),
           React.createElement(
             "button",
-            { className: "form-control" },
+            { style: { width: "auto", margin: "3% auto", backgroundColor: "darkGreen" }, className: "form-control btn-success" },
             "Add"
           )
         )
@@ -484,17 +492,29 @@ var IssueList = function (_React$Component6) {
         React.createElement(Navbar, null),
         React.createElement(
           "div",
-          { style: { width: "600px", float: "left" } },
-          React.createElement(BudgetTable, { issues: this.state.issues })
-        ),
-        React.createElement(
-          "div",
-          { style: { width: "400px", float: "left", marginTop: "2%" } },
-          React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
-          React.createElement(IncomeAdd, { createInflow: this.createInflow })
+          { className: "container", style: { margin: "2% auto" } },
+          React.createElement(
+            "div",
+            { className: "row" },
+            React.createElement(
+              "div",
+              { className: "col", style: { backgroundColor: "lightGreen", border: "3px solid white" } },
+              React.createElement(BudgetTable, { issues: this.state.issues })
+            ),
+            React.createElement(
+              "div",
+              { className: "col", style: { margin: "auto" } },
+              React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
+              React.createElement(IncomeAdd, { createInflow: this.createInflow })
+            )
+          )
         ),
         React.createElement("div", { style: { clear: "both" } }),
-        React.createElement(BudgetAdd, { enterInfo: this.enterInfo }),
+        React.createElement(
+          "div",
+          { className: "container", style: { margin: "auto" } },
+          React.createElement(BudgetAdd, { enterInfo: this.enterInfo })
+        ),
         React.createElement(Jumbo, null)
       );
     }

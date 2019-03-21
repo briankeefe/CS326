@@ -52,7 +52,7 @@ function BudgetTable(props) {
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <div class="form-group" style={{margin:"2%"}}>
+    <div class="form-group" style={{margin:"2%", border: "3px solid white"}}>
       <table className="table table-striped table-dark" style={{float: "left"}}>
         <thead className="thead-dark">
           <tr>
@@ -81,8 +81,8 @@ function BalanceTable(props) {
     }
   }
   return (
-    <table style={{ width: "100px", margin: "2%", marginLeft: "2%", float: "left"}} className="table table-light striped-table">
-      <thead className="text-white" style={{ backgroundColor: "black"}}> 
+    <table style={{ width: "100px", margin: "auto"}} className="table table-light striped-table">
+      <thead className="text-white" style={{backgroundColor: "darkGreen"}}> 
         <tr>
         <th>Budget</th>
           <th>Income</th>
@@ -126,7 +126,7 @@ class BudgetAdd extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{width: "100%", marginTop: "3%"}}>
         <form name="BudgetAdd" onSubmit={this.handleSubmit}>
           <div className="form-row">
             <div className="col-md-4 mb-3">
@@ -135,9 +135,11 @@ class BudgetAdd extends React.Component {
             <div className="col-md-4 mb-3">
               <input className="form-control" type="number" name="budget" placeholder="Budget (*Optional*)" />
             </div>
-            <div className="col-md-4 mb-3" style={{float: "left"}}>
-              <input className="form-control" style={{width: "80%", float: "left"}} type="number" name="flow" placeholder="Out-flow" />
-              <button className="form-control btn-outline-success" style={{ float: "left", width: "15%", marginLeft: "3%" }}>Add</button>
+            <div className="col-md-3 mb-3" style={{float: "left"}}>
+              <input className="form-control" style={{width: "100%", float: "left"}} type="number" name="flow" placeholder="Out-flow" />
+            </div>
+            <div className="col ">
+              <button className="form-control text-white btn-success" style={{ backgroundColor: "darkGreen", border: "1px solid white", float: "right", width: "100%", margin: "auto" }}>Add</button>
             </div>
             
           </div>
@@ -156,7 +158,7 @@ class Navbar extends React.Component {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-              <a className="nav-item nav-link active bg-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+              <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
           </div>
       </nav>
     )
@@ -166,13 +168,15 @@ class Navbar extends React.Component {
 class Jumbo extends React.Component {
   render() {
     return (
-      <div className="jumbotron">
-        <h1 className="display-3">My Budget</h1>
-        <p className="lead">Your personalized financial reports</p>
-        <hr className="my-2"/>
-        <p className="lead">
-          <a className="btn btn-success btn-lg" href="/view02.html" role="button">Jump to My Reports</a>
-        </p>
+      <div className="jumbotron" style={{margin: "auto", padding: "5%"}}>
+        <div class="container" style={{border: "1px solid black", borderStyle: "dotted", padding: "5%"}}>
+          <h1 className="display-3">My Budget</h1>
+          <p className="lead">Your Budgeting Calculator</p>
+          <hr className="my-2" />
+          <p className="lead" style={{ paddingTop: "6px" }}>
+            <a className="btn btn-success btn-lg" href="/view02.html" role="button">Jump to My Reports</a>
+          </p>
+        </div>
       </div>
     )
   }
@@ -196,10 +200,10 @@ class IncomeAdd extends React.Component {
 
   render() {
     return (
-      <div style={{position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%"}}>
+      <div style={{width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white"}}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
-          <input className="form-control" type="text" name="income" placeholder="Income" />
-          <button className="form-control">Add</button>
+          <input style={{width: "90%", margin: "auto"}} className="form-control" type="text" name="income" placeholder="Income" />
+          <button style={{width: "auto", margin: "3% auto", backgroundColor: "darkGreen"}} className="form-control btn-success">Add</button>
         </form>
       </div>
     );
@@ -268,16 +272,22 @@ class IssueList extends React.Component {
     return (
       <div className="bg-success">
         <Navbar/>
-        <div style={{width: "600px", float: "left"}}>
-          <BudgetTable issues={this.state.issues} />
-        </div>
-        <div style={{width: "400px", float: "left", marginTop: "2%"}}>
-          <BalanceTable asset={this.state.asset} issues={this.state.issues} />
-          <IncomeAdd createInflow={this.createInflow} />
+        <div className="container" style={{margin: "2% auto"}}>
+          <div className="row">
+            <div className="col" style={{backgroundColor: "lightGreen", border: "3px solid white" }}>
+              <BudgetTable issues={this.state.issues} />
+            </div>
+            <div className="col" style={{margin: "auto"}}>
+              <BalanceTable asset={this.state.asset} issues={this.state.issues} />
+              <IncomeAdd createInflow={this.createInflow} />
+            </div>
+          </div>
+          
         </div>
         <div style={{clear: "both"}}/>
-        
-        <BudgetAdd enterInfo={this.enterInfo} />
+        <div className="container" style={{margin: "auto"}}>
+          <BudgetAdd enterInfo={this.enterInfo} />
+        </div>
         <Jumbo />
       </div>
     );

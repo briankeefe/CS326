@@ -11,53 +11,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // This is a place holder for the initial application state.
 var state = [];
 
-var Nav = function (_React$Component) {
-  _inherits(Nav, _React$Component);
-
-  function Nav() {
-    _classCallCheck(this, Nav);
-
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
-  }
-
-  _createClass(Nav, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "nav",
-          { className: "navbar navbar-expand navbar-dark bg-dark" },
-          React.createElement(
-            "div",
-            { className: "nav navbar-nav" },
-            React.createElement(
-              "a",
-              { name: "", id: "", className: "btn btn-primary", href: "./view01.html", role: "button" },
-              "Budget"
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Nav;
-}(React.Component);
-
 // This grabs the DOM element to be used to mount React components.
-
-
 var contentNode = document.getElementById("contents");
 function Graph(props) {
   var name = props.name;
   return React.createElement(
-    "div",
+    "span",
     null,
     React.createElement(
       "table",
-      { style: { backgroundColor: "lightBlue", margin: "auto", color: "white" } },
+      { style: { float: "left" } },
       React.createElement(
         "tbody",
         null,
@@ -66,13 +29,9 @@ function Graph(props) {
           null,
           React.createElement(
             "td",
-            { className: "center", style: { margin: "auto" } },
-            React.createElement(
-              "i",
-              null,
-              "Graph of ",
-              name
-            )
+            null,
+            "Graph of ",
+            name
           )
         ),
         React.createElement(
@@ -89,8 +48,8 @@ function Graph(props) {
   );
 }
 
-var GraphGrid = function (_React$Component2) {
-  _inherits(GraphGrid, _React$Component2);
+var GraphGrid = function (_React$Component) {
+  _inherits(GraphGrid, _React$Component);
 
   function GraphGrid() {
     _classCallCheck(this, GraphGrid);
@@ -102,22 +61,10 @@ var GraphGrid = function (_React$Component2) {
     key: "render",
     value: function render() {
       return React.createElement(
-        "div",
-        { className: "container" },
-        React.createElement(
-          "div",
-          { className: "row" },
-          React.createElement(
-            "div",
-            { className: "col-md-6" },
-            React.createElement(Graph, { name: "Income" })
-          ),
-          React.createElement(
-            "div",
-            { className: "col-md-6" },
-            React.createElement(Graph, { name: "Outflow" })
-          )
-        )
+        "span",
+        null,
+        React.createElement(Graph, { name: "Income" }),
+        React.createElement(Graph, { name: "Outflows" })
       );
     }
   }]);
@@ -125,8 +72,8 @@ var GraphGrid = function (_React$Component2) {
   return GraphGrid;
 }(React.Component);
 
-var Stats = function (_React$Component3) {
-  _inherits(Stats, _React$Component3);
+var Stats = function (_React$Component2) {
+  _inherits(Stats, _React$Component2);
 
   function Stats() {
     _classCallCheck(this, Stats);
@@ -191,54 +138,8 @@ var Stats = function (_React$Component3) {
   return Stats;
 }(React.Component);
 
-var Jumbo = function (_React$Component4) {
-  _inherits(Jumbo, _React$Component4);
-
-  function Jumbo() {
-    _classCallCheck(this, Jumbo);
-
-    return _possibleConstructorReturn(this, (Jumbo.__proto__ || Object.getPrototypeOf(Jumbo)).apply(this, arguments));
-  }
-
-  _createClass(Jumbo, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        { className: "jumbotron", style: { marignTop: "5%", padding: "5%" } },
-        React.createElement(
-          "div",
-          { className: "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%" } },
-          React.createElement(
-            "h1",
-            { className: "display-3" },
-            "My Reports"
-          ),
-          React.createElement(
-            "p",
-            { className: "lead" },
-            "Your personalized financial reports"
-          ),
-          React.createElement("hr", { className: "my-2" }),
-          React.createElement(
-            "p",
-            { className: "lead", style: { paddingTop: "6px" } },
-            React.createElement(
-              "a",
-              { className: "btn btn-primary btn-lg", href: "/view01.html", role: "button" },
-              "Jump to My Budget"
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Jumbo;
-}(React.Component);
-
-var Data = function (_React$Component5) {
-  _inherits(Data, _React$Component5);
+var Data = function (_React$Component3) {
+  _inherits(Data, _React$Component3);
 
   function Data() {
     _classCallCheck(this, Data);
@@ -253,34 +154,34 @@ var Data = function (_React$Component5) {
         "div",
         null,
         React.createElement(
-          "table",
-          { className: "bordered-table", style: { border: "1px white dotted", margin: "3% auto" } },
+          "h3",
+          null,
           React.createElement(
-            "thead",
-            null,
+            "table",
+            { className: "bordered-table", style: { border: "1px black solid" } },
             React.createElement(
-              "tr",
+              "thead",
               null,
               React.createElement(
-                "i",
+                "tr",
                 null,
                 React.createElement(
-                  "b",
+                  "i",
                   null,
-                  "Placeholder for reports"
-                )
-              ),
-              React.createElement("hr", null)
-            )
-          ),
-          React.createElement(
-            "tbody",
-            null,
+                  React.createElement(
+                    "b",
+                    null,
+                    "Placeholder for reports"
+                  )
+                ),
+                React.createElement("hr", null)
+              )
+            ),
             React.createElement(
-              "tr",
+              "tbody",
               null,
               React.createElement(
-                "td",
+                "tr",
                 null,
                 React.createElement("img", { src: "https://via.placeholder.com/200", alt: "" })
               )
@@ -294,8 +195,8 @@ var Data = function (_React$Component5) {
   return Data;
 }(React.Component);
 
-var Results = function (_React$Component6) {
-  _inherits(Results, _React$Component6);
+var Results = function (_React$Component4) {
+  _inherits(Results, _React$Component4);
 
   function Results() {
     _classCallCheck(this, Results);
@@ -387,8 +288,8 @@ var Results = function (_React$Component6) {
   return Results;
 }(React.Component);
 
-var MyComponent = function (_React$Component7) {
-  _inherits(MyComponent, _React$Component7);
+var MyComponent = function (_React$Component5) {
+  _inherits(MyComponent, _React$Component5);
 
   function MyComponent() {
     _classCallCheck(this, MyComponent);
@@ -401,94 +302,13 @@ var MyComponent = function (_React$Component7) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { float: "center", margin: "auto", backgroundColor: "navy" } },
-        React.createElement(Nav, null),
-        React.createElement(
-          "div",
-          { className: "container", style: { marginTop: "2%" } },
-          React.createElement(
-            "div",
-            { className: "row" },
-            React.createElement(
-              "div",
-              { className: "col-md-6" },
-              React.createElement(
-                "div",
-                { className: "card" },
-                React.createElement(
-                  "div",
-                  { className: "card-body", style: { marginBottom: "5%" } },
-                  React.createElement(Graph, { name: "Income" }),
-                  React.createElement(
-                    "h4",
-                    { className: "card-title", style: { margin: "0 auto", textAlign: "center" } },
-                    "Graph #1"
-                  ),
-                  React.createElement(
-                    "p",
-                    { className: "card-text", style: { margin: "0 auto", textAlign: "center" } },
-                    "Graph of Income"
-                  )
-                )
-              )
-            ),
-            React.createElement(
-              "div",
-              { className: "col-md-6" },
-              React.createElement(
-                "div",
-                { className: "card" },
-                React.createElement(
-                  "div",
-                  { className: "card-body", style: { marginBottom: "5%" } },
-                  React.createElement(Graph, { name: "Expenses" }),
-                  React.createElement(
-                    "h4",
-                    { className: "card-title", style: { margin: "0 auto", textAlign: "center" } },
-                    "Graph #2"
-                  ),
-                  React.createElement(
-                    "p",
-                    { className: "card-text", style: { margin: "0 auto", textAlign: "center" } },
-                    "Graph of Expenses"
-                  )
-                )
-              )
-            )
-          )
-        ),
-        React.createElement(
-          "div",
-          { style: { marginTop: "2%" } },
-          React.createElement(
-            "div",
-            { className: "container" },
-            React.createElement(
-              "div",
-              { className: "row", style: { backgroundColor: "royalBlue", color: "white" } },
-              React.createElement(
-                "div",
-                { className: "col-md-6" },
-                React.createElement(
-                  "div",
-                  null,
-                  " ",
-                  React.createElement(Data, null)
-                )
-              ),
-              React.createElement(
-                "div",
-                { className: "col-md-6" },
-                React.createElement(
-                  "div",
-                  { style: { marginTop: "15%" } },
-                  React.createElement(Stats, null)
-                )
-              )
-            )
-          ),
-          React.createElement(Jumbo, null)
-        )
+        null,
+        React.createElement(GraphGrid, null),
+        React.createElement(Stats, null),
+        React.createElement(Data, null),
+        React.createElement("div", { style: { "clear": "both" } }),
+        React.createElement("hr", null),
+        React.createElement(Results, null)
       );
     }
   }]);

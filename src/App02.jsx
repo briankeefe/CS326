@@ -3,34 +3,55 @@ const state = [
 
 ];
 
+class Nav extends React.Component {
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <div className="nav navbar-nav">
+            <a name="" id="" className="btn btn-primary" href="./view01.html" role="button">Budget</a>
+          </div>
+        </nav>
+      </div>
+    )
+  }
+}
+
+
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 function Graph(props) {
   let name = props.name;
   return (
-    <span>
-      <table style={{ float: "left" }} >
+    <div>
+      <table style={{backgroundColor: "lightBlue", margin: "auto", color: "white"}}>
         <tbody>
           <tr>
-            <td>Graph of {name}</td>
+            <td className="center"  style={{margin: "auto"}}><i>Graph of {name}</i></td>
           </tr>
           <tr>
             <td><img src="https://via.placeholder.com/300" alt="" /></td>
           </tr>
         </tbody>
       </table>
-      
-    </span>   
-  ) 
+
+    </div>
+  )
 }
 
 class GraphGrid extends React.Component {
   render() {
     return (
-      <span>
-        <Graph name="Income"/>
-        <Graph name="Outflows"/>
-      </span>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <Graph name="Income" />
+          </div>
+          <div className="col-md-6">
+            <Graph name="Outflow" />
+          </div>
+        </div>
+      </div>
     )
   }
 }
@@ -58,23 +79,39 @@ class Stats extends React.Component {
   }
 }
 
+class Jumbo extends React.Component {
+  render() {
+    return (
+      <div className="jumbotron" style={{ marignTop: "5%", padding: "5%" }}>
+        <div className="container" style={{ border: "1px solid black", borderStyle: "dotted", padding: "5%" }}>
+          <h1 className="display-3">My Reports</h1>
+          <p className="lead">Your personalized financial reports</p>
+          <hr className="my-2" />
+          <p className="lead" style={{ paddingTop: "6px" }}>
+            <a className="btn btn-primary btn-lg" href="/view01.html" role="button" >Jump to My Budget</a>
+          </p>
+        </div>
+      </div>
+    )
+  }
+}
 class Data extends React.Component {
   render() {
     return (
       <div>
-        <h3>
-          <table className="bordered-table" style={{border: "1px black solid"}}>
-            <thead>
-              <tr>
-                 <i><b>Placeholder for reports</b></i>
-                 <hr/>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><img src="https://via.placeholder.com/200" alt="" /></tr>
-            </tbody>
-          </table>
-        </h3>
+        <table className="bordered-table" style={{ border: "1px white dotted", margin: "3% auto"}}>
+          <thead>
+            <tr>
+              <i><b>Placeholder for reports</b></i>
+              <hr />
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://via.placeholder.com/200" alt="" /></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
@@ -90,7 +127,7 @@ class Results extends React.Component {
             <tr>
               <th>Place of Purchase</th>
               <th>Amount</th>
-              <th>Date</th> 
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
@@ -114,13 +151,44 @@ class MyComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <GraphGrid/>
-        <Stats />
-        <Data />
-        <div style={{"clear": "both"}}/>
-        <hr/>
-        <Results />
+      <div style={{ float: "center", margin: "auto", backgroundColor: "navy" }}>
+        <Nav />
+        <div className="container" style={{marginTop: "2%"}}>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="card">
+                <div className="card-body" style={{marginBottom: "5%"}}>
+                  <Graph name="Income" />
+                  <h4 className="card-title" style={{margin: "0 auto", textAlign: "center"}}>Graph #1</h4>
+                  <p className="card-text" style={{margin: "0 auto", textAlign: "center"}}>Graph of Income</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="card">
+                <div className="card-body" style={{marginBottom: "5%"}}>
+                  <Graph name="Expenses" />
+                  <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
+                <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{marginTop: "2%"}}>
+          <div className="container">
+            <div className="row" style={{backgroundColor: "royalBlue", color: "white"}}>
+              <div className="col-md-6">
+                <div> <Data /></div>
+              </div>
+              <div className="col-md-6">
+                <div style={{marginTop: "15%"}}><Stats /></div>
+              </div>
+            </div>
+          </div>
+          <Jumbo/>
+        </div>
+
       </div>
     );
   }
