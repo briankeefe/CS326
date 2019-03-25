@@ -341,7 +341,7 @@ var Jumbo = function (_React$Component4) {
         { className: "jumbotron", style: { margin: "auto", padding: "5%" } },
         React.createElement(
           "div",
-          { "class": "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%" } },
+          { "class": "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" } },
           React.createElement(
             "h1",
             { className: "display-3" },
@@ -352,7 +352,7 @@ var Jumbo = function (_React$Component4) {
             { className: "lead" },
             "Your Budgeting Calculator"
           ),
-          React.createElement("hr", { className: "my-2" }),
+          React.createElement("hr", { className: "my-2", style: { border: "1px white dotted" } }),
           React.createElement(
             "p",
             { className: "lead", style: { paddingTop: "6px" } },

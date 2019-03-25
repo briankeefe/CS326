@@ -81,7 +81,7 @@ function Graph(props) {
           React.createElement(
             "td",
             null,
-            React.createElement("img", { src: "https://via.placeholder.com/300", alt: "" })
+            React.createElement("img", { src: "https://via.placeholder.com/300", alt: "", style: { maxWidth: "100%", height: "auto" } })
           )
         )
       )
@@ -205,10 +205,10 @@ var Jumbo = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "jumbotron", style: { marignTop: "5%", padding: "5%" } },
+        { className: "jumbotron", style: { marignTop: "5%", marginBottom: "0%", padding: "5%", borderRadius: "1rem", border: "3px groove navy" } },
         React.createElement(
           "div",
-          { className: "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%" } },
+          { className: "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "navy", color: "white" } },
           React.createElement(
             "h1",
             { className: "display-3" },
@@ -219,14 +219,14 @@ var Jumbo = function (_React$Component4) {
             { className: "lead" },
             "Your personalized financial reports"
           ),
-          React.createElement("hr", { className: "my-2" }),
+          React.createElement("hr", { className: "my-2", style: { border: "1px dotted white" } }),
           React.createElement(
             "p",
             { className: "lead", style: { paddingTop: "6px" } },
             React.createElement(
               "a",
               { className: "btn btn-primary btn-lg", href: "/view01.html", role: "button" },
-              "Jump to My Budget"
+              "Jump to My 'Budget'"
             )
           )
         )
@@ -401,7 +401,7 @@ var MyComponent = function (_React$Component7) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { float: "center", margin: "auto", backgroundColor: "navy" } },
+        { style: { float: "center", marginLeft: "12%", marginRight: "12%" } },
         React.createElement(Nav, null),
         React.createElement(
           "div",
@@ -414,7 +414,7 @@ var MyComponent = function (_React$Component7) {
               { className: "col-md-6" },
               React.createElement(
                 "div",
-                { className: "card" },
+                { className: "card", style: { border: "2px groove black" } },
                 React.createElement(
                   "div",
                   { className: "card-body", style: { marginBottom: "5%" } },
@@ -437,7 +437,7 @@ var MyComponent = function (_React$Component7) {
               { className: "col-md-6" },
               React.createElement(
                 "div",
-                { className: "card" },
+                { className: "card", style: { border: "2px groove black" } },
                 React.createElement(
                   "div",
                   { className: "card-body", style: { marginBottom: "5%" } },
@@ -462,10 +462,10 @@ var MyComponent = function (_React$Component7) {
           { style: { marginTop: "2%" } },
           React.createElement(
             "div",
-            { className: "container" },
+            { className: "container", style: { marginBottom: "2%" } },
             React.createElement(
               "div",
-              { className: "row", style: { backgroundColor: "royalBlue", color: "white" } },
+              { className: "row", style: { backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" } },
               React.createElement(
                 "div",
                 { className: "col-md-6" },
