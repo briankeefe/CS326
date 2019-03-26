@@ -1,7 +1,12 @@
 // This is a place holder for the initial application state.
-const state = [
-
-];
+const contents = {
+  totalIncome:  0,
+  totalSpent: 0,
+  totalSave: 0
+}
+const totalIncome =  0
+const totalSpent = 0
+const totalSave = 0
 
 class Nav extends React.Component {
   render() {
@@ -9,7 +14,7 @@ class Nav extends React.Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-            <a name="" id="" className="btn btn-primary" href="./view01.html" role="button">Budget</a>
+            <a name="" id="" className="btn btn-success" href="./view01.html" role="button">Budget</a>
           </div>
         </nav>
       </div>
@@ -56,28 +61,58 @@ class GraphGrid extends React.Component {
   }
 }
 
-class Stats extends React.Component {
-  render() {
-    return (
-      <table>
-        <tbody>
+function Stats(props) {
+  return (
+    <div>
+      <table className="table bg-white">
+        <thead>
           <tr>
             <th></th>
             <th>Total Income</th>
             <th>Total Expenditures</th>
             <th>Total Savings</th>
           </tr>
+        </thead>
+        <tbody>
           <tr>
             <td></td>
-            <td>Answer</td>
-            <td>Answer</td>
-            <td>Answer</td>
+            <td>{props.totalIncome}</td>
+            <td>{props.contents.totalSpent}</td>
+            <td>{props.contents.totalSave}</td>
           </tr>
         </tbody>
       </table>
-    )
+      <IncomeAdd contents={props.contents} income={props.totalIncome} createInflow={props.createInflow}/>
+    </div>
+  )
+}
+class IncomeAdd extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let form = document.forms.IncomeAdd;
+    this.props.createInflow({ income: form.income.value });
+    // Clear the form for the next input.
+    form.income.value = '';
+  }
+
+  render() {
+    return (
+      <div style={{ width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "lightBlue", border: "3px solid white" }}>
+        <form name="IncomeAdd" onSubmit={this.handleSubmit}>
+          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="income" placeholder="Income" />
+          <button style={{ width: "auto", margin: "3% auto", backgroundColor: "navy" }} className="form-control btn-primary">Add</button>
+        </form>
+      </div>
+    );
   }
 }
+
 
 class Jumbo extends React.Component {
   render() {
@@ -147,6 +182,29 @@ class Results extends React.Component {
 class MyComponent extends React.Component {
   constructor() {
     super();
+    this.state = {contents: []};
+    this.createInflow = this.createInflow.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData() {
+    setTimeout(() => {
+      this.setState({
+        contents: contents,
+      });
+    }, 500);
+  }
+
+  createInflow(newFlow) {
+    const newIssues = this.state.contents;
+    if (isNaN(parseInt(newFlow.income))) {
+      return;
+    }
+    newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income)
+    this.setState({ contents: newIssues });
   }
 
   render() {
@@ -156,7 +214,7 @@ class MyComponent extends React.Component {
         <div className="container" style={{marginTop: "2%", }}>
           <div className="row">
             <div className="col-md-6">
-              <div className="card" style={{border: "2px groove black"}}>
+              <div className="card" style={{border: "2px groove black", borderRadius: "4px"}}>
                 <div className="card-body" style={{ marginBottom: "5%"}}>
                   <Graph name="Income" />
                   <h4 className="card-title" style={{margin: "0 auto", textAlign: "center"}}>Graph #1</h4>
@@ -182,7 +240,7 @@ class MyComponent extends React.Component {
                 <div> <Data /></div>
               </div>
               <div className="col-md-6">
-                <div style={{marginTop: "15%"}}><Stats /></div>
+                <div style={{marginTop: "15%"}}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow}/></div>
               </div>
             </div>
           </div>

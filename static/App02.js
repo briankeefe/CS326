@@ -9,7 +9,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
-var state = [];
+var contents = {
+  totalIncome: 0,
+  totalSpent: 0,
+  totalSave: 0
+};
+var totalIncome = 0;
+var totalSpent = 0;
+var totalSave = 0;
 
 var Nav = function (_React$Component) {
   _inherits(Nav, _React$Component);
@@ -34,7 +41,7 @@ var Nav = function (_React$Component) {
             { className: "nav navbar-nav" },
             React.createElement(
               "a",
-              { name: "", id: "", className: "btn btn-primary", href: "./view01.html", role: "button" },
+              { name: "", id: "", className: "btn btn-success", href: "./view01.html", role: "button" },
               "Budget"
             )
           )
@@ -125,70 +132,108 @@ var GraphGrid = function (_React$Component2) {
   return GraphGrid;
 }(React.Component);
 
-var Stats = function (_React$Component3) {
-  _inherits(Stats, _React$Component3);
+function Stats(props) {
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "table",
+      { className: "table bg-white" },
+      React.createElement(
+        "thead",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement("th", null),
+          React.createElement(
+            "th",
+            null,
+            "Total Income"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Total Expenditures"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Total Savings"
+          )
+        )
+      ),
+      React.createElement(
+        "tbody",
+        null,
+        React.createElement(
+          "tr",
+          null,
+          React.createElement("td", null),
+          React.createElement(
+            "td",
+            null,
+            props.totalIncome
+          ),
+          React.createElement(
+            "td",
+            null,
+            props.contents.totalSpent
+          ),
+          React.createElement(
+            "td",
+            null,
+            props.contents.totalSave
+          )
+        )
+      )
+    ),
+    React.createElement(IncomeAdd, { contents: props.contents, income: props.totalIncome, createInflow: props.createInflow })
+  );
+}
 
-  function Stats() {
-    _classCallCheck(this, Stats);
+var IncomeAdd = function (_React$Component3) {
+  _inherits(IncomeAdd, _React$Component3);
 
-    return _possibleConstructorReturn(this, (Stats.__proto__ || Object.getPrototypeOf(Stats)).apply(this, arguments));
+  function IncomeAdd() {
+    _classCallCheck(this, IncomeAdd);
+
+    var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+
+    _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
+    return _this3;
   }
 
-  _createClass(Stats, [{
+  _createClass(IncomeAdd, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var form = document.forms.IncomeAdd;
+      this.props.createInflow({ income: form.income.value });
+      // Clear the form for the next input.
+      form.income.value = '';
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
-        "table",
-        null,
+        "div",
+        { style: { width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "lightBlue", border: "3px solid white" } },
         React.createElement(
-          "tbody",
-          null,
+          "form",
+          { name: "IncomeAdd", onSubmit: this.handleSubmit },
+          React.createElement("input", { style: { width: "90%", margin: "auto" }, className: "form-control", type: "text", name: "income", placeholder: "Income" }),
           React.createElement(
-            "tr",
-            null,
-            React.createElement("th", null),
-            React.createElement(
-              "th",
-              null,
-              "Total Income"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Total Expenditures"
-            ),
-            React.createElement(
-              "th",
-              null,
-              "Total Savings"
-            )
-          ),
-          React.createElement(
-            "tr",
-            null,
-            React.createElement("td", null),
-            React.createElement(
-              "td",
-              null,
-              "Answer"
-            ),
-            React.createElement(
-              "td",
-              null,
-              "Answer"
-            ),
-            React.createElement(
-              "td",
-              null,
-              "Answer"
-            )
+            "button",
+            { style: { width: "auto", margin: "3% auto", backgroundColor: "navy" }, className: "form-control btn-primary" },
+            "Add"
           )
         )
       );
     }
   }]);
 
-  return Stats;
+  return IncomeAdd;
 }(React.Component);
 
 var Jumbo = function (_React$Component4) {
@@ -393,10 +438,40 @@ var MyComponent = function (_React$Component7) {
   function MyComponent() {
     _classCallCheck(this, MyComponent);
 
-    return _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+    var _this7 = _possibleConstructorReturn(this, (MyComponent.__proto__ || Object.getPrototypeOf(MyComponent)).call(this));
+
+    _this7.state = { contents: [] };
+    _this7.createInflow = _this7.createInflow.bind(_this7);
+    return _this7;
   }
 
   _createClass(MyComponent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.loadData();
+    }
+  }, {
+    key: "loadData",
+    value: function loadData() {
+      var _this8 = this;
+
+      setTimeout(function () {
+        _this8.setState({
+          contents: contents
+        });
+      }, 500);
+    }
+  }, {
+    key: "createInflow",
+    value: function createInflow(newFlow) {
+      var newIssues = this.state.contents;
+      if (isNaN(parseInt(newFlow.income))) {
+        return;
+      }
+      newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income);
+      this.setState({ contents: newIssues });
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -414,7 +489,7 @@ var MyComponent = function (_React$Component7) {
               { className: "col-md-6" },
               React.createElement(
                 "div",
-                { className: "card", style: { border: "2px groove black" } },
+                { className: "card", style: { border: "2px groove black", borderRadius: "4px" } },
                 React.createElement(
                   "div",
                   { className: "card-body", style: { marginBottom: "5%" } },
@@ -482,7 +557,7 @@ var MyComponent = function (_React$Component7) {
                 React.createElement(
                   "div",
                   { style: { marginTop: "15%" } },
-                  React.createElement(Stats, null)
+                  React.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
             )
