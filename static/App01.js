@@ -37,29 +37,6 @@ var issues = [{
 var asset = 0;
 var contentNode = document.getElementById("contents");
 
-var Filter = function (_React$Component) {
-  _inherits(Filter, _React$Component);
-
-  function Filter() {
-    _classCallCheck(this, Filter);
-
-    return _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).apply(this, arguments));
-  }
-
-  _createClass(Filter, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        "Your Monthly Money Planner"
-      );
-    }
-  }]);
-
-  return Filter;
-}(React.Component);
-
 var IssueRow = function IssueRow(props) {
   return React.createElement(
     "tr",
@@ -217,16 +194,16 @@ function BalanceTable(props) {
   );
 }
 
-var BudgetAdd = function (_React$Component2) {
-  _inherits(BudgetAdd, _React$Component2);
+var BudgetAdd = function (_React$Component) {
+  _inherits(BudgetAdd, _React$Component);
 
   function BudgetAdd() {
     _classCallCheck(this, BudgetAdd);
 
-    var _this2 = _possibleConstructorReturn(this, (BudgetAdd.__proto__ || Object.getPrototypeOf(BudgetAdd)).call(this));
+    var _this = _possibleConstructorReturn(this, (BudgetAdd.__proto__ || Object.getPrototypeOf(BudgetAdd)).call(this));
 
-    _this2.handleSubmit = _this2.handleSubmit.bind(_this2);
-    return _this2;
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
   }
 
   _createClass(BudgetAdd, [{
@@ -288,8 +265,8 @@ var BudgetAdd = function (_React$Component2) {
   return BudgetAdd;
 }(React.Component);
 
-var Navbar = function (_React$Component3) {
-  _inherits(Navbar, _React$Component3);
+var Navbar = function (_React$Component2) {
+  _inherits(Navbar, _React$Component2);
 
   function Navbar(props) {
     _classCallCheck(this, Navbar);
@@ -324,8 +301,8 @@ var Navbar = function (_React$Component3) {
   return Navbar;
 }(React.Component);
 
-var Jumbo = function (_React$Component4) {
-  _inherits(Jumbo, _React$Component4);
+var Jumbo = function (_React$Component3) {
+  _inherits(Jumbo, _React$Component3);
 
   function Jumbo() {
     _classCallCheck(this, Jumbo);
@@ -370,16 +347,16 @@ var Jumbo = function (_React$Component4) {
   return Jumbo;
 }(React.Component);
 
-var IncomeAdd = function (_React$Component5) {
-  _inherits(IncomeAdd, _React$Component5);
+var IncomeAdd = function (_React$Component4) {
+  _inherits(IncomeAdd, _React$Component4);
 
   function IncomeAdd() {
     _classCallCheck(this, IncomeAdd);
 
-    var _this5 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+    var _this4 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
-    _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
-    return _this5;
+    _this4.handleSubmit = _this4.handleSubmit.bind(_this4);
+    return _this4;
   }
 
   _createClass(IncomeAdd, [{
@@ -414,19 +391,19 @@ var IncomeAdd = function (_React$Component5) {
   return IncomeAdd;
 }(React.Component);
 
-var IssueList = function (_React$Component6) {
-  _inherits(IssueList, _React$Component6);
+var IssueList = function (_React$Component5) {
+  _inherits(IssueList, _React$Component5);
 
   function IssueList() {
     _classCallCheck(this, IssueList);
 
-    var _this6 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
+    var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
-    _this6.state = { issues: [], asset: -1 };
+    _this5.state = { issues: [], asset: -1 };
 
-    _this6.enterInfo = _this6.enterInfo.bind(_this6);
-    _this6.createInflow = _this6.createInflow.bind(_this6);
-    return _this6;
+    _this5.enterInfo = _this5.enterInfo.bind(_this5);
+    _this5.createInflow = _this5.createInflow.bind(_this5);
+    return _this5;
   }
 
   _createClass(IssueList, [{
@@ -437,10 +414,10 @@ var IssueList = function (_React$Component6) {
   }, {
     key: "loadData",
     value: function loadData() {
-      var _this7 = this;
+      var _this6 = this;
 
       setTimeout(function () {
-        _this7.setState({
+        _this6.setState({
           issues: issues,
           asset: asset
         });

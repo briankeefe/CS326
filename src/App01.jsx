@@ -34,11 +34,6 @@ const issues = [
 const asset = 0;
 var contentNode = document.getElementById("contents");
 
-class Filter extends React.Component {
-  render() {
-    return <div>Your Monthly Money Planner</div>;
-  }
-}
 const IssueRow = (props) => (
   <tr>
     <td>{props.issue.category}</td>

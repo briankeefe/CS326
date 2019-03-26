@@ -14,7 +14,7 @@ class Nav extends React.Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-            <a name="" id="" className="btn btn-success" href="./view01.html" role="button">Budget</a>
+            <a name="" id="" className="btn btn-primary" href="./view01.html" role="button">Budget</a>
           </div>
         </nav>
       </div>
@@ -82,7 +82,7 @@ function Stats(props) {
           </tr>
         </tbody>
       </table>
-      <IncomeAdd contents={props.contents} income={props.totalIncome} createInflow={props.createInflow}/>
+      <IncomeAdd contents={props.contents} createInflow={props.createInflow}/>
     </div>
   )
 }
@@ -96,9 +96,11 @@ class IncomeAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let form = document.forms.IncomeAdd;
-    this.props.createInflow({ income: form.income.value });
+    this.props.createInflow({ income: form.income.value, expense: form.expense.value, save: form.save.value });
     // Clear the form for the next input.
     form.income.value = '';
+    form.expense.value = '';
+    form.save.value = '';
   }
 
   render() {
@@ -106,6 +108,8 @@ class IncomeAdd extends React.Component {
       <div style={{ width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "lightBlue", border: "3px solid white" }}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="income" placeholder="Income" />
+          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="expense" placeholder="Expenses" />
+          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="save" placeholder="Saved" />
           <button style={{ width: "auto", margin: "3% auto", backgroundColor: "navy" }} className="form-control btn-primary">Add</button>
         </form>
       </div>
@@ -200,18 +204,22 @@ class MyComponent extends React.Component {
 
   createInflow(newFlow) {
     const newIssues = this.state.contents;
-    if (isNaN(parseInt(newFlow.income))) {
-      return;
+    if (!isNaN(parseInt(newFlow.income))) {
+      newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income);
+    }if(!isNaN(parseInt(newFlow.expense))) {
+      newIssues.totalSpent = this.state.contents.totalSpent + parseInt(newFlow.expense);
+    }if(!isNaN(parseInt(newFlow.save))) {
+      newIssues.totalSave = this.state.contents.totalSave + parseInt(newFlow.save);
     }
-    newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income)
+    
     this.setState({ contents: newIssues });
   }
 
   render() {
     return (
-      <div style={{ float: "center", marginLeft: "12%", marginRight: "12%" }}>
+      <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%"}}>
         <Nav />
-        <div className="container" style={{marginTop: "2%", }}>
+        <div className="container" style={{marginTop: "2%"}}>
           <div className="row">
             <div className="col-md-6">
               <div className="card" style={{border: "2px groove black", borderRadius: "4px"}}>
