@@ -285,6 +285,16 @@ var Navbar = function (_React$Component2) {
           { className: "nav navbar-nav" },
           React.createElement(
             "a",
+            { className: "btn btn-success", href: "/index.html" },
+            "Home",
+            React.createElement(
+              "span",
+              { className: "sr-only" },
+              "(current)"
+            )
+          ),
+          React.createElement(
+            "a",
             { className: "btn btn-success", href: "/view02.html" },
             "Reports",
             React.createElement(

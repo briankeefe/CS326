@@ -153,7 +153,8 @@ class Navbar extends React.Component {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-              <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="/index.html">Home<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
           </div>
       </nav>
     )

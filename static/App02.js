@@ -41,6 +41,11 @@ var Nav = function (_React$Component) {
             { className: "nav navbar-nav" },
             React.createElement(
               "a",
+              { name: "", id: "", className: "btn btn-primary", href: "./index.html", role: "button" },
+              "Home"
+            ),
+            React.createElement(
+              "a",
               { name: "", id: "", className: "btn btn-primary", href: "./view01.html", role: "button" },
               "Budget"
             )
