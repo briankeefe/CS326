@@ -14,7 +14,7 @@ class Nav extends React.Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-            <a name="" id="" className="btn btn-primary" href="./index.html" role="button">Home</a>
+            <a name="" id="" className="btn btn-primary" href="./index.html" role="button" style={{marginRight: "1vh"}}>Home</a>
             <a name="" id="" className="btn btn-primary" href="./view01.html" role="button">Budget</a>
 
           </div>
