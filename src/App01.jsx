@@ -82,16 +82,16 @@ function BalanceTable(props) {
   }
   return (
     <table style={{ width: "100px", margin: "2%", marginLeft: "2%", float: "left"}} className="table table-light striped-table">
-      <thead className="text-white" style={{ backgroundColor: "black"}}> 
+      <thead className="text-white" style={{ backgroundColor: "#4d4d4d"}}> 
         <tr>
         <th>Budget</th>
           <th>Income</th>
-          <th>Outflow</th>
+          <th>Outflow</th> 
           <th>Balance</th>
           <th>Savings</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table-dark">
         <tr>
           <td>{budget}</td>
           <td>{props.asset}</td>
@@ -156,7 +156,8 @@ class Navbar extends React.Component {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-              <a className="nav-item nav-link active bg-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+          <a className="nav-item nav-link active bg-success" href="/index.html">Home<span className="sr-only">(current)</span></a>
+          <a className="nav-item nav-link active bg-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
           </div>
       </nav>
     )

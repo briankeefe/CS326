@@ -61,78 +61,14 @@ var Filter = function (_React$Component) {
 }(React.Component);
 
 var IssueRow = function IssueRow(props) {
-  return React.createElement(
-    "tr",
-    null,
-    React.createElement(
-      "td",
-      null,
-      props.issue.category
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.budget
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.flow
-    ),
-    React.createElement(
-      "td",
-      null,
-      props.issue.budget - props.issue.flow
-    )
-  );
+  return React.createElement("tr", null);
 };
 function BudgetTable(props) {
   var issueRows = props.issues.map(function (issue) {
     return React.createElement(IssueRow, { key: issue.id, issue: issue });
   });
-  return React.createElement(
-    "div",
-    { "class": "form-group", style: { margin: "2%" } },
-    React.createElement(
-      "table",
-      { className: "table table-striped table-dark", style: { float: "left" } },
-      React.createElement(
-        "thead",
-        { className: "thead-dark" },
-        React.createElement(
-          "tr",
-          null,
-          React.createElement(
-            "th",
-            null,
-            "Category"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Budget"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Flow"
-          ),
-          React.createElement(
-            "th",
-            null,
-            "Balance"
-          )
-        )
-      ),
-      React.createElement(
-        "tbody",
-        null,
-        issueRows
-      )
-    )
-  );
+  return React.createElement("div", { className: "form-group", style: { margin: "2%" } });
 }
-
 function BalanceTable(props) {
   var spent = 0;
   var budget = 0;
@@ -147,7 +83,7 @@ function BalanceTable(props) {
   }
   return React.createElement(
     "table",
-    { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "left" }, className: "table table-light striped-table" },
+    { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
     React.createElement(
       "thead",
       { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
@@ -157,27 +93,12 @@ function BalanceTable(props) {
         React.createElement(
           "th",
           null,
-          "Budget"
-        ),
-        React.createElement(
-          "th",
-          null,
           "Income"
         ),
         React.createElement(
           "th",
           null,
-          "Outflow"
-        ),
-        React.createElement(
-          "th",
-          null,
           "Balance"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Savings"
         )
       )
     ),
@@ -190,27 +111,12 @@ function BalanceTable(props) {
         React.createElement(
           "td",
           null,
-          budget
-        ),
-        React.createElement(
-          "td",
-          null,
           props.asset
         ),
         React.createElement(
           "td",
           null,
-          spent
-        ),
-        React.createElement(
-          "td",
-          null,
           props.asset - budget
-        ),
-        React.createElement(
-          "td",
-          null,
-          savings
         )
       )
     )
@@ -246,38 +152,7 @@ var BudgetAdd = function (_React$Component2) {
   }, {
     key: "render",
     value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "form",
-          { name: "BudgetAdd", onSubmit: this.handleSubmit },
-          React.createElement(
-            "div",
-            { className: "form-row" },
-            React.createElement(
-              "div",
-              { className: "col-md-4 mb-3" },
-              React.createElement("input", { className: "form-control", type: "text", name: "category", placeholder: "Category" })
-            ),
-            React.createElement(
-              "div",
-              { className: "col-md-4 mb-3" },
-              React.createElement("input", { className: "form-control", type: "number", name: "budget", placeholder: "Budget (*Optional*)" })
-            ),
-            React.createElement(
-              "div",
-              { className: "col-md-4 mb-3", style: { float: "left" } },
-              React.createElement("input", { className: "form-control", style: { width: "80%", float: "left" }, type: "number", name: "flow", placeholder: "Out-flow" }),
-              React.createElement(
-                "button",
-                { className: "form-control btn-outline-success", style: { float: "left", width: "15%", marginLeft: "3%" } },
-                "Add"
-              )
-            )
-          )
-        )
-      );
+      return React.createElement("div", null);
     }
   }]);
 
@@ -304,8 +179,8 @@ var Navbar = function (_React$Component3) {
           { className: "nav navbar-nav" },
           React.createElement(
             "a",
-            { className: "nav-item nav-link active bg-success", href: "/index.html" },
-            "Home",
+            { className: "nav-item nav-link active bg-success", href: "/view01.html" },
+            "Budget",
             React.createElement(
               "span",
               { className: "sr-only" },
@@ -330,58 +205,19 @@ var Navbar = function (_React$Component3) {
   return Navbar;
 }(React.Component);
 
-var Jumbo = function (_React$Component4) {
-  _inherits(Jumbo, _React$Component4);
+//incomeAdd
 
-  function Jumbo() {
-    _classCallCheck(this, Jumbo);
 
-    return _possibleConstructorReturn(this, (Jumbo.__proto__ || Object.getPrototypeOf(Jumbo)).apply(this, arguments));
-  }
-
-  _createClass(Jumbo, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        { className: "jumbotron" },
-        React.createElement(
-          "h1",
-          { className: "display-3" },
-          "My Budget"
-        ),
-        React.createElement(
-          "p",
-          { className: "lead" },
-          "Your personalized financial reports"
-        ),
-        React.createElement("hr", { className: "my-2" }),
-        React.createElement(
-          "p",
-          { className: "lead" },
-          React.createElement(
-            "a",
-            { className: "btn btn-success btn-lg", href: "/view02.html", role: "button" },
-            "Jump to My Reports"
-          )
-        )
-      );
-    }
-  }]);
-
-  return Jumbo;
-}(React.Component);
-
-var IncomeAdd = function (_React$Component5) {
-  _inherits(IncomeAdd, _React$Component5);
+var IncomeAdd = function (_React$Component4) {
+  _inherits(IncomeAdd, _React$Component4);
 
   function IncomeAdd() {
     _classCallCheck(this, IncomeAdd);
 
-    var _this5 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+    var _this4 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
-    _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
-    return _this5;
+    _this4.handleSubmit = _this4.handleSubmit.bind(_this4);
+    return _this4;
   }
 
   _createClass(IncomeAdd, [{
@@ -389,9 +225,64 @@ var IncomeAdd = function (_React$Component5) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.IncomeAdd;
+
       this.props.createInflow({ income: form.income.value });
+      //this.props.createOutflow({income: form.spend.value});
+
       // Clear the form for the next input.
       form.income.value = '';
+      // form.spend.value = '';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return (
+        // let in this button is income
+
+        React.createElement(
+          "div",
+          { style: { position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%" } },
+          React.createElement(
+            "form",
+            { name: "IncomeAdd", onSubmit: this.handleSubmit },
+            React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
+            React.createElement(
+              "button",
+              { className: "form-control" },
+              "Quick Add"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return IncomeAdd;
+}(React.Component);
+//incomesubtract
+
+
+var IncomeSubtract = function (_React$Component5) {
+  _inherits(IncomeSubtract, _React$Component5);
+
+  function IncomeSubtract() {
+    _classCallCheck(this, IncomeSubtract);
+
+    var _this5 = _possibleConstructorReturn(this, (IncomeSubtract.__proto__ || Object.getPrototypeOf(IncomeSubtract)).call(this));
+
+    _this5.handleSubmit = _this5.handleSubmit.bind(_this5);
+    return _this5;
+  }
+
+  _createClass(IncomeSubtract, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var form = document.forms.IncomeSubtract;
+
+      this.props.createOutflow({ spend: form.spend.value });
+      // Clear the form for the next input.
+      form.spend.value = '';
     }
   }, {
     key: "render",
@@ -401,19 +292,19 @@ var IncomeAdd = function (_React$Component5) {
         { style: { position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%" } },
         React.createElement(
           "form",
-          { name: "IncomeAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
+          { name: "IncomeSubtract", onSubmit: this.handleSubmit },
+          React.createElement("input", { className: "form-control", type: "text", name: "spend", placeholder: "Spend" }),
           React.createElement(
             "button",
             { className: "form-control" },
-            "Add"
+            "Quick Spend"
           )
         )
       );
     }
   }]);
 
-  return IncomeAdd;
+  return IncomeSubtract;
 }(React.Component);
 
 var IssueList = function (_React$Component6) {
@@ -428,6 +319,7 @@ var IssueList = function (_React$Component6) {
 
     _this6.enterInfo = _this6.enterInfo.bind(_this6);
     _this6.createInflow = _this6.createInflow.bind(_this6);
+    _this6.createOutflow = _this6.createOutflow.bind(_this6);
     return _this6;
   }
 
@@ -479,10 +371,26 @@ var IssueList = function (_React$Component6) {
     key: "createInflow",
     value: function createInflow(newFlow) {
       var assets = this.state.asset;
+
       if (isNaN(parseInt(newFlow.income))) {
         return;
       }
+
       var total = assets + parseInt(newFlow.income);
+
+      this.setState({ asset: total });
+      //this.setState({ asset: total2})
+    }
+  }, {
+    key: "createOutflow",
+    value: function createOutflow(newFlow) {
+      var assets = this.state.asset;
+
+      if (isNaN(parseInt(newFlow.spend))) {
+        return;
+      }
+
+      var total = assets - parseInt(newFlow.spend);
       this.setState({ asset: total });
     }
   }, {
@@ -499,13 +407,17 @@ var IssueList = function (_React$Component6) {
         ),
         React.createElement(
           "div",
-          { style: { width: "400px", float: "left", marginTop: "2%" } },
-          React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
-          React.createElement(IncomeAdd, { createInflow: this.createInflow })
+          { style: { width: "400px", float: "center", marginTop: "2%" } },
+          React.createElement(
+            "div",
+            { style: { marginLeft: "27%" } },
+            React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
+          ),
+          React.createElement(IncomeAdd, { createInflow: this.createInflow }),
+          React.createElement(IncomeSubtract, { createOutflow: this.createOutflow })
         ),
         React.createElement("div", { style: { clear: "both" } }),
-        React.createElement(BudgetAdd, { enterInfo: this.enterInfo }),
-        React.createElement(Jumbo, null)
+        React.createElement(BudgetAdd, { enterInfo: this.enterInfo })
       );
     }
   }]);

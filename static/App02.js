@@ -303,6 +303,7 @@ var MyComponent = function (_React$Component5) {
       return React.createElement(
         "div",
         null,
+        React.createElement(NavBar, null),
         React.createElement(GraphGrid, null),
         React.createElement(Stats, null),
         React.createElement(Data, null),
@@ -314,6 +315,56 @@ var MyComponent = function (_React$Component5) {
   }]);
 
   return MyComponent;
+}(React.Component);
+
+//
+// /* IM trying to mske navbar happen
+
+
+var Navbar = function (_React$Component6) {
+  _inherits(Navbar, _React$Component6);
+
+  function Navbar(props) {
+    _classCallCheck(this, Navbar);
+
+    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
+  }
+
+  _createClass(Navbar, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "nav",
+        { className: "sticky-top navbar navbar-expand navbar-dark bg-dark" },
+        React.createElement(
+          "div",
+          { className: "nav navbar-nav" },
+          React.createElement(
+            "a",
+            { className: "nav-item nav-link active bg-success", href: "/index.html" },
+            "Home",
+            React.createElement(
+              "span",
+              { className: "sr-only" },
+              "(current)"
+            )
+          ),
+          React.createElement(
+            "a",
+            { className: "nav-item nav-link active bg-success", href: "/view01.html" },
+            "Budget",
+            React.createElement(
+              "span",
+              { className: "sr-only" },
+              "(current)"
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Navbar;
 }(React.Component);
 
 // This renders the JSX component inside the content node:
