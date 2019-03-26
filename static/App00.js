@@ -410,7 +410,7 @@ var IssueList = function (_React$Component6) {
           ),
           React.createElement(
             "div",
-            { className: "card", style: { marginTop: "10%" } },
+            { className: "card", style: { marginTop: "10%", padding: "1vh" } },
             React.createElement(
               "div",
               { className: "card-body" },

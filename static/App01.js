@@ -69,7 +69,7 @@ function BudgetTable(props) {
   });
   return React.createElement(
     "div",
-    { "class": "form-group", style: { margin: "2%", border: "3px solid white" } },
+    { className: "form-group", style: { margin: "2%", border: "3px solid white" } },
     React.createElement(
       "table",
       { className: "table table-striped table-dark", style: { float: "left" } },
@@ -318,7 +318,7 @@ var Jumbo = function (_React$Component3) {
         { className: "jumbotron", style: { margin: "auto", padding: "5%" } },
         React.createElement(
           "div",
-          { "class": "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" } },
+          { className: "container", style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" } },
           React.createElement(
             "h1",
             { className: "display-3" },
@@ -373,7 +373,7 @@ var IncomeAdd = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "div",
-        { style: { width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white" } },
+        { style: { width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white", borderRadius: "1vh" } },
         React.createElement(
           "form",
           { name: "IncomeAdd", onSubmit: this.handleSubmit },
@@ -475,7 +475,7 @@ var IssueList = function (_React$Component5) {
             { className: "row" },
             React.createElement(
               "div",
-              { className: "col", style: { backgroundColor: "lightGreen", border: "3px solid white" } },
+              { className: "col", style: { backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" } },
               React.createElement(BudgetTable, { issues: this.state.issues })
             ),
             React.createElement(

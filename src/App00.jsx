@@ -286,7 +286,7 @@ class BudgetAdd extends React.Component {
             <div style={{marginLeft:"27%"}}>
               <BalanceTable asset={this.state.asset} issues={this.state.issues} />
             </div>
-            <div className="card" style={{marginTop: "10%"}}>
+            <div className="card" style={{marginTop: "10%", padding: "1vh"}}>
               <div className="card-body">
                 <IncomeAdd createInflow={this.createInflow} />
                 <IncomeSubtract createOutflow={this.createOutflow} />

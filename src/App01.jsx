@@ -47,7 +47,7 @@ function BudgetTable(props) {
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <div class="form-group" style={{margin:"2%", border: "3px solid white"}}>
+    <div className="form-group" style={{margin:"2%", border: "3px solid white"}}>
       <table className="table table-striped table-dark" style={{float: "left"}}>
         <thead className="thead-dark">
           <tr>
@@ -164,7 +164,7 @@ class Jumbo extends React.Component {
   render() {
     return (
       <div className="jumbotron" style={{margin: "auto", padding: "5%"}}>
-        <div class="container" style={{border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white"}}>
+        <div className="container" style={{border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white"}}>
           <h1 className="display-3">My Budget</h1>
           <p className="lead">Your Budgeting Calculator</p>
           <hr className="my-2" style={{ border: "1px white dotted" }} />
@@ -195,7 +195,7 @@ class IncomeAdd extends React.Component {
 
   render() {
     return (
-      <div style={{width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white"}}>
+      <div style={{width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white", borderRadius: "1vh"}}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input style={{width: "90%", margin: "auto"}} className="form-control" type="text" name="income" placeholder="Income" />
           <button style={{width: "auto", margin: "3% auto", backgroundColor: "darkGreen"}} className="form-control btn-success">Add</button>
@@ -269,7 +269,7 @@ class IssueList extends React.Component {
         <Navbar/>
         <div className="container" style={{margin: "2% auto"}}>
           <div className="row">
-            <div className="col" style={{backgroundColor: "lightGreen", border: "3px solid white" }}>
+            <div className="col" style={{backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" }}>
               <BudgetTable issues={this.state.issues} />
             </div>
             <div className="col" style={{margin: "auto"}}>
