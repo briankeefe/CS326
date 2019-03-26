@@ -280,9 +280,9 @@ class BudgetAdd extends React.Component {
   
     render() {
       return (
-        <div className="bg-success">
+        <div className="bg-success" style={{margin: "auto"}}>
           <Navbar/>
-          <div style={{width: "600px", float: "left"}}>
+          <div style={{width: "600px", float: "left", margin: "auto"}}>
             <BudgetTable issues={this.state.issues} />
           </div>
           <div style={{width: "400px", float: "center", marginTop: "2%"}}>
