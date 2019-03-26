@@ -128,8 +128,8 @@ class BudgetAdd extends React.Component {
       return (
         <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
             <div className="nav navbar-nav">
-            <a className="nav-item nav-link active bg-success" href="/view01.html">Budget<span className="sr-only">(current)</span></a>
-            <a className="nav-item nav-link active bg-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+            <a className="btn btn-success" href="/view01.html">Budget<span className="sr-only">(current)</span></a>
+            <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
             </div>
         </nav>
       )

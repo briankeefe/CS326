@@ -179,7 +179,7 @@ var Navbar = function (_React$Component3) {
           { className: "nav navbar-nav" },
           React.createElement(
             "a",
-            { className: "nav-item nav-link active bg-success", href: "/view01.html" },
+            { className: "btn btn-success", href: "/view01.html" },
             "Budget",
             React.createElement(
               "span",
@@ -189,7 +189,7 @@ var Navbar = function (_React$Component3) {
           ),
           React.createElement(
             "a",
-            { className: "nav-item nav-link active bg-success", href: "/view02.html" },
+            { className: "btn btn-success", href: "/view02.html" },
             "Reports",
             React.createElement(
               "span",
