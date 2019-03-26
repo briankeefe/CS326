@@ -583,8 +583,8 @@ var MyComponent = function (_React$Component7) {
 // /* IM trying to mske navbar happen
 
 
-var Navbar = function (_React$Component6) {
-  _inherits(Navbar, _React$Component6);
+var Navbar = function (_React$Component8) {
+  _inherits(Navbar, _React$Component8);
 
   function Navbar(props) {
     _classCallCheck(this, Navbar);

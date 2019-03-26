@@ -165,7 +165,7 @@ class BudgetAdd extends React.Component {
           <div style={{position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%"}}>
             <form name="IncomeAdd" onSubmit={this.handleSubmit}>
               <input className="form-control" type="text" name="income" placeholder="Income" />
-              <button className="form-control">Quick Add</button>
+              <button className="form-control btn-primary">Quick Add</button>
             </form>
           </div>
 
@@ -195,7 +195,7 @@ class BudgetAdd extends React.Component {
           <div style={{position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%"}}>
             <form name="IncomeSubtract" onSubmit={this.handleSubmit}>
               <input className="form-control" type="text" name="spend" placeholder="Spend" />
-              <button className="form-control">Quick Spend</button>
+              <button className="form-control btn-primary">Quick Spend</button>
             </form>
           </div>
 
@@ -280,17 +280,19 @@ class BudgetAdd extends React.Component {
   
     render() {
       return (
-        <div className="bg-success" style={{margin: "auto"}}>
+        <div className="bg-success" style={{paddingBottom: "2%", height: "100vh"}}>
           <Navbar/>
-          <div style={{width: "600px", float: "left", margin: "auto"}}>
-            <BudgetTable issues={this.state.issues} />
-          </div>
-          <div style={{width: "400px", float: "center", marginTop: "2%"}}>
+          <div style={{width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%"}}>
             <div style={{marginLeft:"27%"}}>
               <BalanceTable asset={this.state.asset} issues={this.state.issues} />
             </div>
-            <IncomeAdd createInflow={this.createInflow} />
-            <IncomeSubtract createOutflow={this.createOutflow} />
+            <div className="card" style={{marginTop: "10%"}}>
+              <div className="card-body">
+                <IncomeAdd createInflow={this.createInflow} />
+                <IncomeSubtract createOutflow={this.createOutflow} />
+              </div>
+            </div>
+
           </div>
           <div style={{clear: "both"}}/>
           

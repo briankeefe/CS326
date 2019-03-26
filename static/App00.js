@@ -248,7 +248,7 @@ var IncomeAdd = function (_React$Component4) {
             React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
             React.createElement(
               "button",
-              { className: "form-control" },
+              { className: "form-control btn-primary" },
               "Quick Add"
             )
           )
@@ -296,7 +296,7 @@ var IncomeSubtract = function (_React$Component5) {
           React.createElement("input", { className: "form-control", type: "text", name: "spend", placeholder: "Spend" }),
           React.createElement(
             "button",
-            { className: "form-control" },
+            { className: "form-control btn-primary" },
             "Quick Spend"
           )
         )
@@ -398,23 +398,26 @@ var IssueList = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success" },
+        { className: "bg-success", style: { paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
-          { style: { width: "600px", float: "left" } },
-          React.createElement(BudgetTable, { issues: this.state.issues })
-        ),
-        React.createElement(
-          "div",
-          { style: { width: "400px", float: "center", marginTop: "2%" } },
+          { style: { width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
           React.createElement(
             "div",
             { style: { marginLeft: "27%" } },
             React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
           ),
-          React.createElement(IncomeAdd, { createInflow: this.createInflow }),
-          React.createElement(IncomeSubtract, { createOutflow: this.createOutflow })
+          React.createElement(
+            "div",
+            { className: "card", style: { marginTop: "10%" } },
+            React.createElement(
+              "div",
+              { className: "card-body" },
+              React.createElement(IncomeAdd, { createInflow: this.createInflow }),
+              React.createElement(IncomeSubtract, { createOutflow: this.createOutflow })
+            )
+          )
         ),
         React.createElement("div", { style: { clear: "both" } }),
         React.createElement(BudgetAdd, { enterInfo: this.enterInfo })
