@@ -160,7 +160,7 @@ function BalanceTable(props) {
     ),
     React.createElement(
       "tbody",
-      null,
+      { className: "table-dark" },
       React.createElement(
         "tr",
         null,

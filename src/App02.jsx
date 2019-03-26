@@ -260,5 +260,26 @@ class MyComponent extends React.Component {
   }
 }
 
+//
+// /* IM trying to mske navbar happen
+class Navbar extends React.Component {
+  constructor(props){
+    super()
+  }
+  render() {
+    return (
+      <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
+          <div className="nav navbar-nav">
+          <a className="nav-item nav-link active bg-success" href="/index.html">Home<span className="sr-only">(current)</span></a>
+          <a className="nav-item nav-link active bg-success" href="/view01.html">Budget<span className="sr-only">(current)</span></a>
+          </div>
+      </nav>
+    )
+  }
+}
+
+
+
+
 // This renders the JSX component inside the content node:
 ReactDOM.render(<MyComponent />, contentNode);

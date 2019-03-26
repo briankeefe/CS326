@@ -81,12 +81,12 @@ function BalanceTable(props) {
         <tr>
         <th>Budget</th>
           <th>Income</th>
-          <th>Outflow</th>
+          <th>Outflow</th> 
           <th>Balance</th>
           <th>Savings</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table-dark">
         <tr>
           <td>{budget}</td>
           <td>{props.asset}</td>
