@@ -18,30 +18,29 @@ app.get('/api/issues', (req, res) => {
     }).catch(error => {
       console.log(error);
       res.status(500).json({ message: `Internal Server Error: ${error}` });
-    });
-  });
-  
-  app.post('/api/issues', (req, res) => {
+        });
+});
+app.post('/api/issues', (req, res) => {
     const newIssue = req.body;
     newIssue.created = new Date();
     if (!newIssue.status)
-      newIssue.status = 'New';
-  
-    const err = validateIssue(newIssue);
-    if (err) {
-      res.status(422).json({ message: `Invalid request: ${err}` });
-      return;
-    }
-  
-    db.collection('issues').insertOne(newIssue).then(result =>
-      db.collection('issues').find({ _id: result.insertedId }).limit(1).next()
-    ).then(newIssue => {
-      res.json(newIssue);
-    }).catch(error => {
-      console.log(error);
-      res.status(500).json({ message: `Internal Server Error: ${error}` });
+        newIssue.status = 'New';
+    
+        const err = validateIssue(newIssue);
+        if (err) {
+            res.status(422).json({ message: `Invalid request: ${err}` });
+            return;
+        }
+    
+        db.collection('issues').insertOne(newIssue).then(result =>
+        db.collection('issues').find({ _id: result.insertedId }).limit(1).next()
+        ).then(newIssue => {
+        res.json(newIssue);
+        }).catch(error => {
+        console.log(error);
+        res.status(500).json({ message: `Internal Server Error: ${error}` });
     });
-  });
+});
   
   
 
