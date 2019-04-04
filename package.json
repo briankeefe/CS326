@@ -7,6 +7,7 @@
     "compile": "babel src --presets react,es2015 --out-dir static",
     "watch": "babel src --presets react,es2015 --out-dir static --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "",
   "license": "ISC",
@@ -23,4 +24,5 @@
     "babel-preset-react": "^6.24.1",
     "eslint": "^5.9.0"
   }
+  
 }
