@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 // This is a place holder for the initial application state.
 const contents = {
   totalIncome:  0,
@@ -185,7 +188,7 @@ class Results extends React.Component {
 }
 
 
-class MyComponent extends React.Component {
+export default class MyComponent extends React.Component {
   constructor() {
     super();
     this.state = {contents: []};

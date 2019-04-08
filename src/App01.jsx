@@ -112,7 +112,7 @@ class BudgetAdd extends React.Component {
     this.props.enterInfo({
       category: form.category.value,
       budget: form.budget.value,
-      flow: parseInt(form.flow.value),
+      flow: parseInt(form.flow.value)
     });
     // Clear the form for the next input.
     form.budget.value = '';
@@ -206,7 +206,7 @@ class IncomeAdd extends React.Component {
   }
 }
 
-class IssueList extends React.Component {
+export default class IssueList extends React.Component {
   constructor() {
     super();
     this.state = { issues: [], asset: -1 };
@@ -220,12 +220,37 @@ class IssueList extends React.Component {
   }
 
   loadData() {
-    setTimeout(() => {
-      this.setState({
-        issues: issues,
-        asset: asset
-      });
-    }, 500);
+    // Note: React Router automatically adds a "location" property to a react
+    //       object's "props". The object that the "location" property refers
+    //       to also has a "search" property which is the query string of the
+    //       URL, including the '?' character  -  which is why we do not need
+    //       to add it to the string in the `fetch()` call.
+    fetch(`/api/SaveMe${this.props.location.search}`).then(response => {
+      if (response.ok) {
+        response.json().then(data => {
+          console.log("Total count of records:", data._metadata.total_count);
+          this.setState({ issues: data.assets });
+        });
+      } else {
+        response.json().then(error => {
+          alert("Failed to fetch issues:" + error.message)
+        });
+      }
+    }).catch(err => {
+      alert("Error in fetching data from server:", err);
+    });
+  }
+
+  update(newIssue) {
+    fetch('/api/SaveMe', {
+      method: 'POST',
+      body: JSON.stringify(newIssue),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      return res;
+    }).catch(err => err);
   }
 
   enterInfo(newIssue) {
@@ -253,6 +278,7 @@ class IssueList extends React.Component {
       newIssues.push(newIssue);
     }
     this.setState({ issues: newIssues });
+    this.update(newIssue);
   }
 
   createInflow(newFlow) {
@@ -290,5 +316,8 @@ class IssueList extends React.Component {
   }
 }
 
+IssueList.propTypes = {
+  location: React.PropTypes.object.isRequired,
+  router: React.PropTypes.object,
+};
 // This renders the JSX component inside the content node:
-ReactDOM.render(<IssueList />, contentNode);
