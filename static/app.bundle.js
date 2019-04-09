@@ -337,7 +337,7 @@ var Jumbo = function (_React$Component3) {
             { className: 'lead', style: { paddingTop: "6px" } },
             React.createElement(
               'a',
-              { className: 'btn btn-success btn-lg', href: '/view02.html', role: 'button' },
+              { className: 'btn btn-success btn-lg', href: '#/reports', role: 'button' },
               'Jump to My Reports'
             )
           )
@@ -1587,10 +1587,10 @@ var Reports = function (_React$Component7) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { backgroundImage: "url('https://cdn.pixabay.com/photo/2016/04/15/04/02/water-1330252__340.jpg')" } },
+        { style: { backgroundImage: "url('dark-honeycomb.png')" } },
         _react2.default.createElement(
           'div',
-          { style: { float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../1200px-Sunset_2007-1.jpg')" } },
+          { style: { float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')" } },
           _react2.default.createElement(Nav, null),
           _react2.default.createElement(
             'div',
