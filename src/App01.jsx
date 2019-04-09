@@ -140,7 +140,7 @@ class Jumbo extends React.Component {
           <p className="lead">Your Budgeting Calculator</p>
           <hr className="my-2" style={{ border: "1px white dotted" }} />
           <p className="lead" style={{ paddingTop: "6px" }}>
-            <a className="btn btn-success btn-lg" href="/view02.html" role="button">Jump to My Reports</a>
+            <a className="btn btn-success btn-lg" href="#/reports" role="button">Jump to My Reports</a>
           </p>
         </div>
       </div>
