@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, hashHistory, withRouter, IndexRoute, Link } from 'react-router';
 import IssueList from './App01.jsx'
+import HomePage from './App00.jsx'
+import Reports from './App02.jsx'
 
 var contentNode = document.getElementById("contents");
 
@@ -43,11 +45,9 @@ App.propTypes = {
 const RoutedApp = () => (
   <Router history={hashHistory} >
     {/* <Redirect from="/" to="/issues" /> - replaced this with the Dashboard component */}
-    <Route path="/" component={withRouter(IssueList)} >
-      <Route path="/issues" />
-      <Route path="/issues/:id" />
-      <Route path="*" component={NoMatch} />
-    </Route>
+    <Route exact path="/" component={HomePage} />
+    <Route path="/budget" component={IssueList}/>
+    <Route path="/reports" component={Reports}/>
   </Router>);
 
 // This renders the JSX router inside the content node:

@@ -1,35 +1,5 @@
-const issues = [
-  {
-    category: "Savings",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Food",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Gas",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Fun",
-    budget: 0,
-    flow: 0,
-  },
-  {
-    category: "Rent",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Emergency",
-    budget: 0,
-    flow: 0
-  }
-];
+import { Router, Route, hashHistory, withRouter, IndexRoute, Link } from 'react-router';
+import HomePage from './App00.jsx'
 
 const asset = 0;
 var contentNode = document.getElementById("contents");
@@ -47,8 +17,8 @@ function BudgetTable(props) {
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
-    <div className="form-group" style={{margin:"2%", border: "3px solid white"}}>
-      <table className="table table-striped table-dark" style={{float: "left"}}>
+    <div className="form-group" style={{ margin: "2%", border: "3px solid white" }}>
+      <table className="table table-striped table-dark" style={{ float: "left" }}>
         <thead className="thead-dark">
           <tr>
             <th>Category</th>
@@ -58,7 +28,7 @@ function BudgetTable(props) {
           </tr>
         </thead>
         <tbody>{issueRows}</tbody>
-      </table>  
+      </table>
     </div>
   );
 }
@@ -68,20 +38,20 @@ function BalanceTable(props) {
   let budget = 0;
   let savings = 0;
   let i;
-  for(i in props.issues){
+  for (i in props.issues) {
     spent += parseInt(props.issues[i].flow);
     budget += parseInt(props.issues[i].budget);
-    if(props.issues[i].category === "Savings"){
+    if (props.issues[i].category === "Savings") {
       savings += parseInt(props.issues[i].budget);
     }
   }
   return (
-    <table style={{ width: "100px", margin: "auto"}} className="table table-light striped-table">
-      <thead className="text-white" style={{backgroundColor: "darkGreen"}}> 
+    <table style={{ width: "100px", margin: "auto" }} className="table table-light striped-table">
+      <thead className="text-white" style={{ backgroundColor: "darkGreen" }}>
         <tr>
-        <th>Budget</th>
+          <th>Budget</th>
           <th>Income</th>
-          <th>Outflow</th> 
+          <th>Outflow</th>
           <th>Balance</th>
           <th>Savings</th>
         </tr>
@@ -91,7 +61,7 @@ function BalanceTable(props) {
           <td>{budget}</td>
           <td>{props.asset}</td>
           <td>{spent}</td>
-          <td>{props.asset-budget}</td>
+          <td>{props.asset - budget}</td>
           <td>{savings}</td>
         </tr>
       </tbody>
@@ -104,7 +74,7 @@ class BudgetAdd extends React.Component {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -121,7 +91,7 @@ class BudgetAdd extends React.Component {
 
   render() {
     return (
-      <div style={{width: "100%", marginTop: "3%"}}>
+      <div style={{ width: "100%", marginTop: "3%" }}>
         <form name="BudgetAdd" onSubmit={this.handleSubmit}>
           <div className="form-row">
             <div className="col-md-4 mb-3">
@@ -130,15 +100,15 @@ class BudgetAdd extends React.Component {
             <div className="col-md-4 mb-3">
               <input className="form-control" type="number" name="budget" placeholder="Budget (*Optional*)" />
             </div>
-            <div className="col-md-3 mb-3" style={{float: "left"}}>
-              <input className="form-control" style={{width: "100%", float: "left"}} type="number" name="flow" placeholder="Out-flow" />
+            <div className="col-md-3 mb-3" style={{ float: "left" }}>
+              <input className="form-control" style={{ width: "100%", float: "left" }} type="number" name="flow" placeholder="Out-flow" />
             </div>
             <div className="col ">
               <button className="form-control text-white btn-success" style={{ backgroundColor: "darkGreen", border: "1px solid white", float: "right", width: "100%", margin: "auto" }}>Add</button>
             </div>
-            
+
           </div>
-          
+
         </form>
       </div>
     );
@@ -146,16 +116,16 @@ class BudgetAdd extends React.Component {
 }
 
 class Navbar extends React.Component {
-  constructor(props){
+  constructor(props) {
     super()
   }
   render() {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
-          <div className="nav navbar-nav">
-          <a className="btn btn-success" href="/index.html" style={{marginRight: "1vh"}}>Home<span className="sr-only">(current)</span></a>
-          <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
-          </div>
+        <div className="nav navbar-nav">
+          <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" }}>Home<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/reports">Reports<span className="sr-only">(current)</span></a>
+        </div>
       </nav>
     )
   }
@@ -164,8 +134,8 @@ class Navbar extends React.Component {
 class Jumbo extends React.Component {
   render() {
     return (
-      <div className="jumbotron" style={{margin: "auto", padding: "5%"}}>
-        <div className="container" style={{border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white"}}>
+      <div className="jumbotron" style={{ margin: "auto", padding: "5%" }}>
+        <div className="container" style={{ border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" }}>
           <h1 className="display-3">My Budget</h1>
           <p className="lead">Your Budgeting Calculator</p>
           <hr className="my-2" style={{ border: "1px white dotted" }} />
@@ -189,17 +159,17 @@ class IncomeAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let form = document.forms.IncomeAdd;
-    this.props.createInflow({income: form.income.value});
+    this.props.createInflow({ income: form.income.value });
     // Clear the form for the next input.
     form.income.value = '';
   }
 
   render() {
     return (
-      <div style={{width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white", borderRadius: "1vh"}}>
+      <div style={{ width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "greenYellow", border: "3px solid white", borderRadius: "1vh" }}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
-          <input style={{width: "90%", margin: "auto"}} className="form-control" type="text" name="income" placeholder="Income" />
-          <button style={{width: "auto", margin: "3% auto", backgroundColor: "darkGreen"}} className="form-control btn-success">Add</button>
+          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="income" placeholder="Income" />
+          <button style={{ width: "auto", margin: "3% auto", backgroundColor: "darkGreen" }} className="form-control btn-success">Add</button>
         </form>
       </div>
     );
@@ -255,26 +225,26 @@ export default class IssueList extends React.Component {
 
   enterInfo(newIssue) {
     const newIssues = this.state.issues.slice();
-    if(isNaN(parseInt(newIssue.flow))){
+    if (isNaN(parseInt(newIssue.flow))) {
       newIssue.flow = 0;
     }
     let i;
     for (i in newIssues) {
-      if(newIssues[i].category === newIssue.category){
-        if(newIssues[i].flow === undefined){
+      if (newIssues[i].category === newIssue.category) {
+        if (newIssues[i].flow === undefined) {
           newIssues[i].flow = parseInt(newIssue.flow);
-        }else{
+        } else {
           newIssues[i].flow += parseInt(newIssue.flow);
         }
-        if(isNaN(parseInt(newIssue.budget))){
-        }else{
+        if (isNaN(parseInt(newIssue.budget))) {
+        } else {
           newIssues[i].budget = newIssue.budget;
         }
         this.setState({ issues: newIssues });
         return;
       }
     }
-    if(!isNaN(parseInt(newIssue.budget))){
+    if (!isNaN(parseInt(newIssue.budget))) {
       newIssues.push(newIssue);
     }
     this.setState({ issues: newIssues });
@@ -283,31 +253,31 @@ export default class IssueList extends React.Component {
 
   createInflow(newFlow) {
     let assets = this.state.asset;
-    if(isNaN(parseInt(newFlow.income))){
+    if (isNaN(parseInt(newFlow.income))) {
       return;
     }
     let total = assets + parseInt(newFlow.income);
-    this.setState({ asset: total});
+    this.setState({ asset: total });
   }
 
   render() {
     return (
       <div className="bg-success">
-        <Navbar/>
-        <div className="container" style={{margin: "2% auto"}}>
+        <Navbar />
+        <div className="container" style={{ margin: "2% auto" }}>
           <div className="row">
-            <div className="col" style={{backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" }}>
+            <div className="col" style={{ backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" }}>
               <BudgetTable issues={this.state.issues} />
             </div>
-            <div className="col" style={{margin: "auto"}}>
+            <div className="col" style={{ margin: "auto" }}>
               <BalanceTable asset={this.state.asset} issues={this.state.issues} />
               <IncomeAdd createInflow={this.createInflow} />
             </div>
           </div>
-          
+
         </div>
-        <div style={{clear: "both"}}/>
-        <div className="container" style={{margin: "auto"}}>
+        <div style={{ clear: "both" }} />
+        <div className="container" style={{ margin: "auto" }}>
           <BudgetAdd enterInfo={this.enterInfo} />
         </div>
         <Jumbo />

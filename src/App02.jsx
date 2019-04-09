@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 // This is a place holder for the initial application state.
 const contents = {
-  totalIncome:  0,
+  totalIncome: 0,
   totalSpent: 0,
   totalSave: 0
 }
-const totalIncome =  0
+const totalIncome = 0
 const totalSpent = 0
 const totalSave = 0
 
@@ -17,8 +16,8 @@ class Nav extends React.Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">
-            <a name="" id="" className="btn btn-primary" href="./index.html" role="button" style={{marginRight: "1vh"}}>Home</a>
-            <a name="" id="" className="btn btn-primary" href="./view01.html" role="button">Budget</a>
+            <a name="" id="" className="btn btn-primary" href="#/" role="button" style={{ marginRight: "1vh" }}>Home</a>
+            <a name="" id="" className="btn btn-primary" href="#/budget" role="button">Budget</a>
 
           </div>
         </nav>
@@ -34,13 +33,13 @@ function Graph(props) {
   let name = props.name;
   return (
     <div>
-      <table style={{backgroundColor: "lightBlue", margin: "auto", color: "white"}}>
+      <table style={{ backgroundColor: "lightBlue", margin: "auto", color: "white" }}>
         <tbody>
           <tr>
-            <td className="center"  style={{margin: "auto"}}><i>Graph of {name}</i></td>
+            <td className="center" style={{ margin: "auto" }}><i>Graph of {name}</i></td>
           </tr>
           <tr>
-            <td><img src="https://via.placeholder.com/300" alt="" style={{maxWidth: "100%", height: "auto"}} /></td>
+            <td><img src="https://via.placeholder.com/300" alt="" style={{ maxWidth: "100%", height: "auto" }} /></td>
           </tr>
         </tbody>
       </table>
@@ -87,7 +86,7 @@ function Stats(props) {
           </tr>
         </tbody>
       </table>
-      <IncomeAdd contents={props.contents} createInflow={props.createInflow}/>
+      <IncomeAdd contents={props.contents} createInflow={props.createInflow} />
     </div>
   )
 }
@@ -126,11 +125,11 @@ class IncomeAdd extends React.Component {
 class Jumbo extends React.Component {
   render() {
     return (
-      <div className="jumbotron" style={{ marignTop: "5%", marginBottom:"0%", padding: "5%", borderRadius: "1rem", border: "3px groove navy" }}>
+      <div className="jumbotron" style={{ marignTop: "5%", marginBottom: "0%", padding: "5%", borderRadius: "1rem", border: "3px groove navy" }}>
         <div className="container" style={{ border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "navy", color: "white" }}>
           <h1 className="display-3">My Reports</h1>
           <p className="lead">Your personalized financial reports</p>
-          <hr className="my-2" style={{border: "1px dotted white"}} />
+          <hr className="my-2" style={{ border: "1px dotted white" }} />
           <p className="lead" style={{ paddingTop: "6px" }}>
             <a className="btn btn-primary btn-lg" href="/view01.html" role="button" >Jump to My 'Budget'</a>
           </p>
@@ -143,7 +142,7 @@ class Data extends React.Component {
   render() {
     return (
       <div>
-        <table className="bordered-table" style={{ border: "1px white dotted", margin: "3% auto"}}>
+        <table className="bordered-table" style={{ border: "1px white dotted", margin: "3% auto" }}>
           <thead>
             <tr>
               <i><b>Placeholder for reports</b></i>
@@ -188,10 +187,10 @@ class Results extends React.Component {
 }
 
 
-export default class MyComponent extends React.Component {
+export default class Reports extends React.Component {
   constructor() {
     super();
-    this.state = {contents: []};
+    this.state = { contents: [] };
     this.createInflow = this.createInflow.bind(this);
   }
 
@@ -211,55 +210,57 @@ export default class MyComponent extends React.Component {
     const newIssues = this.state.contents;
     if (!isNaN(parseInt(newFlow.income))) {
       newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income);
-    }if(!isNaN(parseInt(newFlow.expense))) {
+    } if (!isNaN(parseInt(newFlow.expense))) {
       newIssues.totalSpent = this.state.contents.totalSpent + parseInt(newFlow.expense);
-    }if(!isNaN(parseInt(newFlow.save))) {
+    } if (!isNaN(parseInt(newFlow.save))) {
       newIssues.totalSave = this.state.contents.totalSave + parseInt(newFlow.save);
     }
-    
+
     this.setState({ contents: newIssues });
   }
 
   render() {
     return (
-      <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%"}}>
-        <Nav />
-        <div className="container" style={{marginTop: "2%"}}>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="card" style={{border: "2px groove black", borderRadius: "4px"}}>
-                <div className="card-body" style={{ marginBottom: "5%"}}>
-                  <Graph name="Income" />
-                  <h4 className="card-title" style={{margin: "0 auto", textAlign: "center"}}>Graph #1</h4>
-                  <p className="card-text" style={{margin: "0 auto", textAlign: "center"}}>Graph of Income</p>
+      <div style={{backgroundColor: "black"}}>
+        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../1200px-Sunset_2007-1.jpg')"}}>
+          <Nav />
+          <div className="container" style={{ marginTop: "2%" }}>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="card" style={{ border: "2px groove black", borderRadius: "4px" }}>
+                  <div className="card-body" style={{ marginBottom: "5%" }}>
+                    <Graph name="Income" />
+                    <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
+                    <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Income</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-6">
-              <div className="card" style={{border: "2px groove black"}}>
-                <div className="card-body" style={{ marginBottom: "5%"}}>
-                  <Graph name="Expenses" />
-                  <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
-                <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
+              <div className="col-md-6">
+                <div className="card" style={{ border: "2px groove black" }}>
+                  <div className="card-body" style={{ marginBottom: "5%" }}>
+                    <Graph name="Expenses" />
+                    <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
+                    <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div style={{marginTop: "2%"}}>
-          <div className="container" style={{marginBottom: "2%"}}>
-            <div className="row" style={{backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white"}}>
-              <div className="col-md-6">
-                <div> <Data /></div>
-              </div>
-              <div className="col-md-6">
-                <div style={{marginTop: "15%"}}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow}/></div>
+          <div style={{ marginTop: "2%" }}>
+            <div className="container" style={{ marginBottom: "2%" }}>
+              <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" }}>
+                <div className="col-md-6">
+                  <div> <Data /></div>
+                </div>
+                <div className="col-md-6">
+                  <div style={{ marginTop: "15%" }}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} /></div>
+                </div>
               </div>
             </div>
+            <Jumbo />
           </div>
-          <Jumbo/>
-        </div>
 
+        </div>
       </div>
     );
   }
@@ -268,16 +269,16 @@ export default class MyComponent extends React.Component {
 //
 // /* IM trying to mske navbar happen
 class Navbar extends React.Component {
-  constructor(props){
+  constructor(props) {
     super()
   }
   render() {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
-          <div className="nav navbar-nav">
-          <a className="nav-item nav-link active bg-success" href="/index.html">Home<span className="sr-only">(current)</span></a>
-          <a className="nav-item nav-link active bg-success" href="/view01.html">Budget<span className="sr-only">(current)</span></a>
-          </div>
+        <div className="nav navbar-nav">
+          <a className="nav-item nav-link active bg-success" href="#/">Home<span className="sr-only">(current)</span></a>
+          <a className="nav-item nav-link active bg-success" href="#/budget">Budget<span className="sr-only">(current)</span></a>
+        </div>
       </nav>
     )
   }
@@ -287,4 +288,4 @@ class Navbar extends React.Component {
 
 
 // This renders the JSX component inside the content node:
-ReactDOM.render(<MyComponent />, contentNode);
+ReactDOM.render(<Reports />, contentNode);

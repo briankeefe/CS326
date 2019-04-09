@@ -1,35 +1,5 @@
-const issues = [
-  {
-    category: "Savings",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Food",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Gas",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Fun",
-    budget: 0,
-    flow: 0,
-  },
-  {
-    category: "Rent",
-    budget: 0,
-    flow: 0
-  },
-  {
-    category: "Emergency",
-    budget: 0,
-    flow: 0
-  }
-];
+import { Router, Route, hashHistory, withRouter, IndexRoute, Link } from 'react-router';
+import IssueList from "./App01.jsx"
 
 const asset = 0;
 var contentNode = document.getElementById("contents");
@@ -128,10 +98,11 @@ class Navbar extends React.Component {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
         <div className="nav navbar-nav">
-          <a className="btn btn-success" href="/view01.html" style={{marginRight: "1vh"}}>Budget<span className="sr-only">(current)</span></a>
-          <a className="btn btn-success" href="/view02.html">Reports<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/budget" style={{marginRight: "1vh"}}>Budget<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/reports">Reports<span className="sr-only">(current)</span></a>
         </div>
       </nav>
+      
     )
   }
 }
@@ -204,7 +175,7 @@ class IncomeSubtract extends React.Component {
   }
 }
 
-class IssueList extends React.Component {
+export default class HomePage extends React.Component {
   constructor() {
     super();
     this.state = { issues: [], asset: -1 };
@@ -221,7 +192,7 @@ class IssueList extends React.Component {
   loadData() {
     setTimeout(() => {
       this.setState({
-        issues: issues,
+        issues: this.state.issues,
         asset: asset
       });
     }, 500);
@@ -304,5 +275,5 @@ class IssueList extends React.Component {
 }
 
 // This renders the JSX component inside the content node:
-ReactDOM.render(<IssueList />, contentNode);
+ReactDOM.render(<HomePage />, contentNode);
 
