@@ -932,7 +932,7 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundImage: "url('images/sunset.jpg')", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
@@ -1587,7 +1587,7 @@ var Reports = function (_React$Component7) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { backgroundImage: "url('dark-honeycomb.png')" } },
+        { style: { backgroundImage: "url('/images/dark-honeycomb.png')" } },
         _react2.default.createElement(
           'div',
           { style: { float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')" } },
