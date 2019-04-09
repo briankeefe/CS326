@@ -221,7 +221,7 @@ export default class Reports extends React.Component {
 
   render() {
     return (
-      <div style={{backgroundColor: "black"}}>
+      <div style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2016/04/15/04/02/water-1330252__340.jpg')"}}>
         <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../1200px-Sunset_2007-1.jpg')"}}>
           <Nav />
           <div className="container" style={{ marginTop: "2%" }}>
