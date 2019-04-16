@@ -932,7 +932,7 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { backgroundImage: "url('images/sunset.jpg')", paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
