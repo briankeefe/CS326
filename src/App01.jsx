@@ -262,7 +262,7 @@ export default class IssueList extends React.Component {
 
   render() {
     return (
-      <div className="bg-success">
+      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>>
         <Navbar />
         <div className="container" style={{ margin: "2% auto" }}>
           <div className="row">

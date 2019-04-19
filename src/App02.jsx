@@ -11,25 +11,7 @@ const totalIncome = 0
 const totalSpent = 0
 const totalSave = 0
 
-class Nav extends React.Component {
-  constructor(props) {
-    super()
-  }
-  render() {
-    return (
-      <div>
-        <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
-          <div className="nav navbar-nav">  
-          <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" }}>Home<span className="sr-only">(current)</span></a>
-          <a className="btn btn-success" href="#/budget">Budget<span className="sr-only">(current)</span></a>
-        
-          </div>
-        </nav>
-      </div>
-    )
-  }
-}
-//oldnav
+
 class Navbar extends React.Component {
   constructor(props) {
     super()
@@ -40,7 +22,6 @@ class Navbar extends React.Component {
           <div className="nav navbar-nav">  
           <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" }}>Home<span className="sr-only">(current)</span></a>
           <a className="btn btn-success" href="#/budget">Budget<span className="sr-only">(current)</span></a>
-        
           </div>
         </nav>
     )
@@ -242,8 +223,7 @@ export default class Reports extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundImage: "require('images/dark-honeycomb.png')"}}>
-        <div className="bg-success"> 
+      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
           <Navbar />
           <div className="container" style={{ marginTop: "2%" }}>
             <div className="row">
@@ -282,7 +262,7 @@ export default class Reports extends React.Component {
           </div>
 
         </div>
-      </div>
+      
     );
   }
 }

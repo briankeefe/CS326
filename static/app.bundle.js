@@ -496,7 +496,8 @@ var IssueList = function (_React$Component5) {
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'bg-success' },
+        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        '>',
         React.createElement(Navbar, null),
         React.createElement(
           'div',
@@ -932,7 +933,7 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
@@ -1116,60 +1117,8 @@ var totalIncome = 0;
 var totalSpent = 0;
 var totalSave = 0;
 
-var Nav = function (_React$Component) {
-  _inherits(Nav, _React$Component);
-
-  function Nav(props) {
-    _classCallCheck(this, Nav);
-
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this));
-  }
-
-  _createClass(Nav, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'nav',
-          { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
-          _react2.default.createElement(
-            'div',
-            { className: 'nav navbar-nav' },
-            _react2.default.createElement(
-              'a',
-              { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh" } },
-              'Home',
-              _react2.default.createElement(
-                'span',
-                { className: 'sr-only' },
-                '(current)'
-              )
-            ),
-            _react2.default.createElement(
-              'a',
-              { className: 'btn btn-success', href: '#/budget' },
-              'Budget',
-              _react2.default.createElement(
-                'span',
-                { className: 'sr-only' },
-                '(current)'
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Nav;
-}(_react2.default.Component);
-//oldnav
-
-
-var Navbar = function (_React$Component2) {
-  _inherits(Navbar, _React$Component2);
+var Navbar = function (_React$Component) {
+  _inherits(Navbar, _React$Component);
 
   function Navbar(props) {
     _classCallCheck(this, Navbar);
@@ -1256,8 +1205,8 @@ function Graph(props) {
   );
 }
 
-var GraphGrid = function (_React$Component3) {
-  _inherits(GraphGrid, _React$Component3);
+var GraphGrid = function (_React$Component2) {
+  _inherits(GraphGrid, _React$Component2);
 
   function GraphGrid() {
     _classCallCheck(this, GraphGrid);
@@ -1352,16 +1301,16 @@ function Stats(props) {
   );
 }
 
-var IncomeAdd = function (_React$Component4) {
-  _inherits(IncomeAdd, _React$Component4);
+var IncomeAdd = function (_React$Component3) {
+  _inherits(IncomeAdd, _React$Component3);
 
   function IncomeAdd() {
     _classCallCheck(this, IncomeAdd);
 
-    var _this4 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+    var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
-    _this4.handleSubmit = _this4.handleSubmit.bind(_this4);
-    return _this4;
+    _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
+    return _this3;
   }
 
   _createClass(IncomeAdd, [{
@@ -1400,8 +1349,8 @@ var IncomeAdd = function (_React$Component4) {
   return IncomeAdd;
 }(_react2.default.Component);
 
-var Jumbo = function (_React$Component5) {
-  _inherits(Jumbo, _React$Component5);
+var Jumbo = function (_React$Component4) {
+  _inherits(Jumbo, _React$Component4);
 
   function Jumbo() {
     _classCallCheck(this, Jumbo);
@@ -1446,8 +1395,8 @@ var Jumbo = function (_React$Component5) {
   return Jumbo;
 }(_react2.default.Component);
 
-var Data = function (_React$Component6) {
-  _inherits(Data, _React$Component6);
+var Data = function (_React$Component5) {
+  _inherits(Data, _React$Component5);
 
   function Data() {
     _classCallCheck(this, Data);
@@ -1503,8 +1452,8 @@ var Data = function (_React$Component6) {
   return Data;
 }(_react2.default.Component);
 
-var Results = function (_React$Component7) {
-  _inherits(Results, _React$Component7);
+var Results = function (_React$Component6) {
+  _inherits(Results, _React$Component6);
 
   function Results() {
     _classCallCheck(this, Results);
@@ -1596,17 +1545,17 @@ var Results = function (_React$Component7) {
   return Results;
 }(_react2.default.Component);
 
-var Reports = function (_React$Component8) {
-  _inherits(Reports, _React$Component8);
+var Reports = function (_React$Component7) {
+  _inherits(Reports, _React$Component7);
 
   function Reports() {
     _classCallCheck(this, Reports);
 
-    var _this8 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
+    var _this7 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
 
-    _this8.state = { contents: [] };
-    _this8.createInflow = _this8.createInflow.bind(_this8);
-    return _this8;
+    _this7.state = { contents: [] };
+    _this7.createInflow = _this7.createInflow.bind(_this7);
+    return _this7;
   }
 
   _createClass(Reports, [{
@@ -1617,10 +1566,10 @@ var Reports = function (_React$Component8) {
   }, {
     key: 'loadData',
     value: function loadData() {
-      var _this9 = this;
+      var _this8 = this;
 
       setTimeout(function () {
-        _this9.setState({
+        _this8.setState({
           contents: contents
         });
       }, 500);
@@ -1647,38 +1596,79 @@ var Reports = function (_React$Component8) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { backgroundImage: "require('images/dark-honeycomb.png')" } },
+        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
-          { className: 'bg-success' },
-          _react2.default.createElement(Navbar, null),
+          { className: 'container', style: { marginTop: "2%" } },
           _react2.default.createElement(
             'div',
-            { className: 'container', style: { marginTop: "2%" } },
+            { className: 'row' },
             _react2.default.createElement(
               'div',
-              { className: 'row' },
+              { className: 'col-md-6' },
+              _react2.default.createElement(
+                'div',
+                { className: 'card', style: { border: "2px groove black", borderRadius: "4px" } },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  _react2.default.createElement(Graph, { name: 'Income' }),
+                  _react2.default.createElement(
+                    'h4',
+                    { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph #1'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph of Income'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-md-6' },
+              _react2.default.createElement(
+                'div',
+                { className: 'card', style: { border: "2px groove black" } },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  _react2.default.createElement(Graph, { name: 'Expenses' }),
+                  _react2.default.createElement(
+                    'h4',
+                    { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph #2'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph of Expenses'
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: { marginTop: "2%" } },
+          _react2.default.createElement(
+            'div',
+            { className: 'container', style: { marginBottom: "2%" } },
+            _react2.default.createElement(
+              'div',
+              { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" } },
               _react2.default.createElement(
                 'div',
                 { className: 'col-md-6' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card', style: { border: "2px groove black", borderRadius: "4px" } },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card-body', style: { marginBottom: "5%" } },
-                    _react2.default.createElement(Graph, { name: 'Income' }),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph #1'
-                    ),
-                    _react2.default.createElement(
-                      'p',
-                      { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph of Income'
-                    )
-                  )
+                  null,
+                  ' ',
+                  _react2.default.createElement(Data, null)
                 )
               ),
               _react2.default.createElement(
@@ -1686,58 +1676,13 @@ var Reports = function (_React$Component8) {
                 { className: 'col-md-6' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card', style: { border: "2px groove black" } },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card-body', style: { marginBottom: "5%" } },
-                    _react2.default.createElement(Graph, { name: 'Expenses' }),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph #2'
-                    ),
-                    _react2.default.createElement(
-                      'p',
-                      { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph of Expenses'
-                    )
-                  )
+                  { style: { marginTop: "15%" } },
+                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { style: { marginTop: "2%" } },
-            _react2.default.createElement(
-              'div',
-              { className: 'container', style: { marginBottom: "2%" } },
-              _react2.default.createElement(
-                'div',
-                { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" } },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-6' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    ' ',
-                    _react2.default.createElement(Data, null)
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { style: { marginTop: "15%" } },
-                    _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(Jumbo, null)
-          )
+          _react2.default.createElement(Jumbo, null)
         )
       );
     }
