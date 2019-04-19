@@ -1119,10 +1119,10 @@ var totalSave = 0;
 var Nav = function (_React$Component) {
   _inherits(Nav, _React$Component);
 
-  function Nav() {
+  function Nav(props) {
     _classCallCheck(this, Nav);
 
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this));
   }
 
   _createClass(Nav, [{
@@ -1133,19 +1133,29 @@ var Nav = function (_React$Component) {
         null,
         _react2.default.createElement(
           'nav',
-          { className: 'navbar navbar-expand navbar-dark bg-dark' },
+          { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
           _react2.default.createElement(
             'div',
             { className: 'nav navbar-nav' },
             _react2.default.createElement(
               'a',
-              { name: '', id: '', className: 'btn btn-primary', href: '#/', role: 'button', style: { marginRight: "1vh" } },
-              'Home'
+              { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh" } },
+              'Home',
+              _react2.default.createElement(
+                'span',
+                { className: 'sr-only' },
+                '(current)'
+              )
             ),
             _react2.default.createElement(
               'a',
-              { name: '', id: '', className: 'btn btn-primary', href: '#/budget', role: 'button' },
-              'Budget'
+              { className: 'btn btn-success', href: '#/budget' },
+              'Budget',
+              _react2.default.createElement(
+                'span',
+                { className: 'sr-only' },
+                '(current)'
+              )
             )
           )
         )
@@ -1155,7 +1165,54 @@ var Nav = function (_React$Component) {
 
   return Nav;
 }(_react2.default.Component);
+//oldnav
 
+
+var Navbar = function (_React$Component2) {
+  _inherits(Navbar, _React$Component2);
+
+  function Navbar(props) {
+    _classCallCheck(this, Navbar);
+
+    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
+  }
+
+  _createClass(Navbar, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'nav',
+        { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
+        _react2.default.createElement(
+          'div',
+          { className: 'nav navbar-nav' },
+          _react2.default.createElement(
+            'a',
+            { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh" } },
+            'Home',
+            _react2.default.createElement(
+              'span',
+              { className: 'sr-only' },
+              '(current)'
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { className: 'btn btn-success', href: '#/budget' },
+            'Budget',
+            _react2.default.createElement(
+              'span',
+              { className: 'sr-only' },
+              '(current)'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Navbar;
+}(_react2.default.Component);
 // This grabs the DOM element to be used to mount React components.
 
 
@@ -1199,8 +1256,8 @@ function Graph(props) {
   );
 }
 
-var GraphGrid = function (_React$Component2) {
-  _inherits(GraphGrid, _React$Component2);
+var GraphGrid = function (_React$Component3) {
+  _inherits(GraphGrid, _React$Component3);
 
   function GraphGrid() {
     _classCallCheck(this, GraphGrid);
@@ -1295,16 +1352,16 @@ function Stats(props) {
   );
 }
 
-var IncomeAdd = function (_React$Component3) {
-  _inherits(IncomeAdd, _React$Component3);
+var IncomeAdd = function (_React$Component4) {
+  _inherits(IncomeAdd, _React$Component4);
 
   function IncomeAdd() {
     _classCallCheck(this, IncomeAdd);
 
-    var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
+    var _this4 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
-    _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
-    return _this3;
+    _this4.handleSubmit = _this4.handleSubmit.bind(_this4);
+    return _this4;
   }
 
   _createClass(IncomeAdd, [{
@@ -1343,8 +1400,8 @@ var IncomeAdd = function (_React$Component3) {
   return IncomeAdd;
 }(_react2.default.Component);
 
-var Jumbo = function (_React$Component4) {
-  _inherits(Jumbo, _React$Component4);
+var Jumbo = function (_React$Component5) {
+  _inherits(Jumbo, _React$Component5);
 
   function Jumbo() {
     _classCallCheck(this, Jumbo);
@@ -1389,8 +1446,8 @@ var Jumbo = function (_React$Component4) {
   return Jumbo;
 }(_react2.default.Component);
 
-var Data = function (_React$Component5) {
-  _inherits(Data, _React$Component5);
+var Data = function (_React$Component6) {
+  _inherits(Data, _React$Component6);
 
   function Data() {
     _classCallCheck(this, Data);
@@ -1446,8 +1503,8 @@ var Data = function (_React$Component5) {
   return Data;
 }(_react2.default.Component);
 
-var Results = function (_React$Component6) {
-  _inherits(Results, _React$Component6);
+var Results = function (_React$Component7) {
+  _inherits(Results, _React$Component7);
 
   function Results() {
     _classCallCheck(this, Results);
@@ -1539,17 +1596,17 @@ var Results = function (_React$Component6) {
   return Results;
 }(_react2.default.Component);
 
-var Reports = function (_React$Component7) {
-  _inherits(Reports, _React$Component7);
+var Reports = function (_React$Component8) {
+  _inherits(Reports, _React$Component8);
 
   function Reports() {
     _classCallCheck(this, Reports);
 
-    var _this7 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
+    var _this8 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
 
-    _this7.state = { contents: [] };
-    _this7.createInflow = _this7.createInflow.bind(_this7);
-    return _this7;
+    _this8.state = { contents: [] };
+    _this8.createInflow = _this8.createInflow.bind(_this8);
+    return _this8;
   }
 
   _createClass(Reports, [{
@@ -1560,10 +1617,10 @@ var Reports = function (_React$Component7) {
   }, {
     key: 'loadData',
     value: function loadData() {
-      var _this8 = this;
+      var _this9 = this;
 
       setTimeout(function () {
-        _this8.setState({
+        _this9.setState({
           contents: contents
         });
       }, 500);
@@ -1582,16 +1639,19 @@ var Reports = function (_React$Component7) {
 
       this.setState({ contents: newIssues });
     }
+    //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
+    //../images/dark-honeycomb.png
+
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { backgroundImage: "url('/images/dark-honeycomb.png')" } },
+        { style: { backgroundImage: "require('images/dark-honeycomb.png')" } },
         _react2.default.createElement(
           'div',
-          { style: { float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')" } },
-          _react2.default.createElement(Nav, null),
+          { className: 'bg-success' },
+          _react2.default.createElement(Navbar, null),
           _react2.default.createElement(
             'div',
             { className: 'container', style: { marginTop: "2%" } },
@@ -1686,61 +1746,10 @@ var Reports = function (_React$Component7) {
   return Reports;
 }(_react2.default.Component);
 
-//
-// /* IM trying to mske navbar happen
-
-
-exports.default = Reports;
-
-var Navbar = function (_React$Component8) {
-  _inherits(Navbar, _React$Component8);
-
-  function Navbar(props) {
-    _classCallCheck(this, Navbar);
-
-    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
-  }
-
-  _createClass(Navbar, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'nav',
-        { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
-        _react2.default.createElement(
-          'div',
-          { className: 'nav navbar-nav' },
-          _react2.default.createElement(
-            'a',
-            { className: 'nav-item nav-link active bg-success', href: '#/' },
-            'Home',
-            _react2.default.createElement(
-              'span',
-              { className: 'sr-only' },
-              '(current)'
-            )
-          ),
-          _react2.default.createElement(
-            'a',
-            { className: 'nav-item nav-link active bg-success', href: '#/budget' },
-            'Budget',
-            _react2.default.createElement(
-              'span',
-              { className: 'sr-only' },
-              '(current)'
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Navbar;
-}(_react2.default.Component);
-
 // This renders the JSX component inside the content node:
 
 
+exports.default = Reports;
 _reactDom2.default.render(_react2.default.createElement(Reports, null), contentNode);
 
 /***/ })
