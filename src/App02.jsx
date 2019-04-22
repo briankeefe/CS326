@@ -67,7 +67,7 @@ class GraphGrid extends React.Component {
 
 function Stats(props) {
   return (
-    <div>
+    <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
       <table className="table bg-white">
         <thead>
           <tr>
@@ -141,8 +141,8 @@ class Jumbo extends React.Component {
 class Data extends React.Component {
   render() {
     return (
-      <div>
-        <table className="bordered-table" style={{ border: "2px solid white",borderRadius: "3rem", margin: "3% auto"  }}>
+        <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
+        <table className="bordered-table" style={{ marginLeft:"auto", marginRight:"auto" }}>
           <thead>
             <tr>
               <i><b>Placeholder for reports</b></i>
@@ -155,7 +155,7 @@ class Data extends React.Component {
             </tr>
           </tbody>
         </table>
-      </div>
+        </div>
     )
   }
 }

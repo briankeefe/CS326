@@ -1243,7 +1243,7 @@ var GraphGrid = function (_React$Component2) {
 function Stats(props) {
   return _react2.default.createElement(
     'div',
-    null,
+    { style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
     _react2.default.createElement(
       'table',
       { className: 'table bg-white' },
@@ -1404,10 +1404,10 @@ var Data = function (_React$Component5) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
         _react2.default.createElement(
           'table',
-          { className: 'bordered-table', style: { border: "2px solid white", borderRadius: "3rem", margin: "3% auto" } },
+          { className: 'bordered-table', style: { marginLeft: "auto", marginRight: "auto" } },
           _react2.default.createElement(
             'thead',
             null,
