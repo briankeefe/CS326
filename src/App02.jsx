@@ -125,8 +125,8 @@ class IncomeAdd extends React.Component {
 class Jumbo extends React.Component {
   render() {
     return (
-      <div className="jumbotron" style={{ marignTop: "5%", marginBottom: "0%", padding: "5%", borderRadius: "1rem", border: "3px groove navy" }}>
-        <div className="container" style={{ border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "navy", color: "white" }}>
+      
+        <div className="container" style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem" }}>
           <h1 className="display-3">My Reports</h1>
           <p className="lead">Your personalized financial reports</p>
           <hr className="my-2" style={{ border: "1px dotted white" }} />
@@ -134,7 +134,7 @@ class Jumbo extends React.Component {
             <a className="btn btn-primary btn-lg" href="/view01.html" role="button" >Jump to My 'Budget'</a>
           </p>
         </div>
-      </div>
+  
     )
   }
 }
@@ -142,7 +142,7 @@ class Data extends React.Component {
   render() {
     return (
       <div>
-        <table className="bordered-table" style={{ border: "1px white dotted", margin: "3% auto" }}>
+        <table className="bordered-table" style={{ border: "2px solid white",borderRadius: "3rem", margin: "3% auto"  }}>
           <thead>
             <tr>
               <i><b>Placeholder for reports</b></i>
@@ -223,22 +223,23 @@ export default class Reports extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+      <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "cover", paddingBottom: "2%",  }}>
           <Navbar />
           <div className="container" style={{ marginTop: "2%" }}>
             <div className="row">
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem" }}>
-                  <div className="card-body" style={{ marginBottom: "5%" }}>
+                <div className="card" style={{  borderRadius: "3rem" }}>
+                  <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
                     <Graph name="Income" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Income</p>
                   </div>
                 </div>
               </div>
+              
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem"}}>
-                  <div className="card-body" style={{ marginBottom: "5%" }}>
+                <div className="card" style={{ borderRadius: "3rem"}}>
+                  <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
                     <Graph name="Expenses" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
@@ -247,14 +248,14 @@ export default class Reports extends React.Component {
               </div>
             </div>
           </div>
-          <div style={{ marginTop: "2%" }}>
-            <div className="container" style={{ marginBottom: "2%" }}>
+          <div style={{ marginTop: "2%"}}>
+            <div className="container" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
               <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" }}>
-                <div className="col-md-6">
+                <div className="col-md-6" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
                   <div> <Data /></div>
                 </div>
-                <div className="col-md-6">
-                  <div style={{ marginTop: "15%" }}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} /></div>
+                <div className="col-md-6" style={{ marginTop: "2%", }}>
+                  <div style={{ marginTop: "15%",borderRadius: "3rem"  }}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} /></div>
                 </div>
               </div>
             </div>

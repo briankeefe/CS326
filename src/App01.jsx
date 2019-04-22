@@ -6,9 +6,9 @@ var contentNode = document.getElementById("contents");
 
 const IssueRow = (props) => (
   <tr>
-    <td>{props.issue.category}</td>
-    <td>{props.issue.budget}</td>
-    <td>{props.issue.flow}</td>
+    <td contentEditable>{props.issue.category}</td>
+    <td contentEditable>{props.issue.budget}</td>
+    <td contentEditable>{props.issue.flow}</td>
     <td>{props.issue.budget - props.issue.flow}</td>
   </tr>
 );
@@ -100,10 +100,10 @@ class BudgetAdd extends React.Component {
             <div className="col-md-4 mb-3">
               <input className="form-control" type="number" name="budget" placeholder="Budget (*Optional*)" />
             </div>
-            <div className="col-md-3 mb-3" style={{ float: "left" }}>
+            <div className="col-lg-3 col-md-4 mb-3" style={{ float: "left" }}>
               <input className="form-control" style={{ width: "100%", float: "left" }} type="number" name="flow" placeholder="Out-flow" />
             </div>
-            <div className="col ">
+            <div className="col-lg-1 col-md-12 mb-3 ">
               <button className="form-control text-white btn-success" style={{ backgroundColor: "darkGreen", border: "1px solid white", float: "right", width: "100%", margin: "auto" }}>Add</button>
             </div>
 
@@ -272,7 +272,7 @@ export default class IssueList extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>>
+      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
         <Navbar />
         <div className="container" style={{ margin: "2% auto" }}>
           <div className="row">
