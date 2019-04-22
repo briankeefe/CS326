@@ -401,7 +401,7 @@ var IssueList = function (_React$Component5) {
 
     var _this5 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
-    _this5.state = { issues: [], asset: -1 };
+    _this5.state = { issues: [], asset: 0 };
 
     _this5.enterInfo = _this5.enterInfo.bind(_this5);
     _this5.createInflow = _this5.createInflow.bind(_this5);
@@ -427,7 +427,7 @@ var IssueList = function (_React$Component5) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log("Total count of records:", data._metadata.total_count);
-            _this6.setState({ issues: data.assets });
+            _this6.setState({ issues: data.assets, income: data.income });
           });
         } else {
           response.json().then(function (error) {
@@ -447,6 +447,18 @@ var IssueList = function (_React$Component5) {
         headers: {
           'Content-Type': 'application/json'
         }
+      }).then(function (res) {
+        return res;
+      }).catch(function (err) {
+        return err;
+      });
+    }
+  }, {
+    key: 'paid',
+    value: function paid(money) {
+      fetch('/api/SaveMe', {
+        method: 'POST',
+        body: money
       }).then(function (res) {
         return res;
       }).catch(function (err) {
@@ -490,6 +502,7 @@ var IssueList = function (_React$Component5) {
       }
       var total = assets + parseInt(newFlow.income);
       this.setState({ asset: total });
+      this.paid(this.state.asset);
     }
   }, {
     key: 'render',

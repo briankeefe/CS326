@@ -179,7 +179,7 @@ class IncomeAdd extends React.Component {
 export default class IssueList extends React.Component {
   constructor() {
     super();
-    this.state = { issues: [], asset: -1 };
+    this.state = { issues: [], asset: 0 };
 
     this.enterInfo = this.enterInfo.bind(this);
     this.createInflow = this.createInflow.bind(this);
@@ -199,7 +199,7 @@ export default class IssueList extends React.Component {
       if (response.ok) {
         response.json().then(data => {
           console.log("Total count of records:", data._metadata.total_count);
-          this.setState({ issues: data.assets });
+          this.setState({ issues: data.assets, income: data.income });
         });
       } else {
         response.json().then(error => {
@@ -221,6 +221,15 @@ export default class IssueList extends React.Component {
     }).then(res => {
       return res;
     }).catch(err => err);
+  }
+
+  paid(money) {
+    fetch('/api/SaveMe', {
+      method: 'POST',
+      body: money
+    }).then(res => {
+      return res;
+    }).catch(err => err)
   }
 
   enterInfo(newIssue) {
@@ -258,6 +267,7 @@ export default class IssueList extends React.Component {
     }
     let total = assets + parseInt(newFlow.income);
     this.setState({ asset: total });
+    this.paid(this.state.asset)
   }
 
   render() {

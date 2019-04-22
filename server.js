@@ -15,11 +15,12 @@ const MongoClient = require('mongodb').MongoClient;
 app.get('/api/SaveMe', (req, res) => {
   db.collection('SaveMe').find().toArray().then(issues => {
     const metadata = {
-      total_count: issues.length
+      total_count: issues.length,
+      bank: 0
     };
     res.json({
       _metadata: metadata,
-      assets: issues
+      assets: issues,
     })
   }).catch(error => {
     console.log(error);
