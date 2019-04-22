@@ -20,8 +20,8 @@ class Navbar extends React.Component {
     return (
       <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
           <div className="nav navbar-nav">  
-          <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" }}>Home<span className="sr-only">(current)</span></a>
-          <a className="btn btn-success" href="#/budget">Budget<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" ,backgroundColor: "royalBlue",border: "1px groove royalBlue" , color: "white"}}>Home<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/budget" style={{ marginRight: "1vh" ,backgroundColor: "royalBlue",border: "1px groove royalBlue" , color: "white"}}>Budget<span className="sr-only">(current)</span></a>
           </div>
         </nav>
     )
@@ -223,12 +223,12 @@ export default class Reports extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+      <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
           <Navbar />
           <div className="container" style={{ marginTop: "2%" }}>
             <div className="row">
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black", borderRadius: "4px" }}>
+                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem" }}>
                   <div className="card-body" style={{ marginBottom: "5%" }}>
                     <Graph name="Income" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
@@ -237,7 +237,7 @@ export default class Reports extends React.Component {
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black" }}>
+                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" }}>
                     <Graph name="Expenses" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
@@ -249,7 +249,7 @@ export default class Reports extends React.Component {
           </div>
           <div style={{ marginTop: "2%" }}>
             <div className="container" style={{ marginBottom: "2%" }}>
-              <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" }}>
+              <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" }}>
                 <div className="col-md-6">
                   <div> <Data /></div>
                 </div>

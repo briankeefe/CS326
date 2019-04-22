@@ -1137,7 +1137,7 @@ var Navbar = function (_React$Component) {
           { className: 'nav navbar-nav' },
           _react2.default.createElement(
             'a',
-            { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh" } },
+            { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh", backgroundColor: "royalBlue", border: "1px groove royalBlue", color: "white" } },
             'Home',
             _react2.default.createElement(
               'span',
@@ -1147,7 +1147,7 @@ var Navbar = function (_React$Component) {
           ),
           _react2.default.createElement(
             'a',
-            { className: 'btn btn-success', href: '#/budget' },
+            { className: 'btn btn-success', href: '#/budget', style: { marginRight: "1vh", backgroundColor: "royalBlue", border: "1px groove royalBlue", color: "white" } },
             'Budget',
             _react2.default.createElement(
               'span',
@@ -1596,7 +1596,7 @@ var Reports = function (_React$Component7) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: 'bg-success', style: { backgroundImage: "url('images/blue-wave.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
         _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
@@ -1609,7 +1609,7 @@ var Reports = function (_React$Component7) {
               { className: 'col-md-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'card', style: { border: "2px groove black", borderRadius: "4px" } },
+                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
                   { className: 'card-body', style: { marginBottom: "5%" } },
@@ -1632,7 +1632,7 @@ var Reports = function (_React$Component7) {
               { className: 'col-md-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'card', style: { border: "2px groove black" } },
+                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
                   { className: 'card-body', style: { marginBottom: "5%" } },
@@ -1660,7 +1660,7 @@ var Reports = function (_React$Component7) {
             { className: 'container', style: { marginBottom: "2%" } },
             _react2.default.createElement(
               'div',
-              { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" } },
+              { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" } },
               _react2.default.createElement(
                 'div',
                 { className: 'col-md-6' },
