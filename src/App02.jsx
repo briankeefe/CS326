@@ -11,23 +11,22 @@ const totalIncome = 0
 const totalSpent = 0
 const totalSave = 0
 
-class Nav extends React.Component {
+
+class Navbar extends React.Component {
+  constructor(props) {
+    super()
+  }
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <div className="nav navbar-nav">
-            <a name="" id="" className="btn btn-primary" href="#/" role="button" style={{ marginRight: "1vh" }}>Home</a>
-            <a name="" id="" className="btn btn-primary" href="#/budget" role="button">Budget</a>
-
+      <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
+          <div className="nav navbar-nav">  
+          <a className="btn btn-success" href="#/" style={{ marginRight: "1vh" ,backgroundColor: "royalBlue",border: "1px groove royalBlue" , color: "white"}}>Home<span className="sr-only">(current)</span></a>
+          <a className="btn btn-success" href="#/budget" style={{ marginRight: "1vh" ,backgroundColor: "royalBlue",border: "1px groove royalBlue" , color: "white"}}>Budget<span className="sr-only">(current)</span></a>
           </div>
         </nav>
-      </div>
     )
   }
 }
-
-
 // This grabs the DOM element to be used to mount React components.
 var contentNode = document.getElementById("contents");
 function Graph(props) {
@@ -219,16 +218,17 @@ export default class Reports extends React.Component {
 
     this.setState({ contents: newIssues });
   }
+//        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
+//../images/dark-honeycomb.png
 
   render() {
     return (
-      <div style={{ backgroundImage: "url('/images/dark-honeycomb.png')"}}>
-        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
-          <Nav />
+      <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+          <Navbar />
           <div className="container" style={{ marginTop: "2%" }}>
             <div className="row">
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black", borderRadius: "4px" }}>
+                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem" }}>
                   <div className="card-body" style={{ marginBottom: "5%" }}>
                     <Graph name="Income" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
@@ -237,7 +237,7 @@ export default class Reports extends React.Component {
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="card" style={{ border: "2px groove black" }}>
+                <div className="card" style={{ border: "2px groove black", borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" }}>
                     <Graph name="Expenses" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
@@ -249,7 +249,7 @@ export default class Reports extends React.Component {
           </div>
           <div style={{ marginTop: "2%" }}>
             <div className="container" style={{ marginBottom: "2%" }}>
-              <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" }}>
+              <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" }}>
                 <div className="col-md-6">
                   <div> <Data /></div>
                 </div>
@@ -262,31 +262,10 @@ export default class Reports extends React.Component {
           </div>
 
         </div>
-      </div>
+      
     );
   }
 }
-
-//
-// /* IM trying to mske navbar happen
-class Navbar extends React.Component {
-  constructor(props) {
-    super()
-  }
-  render() {
-    return (
-      <nav className="sticky-top navbar navbar-expand navbar-dark bg-dark">
-        <div className="nav navbar-nav">
-          <a className="nav-item nav-link active bg-success" href="#/">Home<span className="sr-only">(current)</span></a>
-          <a className="nav-item nav-link active bg-success" href="#/budget">Budget<span className="sr-only">(current)</span></a>
-        </div>
-      </nav>
-    )
-  }
-}
-
-
-
 
 // This renders the JSX component inside the content node:
 ReactDOM.render(<Reports />, contentNode);

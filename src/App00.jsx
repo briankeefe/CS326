@@ -251,7 +251,7 @@ export default class HomePage extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
         <Navbar />
         <div style={{ width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%" }}>
           <div style={{ marginLeft: "27%" }}>

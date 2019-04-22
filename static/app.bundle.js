@@ -509,7 +509,8 @@ var IssueList = function (_React$Component5) {
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'bg-success' },
+        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        '>',
         React.createElement(Navbar, null),
         React.createElement(
           'div',
@@ -945,7 +946,7 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
@@ -1129,36 +1130,42 @@ var totalIncome = 0;
 var totalSpent = 0;
 var totalSave = 0;
 
-var Nav = function (_React$Component) {
-  _inherits(Nav, _React$Component);
+var Navbar = function (_React$Component) {
+  _inherits(Navbar, _React$Component);
 
-  function Nav() {
-    _classCallCheck(this, Nav);
+  function Navbar(props) {
+    _classCallCheck(this, Navbar);
 
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
   }
 
-  _createClass(Nav, [{
+  _createClass(Navbar, [{
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        null,
+        'nav',
+        { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
         _react2.default.createElement(
-          'nav',
-          { className: 'navbar navbar-expand navbar-dark bg-dark' },
+          'div',
+          { className: 'nav navbar-nav' },
           _react2.default.createElement(
-            'div',
-            { className: 'nav navbar-nav' },
+            'a',
+            { className: 'btn btn-success', href: '#/', style: { marginRight: "1vh", backgroundColor: "royalBlue", border: "1px groove royalBlue", color: "white" } },
+            'Home',
             _react2.default.createElement(
-              'a',
-              { name: '', id: '', className: 'btn btn-primary', href: '#/', role: 'button', style: { marginRight: "1vh" } },
-              'Home'
-            ),
+              'span',
+              { className: 'sr-only' },
+              '(current)'
+            )
+          ),
+          _react2.default.createElement(
+            'a',
+            { className: 'btn btn-success', href: '#/budget', style: { marginRight: "1vh", backgroundColor: "royalBlue", border: "1px groove royalBlue", color: "white" } },
+            'Budget',
             _react2.default.createElement(
-              'a',
-              { name: '', id: '', className: 'btn btn-primary', href: '#/budget', role: 'button' },
-              'Budget'
+              'span',
+              { className: 'sr-only' },
+              '(current)'
             )
           )
         )
@@ -1166,9 +1173,8 @@ var Nav = function (_React$Component) {
     }
   }]);
 
-  return Nav;
+  return Navbar;
 }(_react2.default.Component);
-
 // This grabs the DOM element to be used to mount React components.
 
 
@@ -1595,43 +1601,87 @@ var Reports = function (_React$Component7) {
 
       this.setState({ contents: newIssues });
     }
+    //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
+    //../images/dark-honeycomb.png
+
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { style: { backgroundImage: "url('/images/dark-honeycomb.png')" } },
+        { className: 'bg-success', style: { backgroundImage: "url('images/blue-wave.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
-          { style: { float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')" } },
-          _react2.default.createElement(Nav, null),
+          { className: 'container', style: { marginTop: "2%" } },
           _react2.default.createElement(
             'div',
-            { className: 'container', style: { marginTop: "2%" } },
+            { className: 'row' },
             _react2.default.createElement(
               'div',
-              { className: 'row' },
+              { className: 'col-md-6' },
+              _react2.default.createElement(
+                'div',
+                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  _react2.default.createElement(Graph, { name: 'Income' }),
+                  _react2.default.createElement(
+                    'h4',
+                    { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph #1'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph of Income'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-md-6' },
+              _react2.default.createElement(
+                'div',
+                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  _react2.default.createElement(Graph, { name: 'Expenses' }),
+                  _react2.default.createElement(
+                    'h4',
+                    { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph #2'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
+                    'Graph of Expenses'
+                  )
+                )
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: { marginTop: "2%" } },
+          _react2.default.createElement(
+            'div',
+            { className: 'container', style: { marginBottom: "2%" } },
+            _react2.default.createElement(
+              'div',
+              { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" } },
               _react2.default.createElement(
                 'div',
                 { className: 'col-md-6' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card', style: { border: "2px groove black", borderRadius: "4px" } },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card-body', style: { marginBottom: "5%" } },
-                    _react2.default.createElement(Graph, { name: 'Income' }),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph #1'
-                    ),
-                    _react2.default.createElement(
-                      'p',
-                      { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph of Income'
-                    )
-                  )
+                  null,
+                  ' ',
+                  _react2.default.createElement(Data, null)
                 )
               ),
               _react2.default.createElement(
@@ -1639,58 +1689,13 @@ var Reports = function (_React$Component7) {
                 { className: 'col-md-6' },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card', style: { border: "2px groove black" } },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'card-body', style: { marginBottom: "5%" } },
-                    _react2.default.createElement(Graph, { name: 'Expenses' }),
-                    _react2.default.createElement(
-                      'h4',
-                      { className: 'card-title', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph #2'
-                    ),
-                    _react2.default.createElement(
-                      'p',
-                      { className: 'card-text', style: { margin: "0 auto", textAlign: "center" } },
-                      'Graph of Expenses'
-                    )
-                  )
+                  { style: { marginTop: "15%" } },
+                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { style: { marginTop: "2%" } },
-            _react2.default.createElement(
-              'div',
-              { className: 'container', style: { marginBottom: "2%" } },
-              _react2.default.createElement(
-                'div',
-                { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "1rem", border: "2px solid white" } },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-6' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    ' ',
-                    _react2.default.createElement(Data, null)
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'col-md-6' },
-                  _react2.default.createElement(
-                    'div',
-                    { style: { marginTop: "15%" } },
-                    _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
-                  )
-                )
-              )
-            ),
-            _react2.default.createElement(Jumbo, null)
-          )
+          _react2.default.createElement(Jumbo, null)
         )
       );
     }
@@ -1699,61 +1704,10 @@ var Reports = function (_React$Component7) {
   return Reports;
 }(_react2.default.Component);
 
-//
-// /* IM trying to mske navbar happen
-
-
-exports.default = Reports;
-
-var Navbar = function (_React$Component8) {
-  _inherits(Navbar, _React$Component8);
-
-  function Navbar(props) {
-    _classCallCheck(this, Navbar);
-
-    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this));
-  }
-
-  _createClass(Navbar, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'nav',
-        { className: 'sticky-top navbar navbar-expand navbar-dark bg-dark' },
-        _react2.default.createElement(
-          'div',
-          { className: 'nav navbar-nav' },
-          _react2.default.createElement(
-            'a',
-            { className: 'nav-item nav-link active bg-success', href: '#/' },
-            'Home',
-            _react2.default.createElement(
-              'span',
-              { className: 'sr-only' },
-              '(current)'
-            )
-          ),
-          _react2.default.createElement(
-            'a',
-            { className: 'nav-item nav-link active bg-success', href: '#/budget' },
-            'Budget',
-            _react2.default.createElement(
-              'span',
-              { className: 'sr-only' },
-              '(current)'
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Navbar;
-}(_react2.default.Component);
-
 // This renders the JSX component inside the content node:
 
 
+exports.default = Reports;
 _reactDom2.default.render(_react2.default.createElement(Reports, null), contentNode);
 
 /***/ })
