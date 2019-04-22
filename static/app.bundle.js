@@ -616,41 +616,45 @@ function BalanceTable(props) {
     }
   }
   return React.createElement(
-    "table",
-    { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
+    "div",
+    { style: { textAlign: "center" } },
     React.createElement(
-      "thead",
-      { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
+      "table",
+      { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
       React.createElement(
-        "tr",
-        null,
+        "thead",
+        { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
         React.createElement(
-          "th",
+          "tr",
           null,
-          "Income"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Balance"
+          React.createElement(
+            "th",
+            null,
+            "Income"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Balance"
+          )
         )
-      )
-    ),
-    React.createElement(
-      "tbody",
-      { className: "table-dark" },
+      ),
       React.createElement(
-        "tr",
-        null,
+        "tbody",
+        { className: "table-dark" },
         React.createElement(
-          "td",
+          "tr",
           null,
-          props.asset
-        ),
-        React.createElement(
-          "td",
-          null,
-          props.asset - budget
+          React.createElement(
+            "td",
+            null,
+            props.asset
+          ),
+          React.createElement(
+            "td",
+            null,
+            props.asset - budget
+          )
         )
       )
     )
@@ -932,14 +936,14 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundImage: "url('images/green-wave.png')", backgroundSize: "cover", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
-          { style: { width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
+          { style: { width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
           React.createElement(
             "div",
-            { style: { marginLeft: "27%" } },
+            { style: { backgroundColor: "green", color: "white", borderRadius: "3rem", float: "center" } },
             React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
           ),
           React.createElement(
@@ -1246,7 +1250,7 @@ function Stats(props) {
     { style: { padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
     _react2.default.createElement(
       'table',
-      { className: 'table bg-white' },
+      { className: 'table bg-white', style: { borderRadius: ".5rem" } },
       _react2.default.createElement(
         'thead',
         null,
@@ -1447,6 +1451,13 @@ var Data = function (_React$Component5) {
   return Data;
 }(_react2.default.Component);
 
+function randQuote() {
+  var quotebucket = ["You've got this!", "We beleive in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!"];
+  var picked = "";
+  picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
+  return picked;
+}
+
 var Quote = function (_React$Component6) {
   _inherits(Quote, _React$Component6);
 
@@ -1465,7 +1476,9 @@ var Quote = function (_React$Component6) {
         _react2.default.createElement(
           'p',
           { style: { textAlign: "center", paddingTop: "1%" } },
-          'Insperational Quote: "You\'ve got this!"'
+          'Insperational Quote: " ',
+          randQuote(),
+          ' "'
         )
       );
     }

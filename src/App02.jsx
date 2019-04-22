@@ -68,7 +68,7 @@ class GraphGrid extends React.Component {
 function Stats(props) {
   return (
     <div style={{ padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
-      <table className="table bg-white">
+      <table className="table bg-white"style={{  borderRadius: ".5rem" }}>
         <thead>
           <tr>
             <th></th>
@@ -159,12 +159,19 @@ class Data extends React.Component {
     )
   }
 }
-
+function randQuote(){
+  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!"];
+  let picked = "";
+  picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
+  return picked;
+}
 class Quote extends React.Component {
+  
+  
   render() {
     return(
       <div style={{ padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem"  }}>
-        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: "You've got this!"</p>
+        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: " {randQuote()} "</p>
       </div>
     )
   }
