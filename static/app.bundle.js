@@ -497,7 +497,6 @@ var IssueList = function (_React$Component5) {
       return React.createElement(
         'div',
         { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
-        '>',
         React.createElement(Navbar, null),
         React.createElement(
           'div',
@@ -1363,29 +1362,25 @@ var Jumbo = function (_React$Component4) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'jumbotron', style: { marignTop: "5%", marginBottom: "0%", padding: "5%", borderRadius: "1rem", border: "3px groove navy" } },
+        { className: 'container', style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem" } },
         _react2.default.createElement(
-          'div',
-          { className: 'container', style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "navy", color: "white" } },
+          'h1',
+          { className: 'display-3' },
+          'My Reports'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'lead' },
+          'Your personalized financial reports'
+        ),
+        _react2.default.createElement('hr', { className: 'my-2', style: { border: "1px dotted white" } }),
+        _react2.default.createElement(
+          'p',
+          { className: 'lead', style: { paddingTop: "6px" } },
           _react2.default.createElement(
-            'h1',
-            { className: 'display-3' },
-            'My Reports'
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'lead' },
-            'Your personalized financial reports'
-          ),
-          _react2.default.createElement('hr', { className: 'my-2', style: { border: "1px dotted white" } }),
-          _react2.default.createElement(
-            'p',
-            { className: 'lead', style: { paddingTop: "6px" } },
-            _react2.default.createElement(
-              'a',
-              { className: 'btn btn-primary btn-lg', href: '/view01.html', role: 'button' },
-              'Jump to My \'Budget\''
-            )
+            'a',
+            { className: 'btn btn-primary btn-lg', href: '/view01.html', role: 'button' },
+            'Jump to My \'Budget\''
           )
         )
       );
@@ -1412,7 +1407,7 @@ var Data = function (_React$Component5) {
         null,
         _react2.default.createElement(
           'table',
-          { className: 'bordered-table', style: { border: "1px white dotted", margin: "3% auto" } },
+          { className: 'bordered-table', style: { border: "2px solid white", borderRadius: "3rem", margin: "3% auto" } },
           _react2.default.createElement(
             'thead',
             null,
@@ -1596,7 +1591,7 @@ var Reports = function (_React$Component7) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'bg-success', style: { backgroundImage: "url('images/blue-wave.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: 'bg-success', style: { backgroundImage: "url('images/blue-wave.png')", backgroundSize: "cover", paddingBottom: "2%" } },
         _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
@@ -1609,10 +1604,10 @@ var Reports = function (_React$Component7) {
               { className: 'col-md-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
+                { className: 'card', style: { borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  { className: 'card-body', style: { marginBottom: "5%", borderRadius: "3rem" } },
                   _react2.default.createElement(Graph, { name: 'Income' }),
                   _react2.default.createElement(
                     'h4',
@@ -1632,10 +1627,10 @@ var Reports = function (_React$Component7) {
               { className: 'col-md-6' },
               _react2.default.createElement(
                 'div',
-                { className: 'card', style: { border: "2px groove black", borderRadius: "3rem" } },
+                { className: 'card', style: { borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
-                  { className: 'card-body', style: { marginBottom: "5%" } },
+                  { className: 'card-body', style: { marginBottom: "5%", borderRadius: "3rem" } },
                   _react2.default.createElement(Graph, { name: 'Expenses' }),
                   _react2.default.createElement(
                     'h4',
@@ -1657,13 +1652,13 @@ var Reports = function (_React$Component7) {
           { style: { marginTop: "2%" } },
           _react2.default.createElement(
             'div',
-            { className: 'container', style: { marginBottom: "2%" } },
+            { className: 'container', style: { marginBottom: "2%", borderRadius: "3rem" } },
             _react2.default.createElement(
               'div',
               { className: 'row', style: { backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" } },
               _react2.default.createElement(
                 'div',
-                { className: 'col-md-6' },
+                { className: 'col-md-6', style: { marginBottom: "2%", borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
                   null,
@@ -1673,10 +1668,10 @@ var Reports = function (_React$Component7) {
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'col-md-6' },
+                { className: 'col-md-6', style: { marginTop: "2%" } },
                 _react2.default.createElement(
                   'div',
-                  { style: { marginTop: "15%" } },
+                  { style: { marginTop: "15%", borderRadius: "3rem" } },
                   _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
