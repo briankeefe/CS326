@@ -1243,7 +1243,7 @@ var GraphGrid = function (_React$Component2) {
 function Stats(props) {
   return _react2.default.createElement(
     'div',
-    { style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
+    { style: { padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
     _react2.default.createElement(
       'table',
       { className: 'table bg-white' },
@@ -1447,8 +1447,35 @@ var Data = function (_React$Component5) {
   return Data;
 }(_react2.default.Component);
 
-var Results = function (_React$Component6) {
-  _inherits(Results, _React$Component6);
+var Quote = function (_React$Component6) {
+  _inherits(Quote, _React$Component6);
+
+  function Quote() {
+    _classCallCheck(this, Quote);
+
+    return _possibleConstructorReturn(this, (Quote.__proto__ || Object.getPrototypeOf(Quote)).apply(this, arguments));
+  }
+
+  _createClass(Quote, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { style: { padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem" } },
+        _react2.default.createElement(
+          'p',
+          { style: { textAlign: "center", paddingTop: "1%" } },
+          'Insperational Quote: "You\'ve got this!"'
+        )
+      );
+    }
+  }]);
+
+  return Quote;
+}(_react2.default.Component);
+
+var Results = function (_React$Component7) {
+  _inherits(Results, _React$Component7);
 
   function Results() {
     _classCallCheck(this, Results);
@@ -1540,17 +1567,17 @@ var Results = function (_React$Component6) {
   return Results;
 }(_react2.default.Component);
 
-var Reports = function (_React$Component7) {
-  _inherits(Reports, _React$Component7);
+var Reports = function (_React$Component8) {
+  _inherits(Reports, _React$Component8);
 
   function Reports() {
     _classCallCheck(this, Reports);
 
-    var _this7 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
+    var _this8 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
 
-    _this7.state = { contents: [] };
-    _this7.createInflow = _this7.createInflow.bind(_this7);
-    return _this7;
+    _this8.state = { contents: [] };
+    _this8.createInflow = _this8.createInflow.bind(_this8);
+    return _this8;
   }
 
   _createClass(Reports, [{
@@ -1561,10 +1588,10 @@ var Reports = function (_React$Component7) {
   }, {
     key: 'loadData',
     value: function loadData() {
-      var _this8 = this;
+      var _this9 = this;
 
       setTimeout(function () {
-        _this8.setState({
+        _this9.setState({
           contents: contents
         });
       }, 500);
@@ -1661,17 +1688,21 @@ var Reports = function (_React$Component7) {
                 { className: 'col-md-6', style: { marginBottom: "2%", borderRadius: "3rem" } },
                 _react2.default.createElement(
                   'div',
-                  null,
-                  ' ',
+                  { style: {} },
                   _react2.default.createElement(Data, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(Quote, null)
                 )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'col-md-6', style: { marginTop: "2%" } },
+                { className: 'col-md-6', style: {} },
                 _react2.default.createElement(
                   'div',
-                  { style: { marginTop: "15%", borderRadius: "3rem" } },
+                  { style: { borderRadius: "3rem" } },
                   _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )

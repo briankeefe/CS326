@@ -67,7 +67,7 @@ class GraphGrid extends React.Component {
 
 function Stats(props) {
   return (
-    <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
+    <div style={{ padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
       <table className="table bg-white">
         <thead>
           <tr>
@@ -156,6 +156,16 @@ class Data extends React.Component {
           </tbody>
         </table>
         </div>
+    )
+  }
+}
+
+class Quote extends React.Component {
+  render() {
+    return(
+      <div style={{ padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem"  }}>
+        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: "You've got this!"</p>
+      </div>
     )
   }
 }
@@ -252,11 +262,20 @@ export default class Reports extends React.Component {
             <div className="container" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
               <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" }}>
                 <div className="col-md-6" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
-                  <div> <Data /></div>
+                  <div style={{ }}> 
+                    <Data />
+                  </div>
+                  <div>
+                  <Quote />
                 </div>
-                <div className="col-md-6" style={{ marginTop: "2%", }}>
-                  <div style={{ marginTop: "15%",borderRadius: "3rem"  }}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} /></div>
                 </div>
+                
+                <div className="col-md-6" style={{  }}>
+                  <div style={{ borderRadius: "3rem" }}>
+                  <Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} />
+                  </div>
+                </div>
+                
               </div>
             </div>
             <Jumbo />
