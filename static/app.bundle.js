@@ -320,7 +320,7 @@ var Jumbo = function (_React$Component3) {
         { className: 'jumbotron', style: { margin: "auto", padding: "5%" } },
         React.createElement(
           'div',
-          { className: 'container', style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" } },
+          { className: 'container', style: { padding: "5%", backgroundColor: "darkGreen", color: "white" } },
           React.createElement(
             'h1',
             { className: 'display-3' },
@@ -331,7 +331,7 @@ var Jumbo = function (_React$Component3) {
             { className: 'lead' },
             'Your Budgeting Calculator'
           ),
-          React.createElement('hr', { className: 'my-2', style: { border: "1px white dotted" } }),
+          React.createElement('hr', { className: 'my-2', style: {} }),
           React.createElement(
             'p',
             { className: 'lead', style: { paddingTop: "6px" } },
@@ -620,7 +620,7 @@ function BalanceTable(props) {
     { style: { textAlign: "center" } },
     React.createElement(
       "table",
-      { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
+      { style: { width: "100px", margin: "auto", float: "center" }, className: "table table-light striped-table" },
       React.createElement(
         "thead",
         { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
@@ -786,7 +786,7 @@ var IncomeAdd = function (_React$Component4) {
             React.createElement("input", { className: "form-control", type: "text", name: "income", placeholder: "Income" }),
             React.createElement(
               "button",
-              { className: "form-control btn-primary" },
+              { className: "form-control btn-success" },
               "Quick Add"
             )
           )
@@ -834,7 +834,7 @@ var IncomeSubtract = function (_React$Component5) {
           React.createElement("input", { className: "form-control", type: "text", name: "spend", placeholder: "Spend" }),
           React.createElement(
             "button",
-            { className: "form-control btn-primary" },
+            { className: "form-control btn-success" },
             "Quick Spend"
           )
         )
@@ -940,18 +940,18 @@ var HomePage = function (_React$Component6) {
         React.createElement(Navbar, null),
         React.createElement(
           "div",
-          { style: { width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
+          { style: { width: "400px", margin: "auto", paddingTop: "2%" } },
           React.createElement(
             "div",
-            { style: { backgroundColor: "green", color: "white", borderRadius: "3rem", float: "center" } },
-            React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
+            { style: { margin: "auto", width: "70%", backgroundColor: "green", color: "white", borderRadius: "1rem", paddingTop: "4px", paddingBottom: "4px" } },
+            React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues, style: {} })
           ),
           React.createElement(
             "div",
-            { className: "card", style: { marginTop: "10%", padding: "1vh" } },
+            { className: "card", style: { marginTop: "10%", padding: "1vh", width: "80%", margin: "auto", borderRadius: "1rem" } },
             React.createElement(
               "div",
-              { className: "card-body" },
+              { className: "card-body", style: { margin: "auto" } },
               React.createElement(IncomeAdd, { createInflow: this.createInflow }),
               React.createElement(IncomeSubtract, { createOutflow: this.createOutflow })
             )

@@ -40,7 +40,7 @@ function BalanceTable(props) {
   return (
 
     <div style={{textAlign:"center"}} >
-    <table style={{ width: "100px", margin: "2%", marginLeft: "2%", float: "center" }} className="table table-light striped-table">
+    <table style={{ width: "100px", margin: "auto", float: "center" }} className="table table-light striped-table">
       <thead className="text-white" style={{ backgroundColor: "#4d4d4d" ,}}>
         <tr>
 
@@ -139,7 +139,7 @@ class IncomeAdd extends React.Component {
       <div style={{ position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%" }}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input className="form-control" type="text" name="income" placeholder="Income" />
-          <button className="form-control btn-primary">Quick Add</button>
+          <button className="form-control btn-success" >Quick Add</button>
         </form>
       </div>
 
@@ -169,7 +169,7 @@ class IncomeSubtract extends React.Component {
       <div style={{ position: "static", top: "10rem", left: "-25rem", float: "left", width: "60%", marginLeft: "20%", marginTop: "3%" }}>
         <form name="IncomeSubtract" onSubmit={this.handleSubmit}>
           <input className="form-control" type="text" name="spend" placeholder="Spend" />
-          <button className="form-control btn-primary">Quick Spend</button>
+          <button className="form-control btn-success">Quick Spend</button>
         </form>
       </div>
 
@@ -256,12 +256,12 @@ export default class HomePage extends React.Component {
     return (
       <div className="bg-success" style={{backgroundImage: "url('images/green-wave.png')" , backgroundSize: "cover", paddingBottom: "2%", height: "100vh"  }}>
         <Navbar />
-        <div style={{ width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" }}>
-          <div style={{  backgroundColor: "green", color: "white", borderRadius: "3rem" , float: "center",}}>
-            <BalanceTable asset={this.state.asset} issues={this.state.issues} />
+        <div style={{ width: "400px",  margin: "auto", paddingTop: "2%" }}>
+          <div style={{ margin:"auto", width: "70%",backgroundColor: "green", color: "white", borderRadius: "1rem", paddingTop:"4px",paddingBottom:"4px"}}>
+            <BalanceTable asset={this.state.asset} issues={this.state.issues}style={{ }}/>
           </div>
-          <div className="card" style={{ marginTop: "10%", padding: "1vh" }}>
-            <div className="card-body">
+          <div className="card" style={{ marginTop: "10%", padding: "1vh",width:"80%" ,margin:"auto",borderRadius: "1rem" }}>
+            <div className="card-body" style={{ margin:"auto"}}>
               <IncomeAdd createInflow={this.createInflow} />
               <IncomeSubtract createOutflow={this.createOutflow} />
             </div>
