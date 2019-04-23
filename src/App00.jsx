@@ -38,8 +38,10 @@ function BalanceTable(props) {
     }
   }
   return (
+
+    <div style={{textAlign:"center"}} >
     <table style={{ width: "100px", margin: "2%", marginLeft: "2%", float: "center" }} className="table table-light striped-table">
-      <thead className="text-white" style={{ backgroundColor: "#4d4d4d" }}>
+      <thead className="text-white" style={{ backgroundColor: "#4d4d4d" ,}}>
         <tr>
 
           <th>Income</th>
@@ -58,6 +60,7 @@ function BalanceTable(props) {
         </tr>
       </tbody>
     </table>
+    </div>
   );
 }
 
@@ -251,10 +254,10 @@ export default class HomePage extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+      <div className="bg-success" style={{backgroundImage: "url('images/green-wave.png')" , backgroundSize: "cover", paddingBottom: "2%", height: "100vh"  }}>
         <Navbar />
-        <div style={{ width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%" }}>
-          <div style={{ marginLeft: "27%" }}>
+        <div style={{ width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" }}>
+          <div style={{  backgroundColor: "green", color: "white", borderRadius: "3rem" , float: "center",}}>
             <BalanceTable asset={this.state.asset} issues={this.state.issues} />
           </div>
           <div className="card" style={{ marginTop: "10%", padding: "1vh" }}>

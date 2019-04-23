@@ -67,8 +67,8 @@ class GraphGrid extends React.Component {
 
 function Stats(props) {
   return (
-    <div>
-      <table className="table bg-white">
+    <div style={{ padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
+      <table className="table bg-white"style={{  borderRadius: ".5rem" }}>
         <thead>
           <tr>
             <th></th>
@@ -141,8 +141,8 @@ class Jumbo extends React.Component {
 class Data extends React.Component {
   render() {
     return (
-      <div>
-        <table className="bordered-table" style={{ border: "2px solid white",borderRadius: "3rem", margin: "3% auto"  }}>
+        <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
+        <table className="bordered-table" style={{ marginLeft:"auto", marginRight:"auto" }}>
           <thead>
             <tr>
               <i><b>Placeholder for reports</b></i>
@@ -155,6 +155,23 @@ class Data extends React.Component {
             </tr>
           </tbody>
         </table>
+        </div>
+    )
+  }
+}
+function randQuote(){
+  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!"];
+  let picked = "";
+  picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
+  return picked;
+}
+class Quote extends React.Component {
+  
+  
+  render() {
+    return(
+      <div style={{ padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem"  }}>
+        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: " {randQuote()} "</p>
       </div>
     )
   }
@@ -252,11 +269,20 @@ export default class Reports extends React.Component {
             <div className="container" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
               <div className="row" style={{ backgroundColor: "royalBlue", color: "white", borderRadius: "3rem", border: "2px solid white" }}>
                 <div className="col-md-6" style={{ marginBottom: "2%" , borderRadius: "3rem" }}>
-                  <div> <Data /></div>
+                  <div style={{ }}> 
+                    <Data />
+                  </div>
+                  <div>
+                  <Quote />
                 </div>
-                <div className="col-md-6" style={{ marginTop: "2%", }}>
-                  <div style={{ marginTop: "15%",borderRadius: "3rem"  }}><Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} /></div>
                 </div>
+                
+                <div className="col-md-6" style={{  }}>
+                  <div style={{ borderRadius: "3rem" }}>
+                  <Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} />
+                  </div>
+                </div>
+                
               </div>
             </div>
             <Jumbo />

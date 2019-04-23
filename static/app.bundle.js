@@ -630,41 +630,45 @@ function BalanceTable(props) {
     }
   }
   return React.createElement(
-    "table",
-    { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
+    "div",
+    { style: { textAlign: "center" } },
     React.createElement(
-      "thead",
-      { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
+      "table",
+      { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: "table table-light striped-table" },
       React.createElement(
-        "tr",
-        null,
+        "thead",
+        { className: "text-white", style: { backgroundColor: "#4d4d4d" } },
         React.createElement(
-          "th",
+          "tr",
           null,
-          "Income"
-        ),
-        React.createElement(
-          "th",
-          null,
-          "Balance"
+          React.createElement(
+            "th",
+            null,
+            "Income"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Balance"
+          )
         )
-      )
-    ),
-    React.createElement(
-      "tbody",
-      { className: "table-dark" },
+      ),
       React.createElement(
-        "tr",
-        null,
+        "tbody",
+        { className: "table-dark" },
         React.createElement(
-          "td",
+          "tr",
           null,
-          props.asset
-        ),
-        React.createElement(
-          "td",
-          null,
-          props.asset - budget
+          React.createElement(
+            "td",
+            null,
+            props.asset
+          ),
+          React.createElement(
+            "td",
+            null,
+            props.asset - budget
+          )
         )
       )
     )
@@ -946,14 +950,14 @@ var HomePage = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "bg-success", style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: "bg-success", style: { backgroundImage: "url('images/green-wave.png')", backgroundSize: "cover", paddingBottom: "2%", height: "100vh" } },
         React.createElement(Navbar, null),
         React.createElement(
           "div",
-          { style: { width: "400px", float: "center", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
+          { style: { width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
           React.createElement(
             "div",
-            { style: { marginLeft: "27%" } },
+            { style: { backgroundColor: "green", color: "white", borderRadius: "3rem", float: "center" } },
             React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
           ),
           React.createElement(
@@ -1257,10 +1261,10 @@ var GraphGrid = function (_React$Component2) {
 function Stats(props) {
   return _react2.default.createElement(
     'div',
-    null,
+    { style: { padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
     _react2.default.createElement(
       'table',
-      { className: 'table bg-white' },
+      { className: 'table bg-white', style: { borderRadius: ".5rem" } },
       _react2.default.createElement(
         'thead',
         null,
@@ -1422,10 +1426,14 @@ var Data = function (_React$Component5) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
         _react2.default.createElement(
           'table',
+<<<<<<< HEAD
           { className: 'bordered-table', style: { border: "1px white dotted", margin: "3% auto" } },
+=======
+          { className: 'bordered-table', style: { marginLeft: "auto", marginRight: "auto" } },
+>>>>>>> aff930e05662fa972c4e5c7cf3d23ddd80640355
           _react2.default.createElement(
             'thead',
             null,
@@ -1465,8 +1473,44 @@ var Data = function (_React$Component5) {
   return Data;
 }(_react2.default.Component);
 
-var Results = function (_React$Component6) {
-  _inherits(Results, _React$Component6);
+function randQuote() {
+  var quotebucket = ["You've got this!", "We beleive in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!"];
+  var picked = "";
+  picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
+  return picked;
+}
+
+var Quote = function (_React$Component6) {
+  _inherits(Quote, _React$Component6);
+
+  function Quote() {
+    _classCallCheck(this, Quote);
+
+    return _possibleConstructorReturn(this, (Quote.__proto__ || Object.getPrototypeOf(Quote)).apply(this, arguments));
+  }
+
+  _createClass(Quote, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { style: { padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem" } },
+        _react2.default.createElement(
+          'p',
+          { style: { textAlign: "center", paddingTop: "1%" } },
+          'Insperational Quote: " ',
+          randQuote(),
+          ' "'
+        )
+      );
+    }
+  }]);
+
+  return Quote;
+}(_react2.default.Component);
+
+var Results = function (_React$Component7) {
+  _inherits(Results, _React$Component7);
 
   function Results() {
     _classCallCheck(this, Results);
@@ -1558,17 +1602,17 @@ var Results = function (_React$Component6) {
   return Results;
 }(_react2.default.Component);
 
-var Reports = function (_React$Component7) {
-  _inherits(Reports, _React$Component7);
+var Reports = function (_React$Component8) {
+  _inherits(Reports, _React$Component8);
 
   function Reports() {
     _classCallCheck(this, Reports);
 
-    var _this7 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
+    var _this8 = _possibleConstructorReturn(this, (Reports.__proto__ || Object.getPrototypeOf(Reports)).call(this));
 
-    _this7.state = { contents: [] };
-    _this7.createInflow = _this7.createInflow.bind(_this7);
-    return _this7;
+    _this8.state = { contents: [] };
+    _this8.createInflow = _this8.createInflow.bind(_this8);
+    return _this8;
   }
 
   _createClass(Reports, [{
@@ -1579,10 +1623,10 @@ var Reports = function (_React$Component7) {
   }, {
     key: 'loadData',
     value: function loadData() {
-      var _this8 = this;
+      var _this9 = this;
 
       setTimeout(function () {
-        _this8.setState({
+        _this9.setState({
           contents: contents
         });
       }, 500);
@@ -1679,17 +1723,21 @@ var Reports = function (_React$Component7) {
                 { className: 'col-md-6' },
                 _react2.default.createElement(
                   'div',
-                  null,
-                  ' ',
+                  { style: {} },
                   _react2.default.createElement(Data, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(Quote, null)
                 )
               ),
               _react2.default.createElement(
                 'div',
-                { className: 'col-md-6' },
+                { className: 'col-md-6', style: {} },
                 _react2.default.createElement(
                   'div',
-                  { style: { marginTop: "15%" } },
+                  { style: { borderRadius: "3rem" } },
                   _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
