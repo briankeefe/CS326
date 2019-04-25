@@ -20,6 +20,8 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -317,29 +319,25 @@ var Jumbo = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         'div',
-        { className: 'jumbotron', style: { margin: "auto", padding: "5%" } },
+        { className: 'container', style: { padding: "5%", backgroundColor: "darkGreen", color: "white", border: "3px solid white", borderRadius: "3rem" } },
         React.createElement(
-          'div',
-          { className: 'container', style: { padding: "5%", backgroundColor: "darkGreen", color: "white" } },
+          'h1',
+          { className: 'display-3' },
+          'My Budget'
+        ),
+        React.createElement(
+          'p',
+          { className: 'lead' },
+          'Your Budgeting Calculator'
+        ),
+        React.createElement('hr', { className: 'my-2', style: {} }),
+        React.createElement(
+          'p',
+          { className: 'lead', style: { paddingTop: "6px" } },
           React.createElement(
-            'h1',
-            { className: 'display-3' },
-            'My Budget'
-          ),
-          React.createElement(
-            'p',
-            { className: 'lead' },
-            'Your Budgeting Calculator'
-          ),
-          React.createElement('hr', { className: 'my-2', style: {} }),
-          React.createElement(
-            'p',
-            { className: 'lead', style: { paddingTop: "6px" } },
-            React.createElement(
-              'a',
-              { className: 'btn btn-success btn-lg', href: '#/reports', role: 'button' },
-              'Jump to My Reports'
-            )
+            'a',
+            { className: 'btn btn-success btn-lg', href: '#/reports', role: 'button' },
+            'Jump to My Reports'
           )
         )
       );
@@ -512,7 +510,11 @@ var IssueList = function (_React$Component5) {
             React.createElement(
               'div',
               { className: 'col', style: { margin: "auto" } },
-              React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
+              React.createElement(
+                'div',
+                { style: _defineProperty({ backgroundColor: "greenYellow", borderRadius: "1vh", padding: "8px", border: "3px solid white" }, 'borderRadius', "3vh") },
+                React.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
+              ),
               React.createElement(IncomeAdd, { createInflow: this.createInflow })
             )
           )
@@ -1383,7 +1385,7 @@ var Jumbo = function (_React$Component4) {
           { className: 'lead', style: { paddingTop: "6px" } },
           _react2.default.createElement(
             'a',
-            { className: 'btn btn-primary btn-lg', href: '/view01.html', role: 'button' },
+            { className: 'btn btn-primary btn-lg', href: '#/budget', role: 'button' },
             'Jump to My \'Budget\''
           )
         )
