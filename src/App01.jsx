@@ -305,7 +305,7 @@ export default class IssueList extends React.Component {
               <BudgetTable issues={this.state.issues} />
             </div>
             <div className="col" style={{ margin: "auto" }}>
-              <div style={{  backgroundColor: "greenYellow",padding:"8px", border: "3px solid white", borderRadius: "3vh"}}>
+              <div style={{  backgroundColor: "greenYellow",  borderRadius: "1vh" ,padding:"8px", border: "3px solid white", borderRadius: "3vh"}}>
               <BalanceTable asset={this.state.asset} issues={this.state.issues} />
               </div>
               <IncomeAdd createInflow={this.createInflow} />
@@ -317,9 +317,7 @@ export default class IssueList extends React.Component {
         <div className="container" style={{ margin: "auto" }}>
           <BudgetAdd enterInfo={this.enterInfo} />
         </div>
-        <div>
-          <Jumbo />
-        </div>
+        <Jumbo />
       </div>
     );
   }
