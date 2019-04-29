@@ -1189,15 +1189,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
-var contents = {
-  totalIncome: 0,
-  totalSpent: 0,
-  totalSave: 0
-};
-var totalIncome = 0;
-var totalSpent = 0;
-var totalSave = 0;
-
 var Navbar = function (_React$Component) {
   _inherits(Navbar, _React$Component);
 
@@ -1323,6 +1314,17 @@ var GraphGrid = function (_React$Component2) {
 }(_react2.default.Component);
 
 function Stats(props) {
+  var spent = 0;
+  var budget = 0;
+  var savings = 0;
+  var i = void 0;
+  for (i in props.contents) {
+    spent += parseInt(props.contents[i].flow);
+    budget += parseInt(props.contents[i].budget);
+    if (props.contents[i].category === "Savings") {
+      savings += parseInt(props.contents[i].budget);
+    }
+  }
   return _react2.default.createElement(
     'div',
     { style: { padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
@@ -1368,12 +1370,12 @@ function Stats(props) {
           _react2.default.createElement(
             'td',
             null,
-            props.contents.totalSpent
+            spent
           ),
           _react2.default.createElement(
             'td',
             null,
-            props.contents.totalSave
+            savings
           )
         )
       )
@@ -1385,11 +1387,12 @@ function Stats(props) {
 var IncomeAdd = function (_React$Component3) {
   _inherits(IncomeAdd, _React$Component3);
 
-  function IncomeAdd() {
+  function IncomeAdd(props) {
     _classCallCheck(this, IncomeAdd);
 
     var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
+    _this3.createInflow = props.createInflow;
     _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
     return _this3;
   }
@@ -1399,7 +1402,7 @@ var IncomeAdd = function (_React$Component3) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.IncomeAdd;
-      this.props.createInflow({ income: form.income.value, expense: form.expense.value, save: form.save.value });
+      this.props.createInflow({ income: form.income.value });
       // Clear the form for the next input.
       form.income.value = '';
       form.expense.value = '';
@@ -1415,8 +1418,6 @@ var IncomeAdd = function (_React$Component3) {
           'form',
           { name: 'IncomeAdd', onSubmit: this.handleSubmit },
           _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'income', placeholder: 'Income' }),
-          _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'expense', placeholder: 'Expenses' }),
-          _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'save', placeholder: 'Saved' }),
           _react2.default.createElement(
             'button',
             { style: { width: "auto", margin: "3% auto", backgroundColor: "navy" }, className: 'form-control btn-primary' },
@@ -1681,25 +1682,48 @@ var Reports = function (_React$Component8) {
     value: function loadData() {
       var _this9 = this;
 
-      setTimeout(function () {
-        _this9.setState({
-          contents: contents
+      fetch('/api/Money', {
+        method: 'GET'
+      }).then(function (res) {
+        console.log("Got money app00:");
+        res.json().then(function (data) {
+          _this9.setState({ asset: data.money, contents: data.issues });
+          console.log(data.money);
         });
-      }, 500);
+      }).catch(function (err) {
+        return err;
+      });
+    }
+  }, {
+    key: 'money',
+    value: function money(cash) {
+      var obj = {
+        "money": cash
+      };
+      console.log("here is obj: ", JSON.stringify(obj));
+      fetch('/api/Money', {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (res) {
+        console.log("RES: ", res);
+        return res;
+      }).catch(function (err) {
+        return err;
+      });
+      this.setState({ asset: cash });
     }
   }, {
     key: 'createInflow',
     value: function createInflow(newFlow) {
-      var newIssues = this.state.contents;
-      if (!isNaN(parseInt(newFlow.income))) {
-        newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income);
-      }if (!isNaN(parseInt(newFlow.expense))) {
-        newIssues.totalSpent = this.state.contents.totalSpent + parseInt(newFlow.expense);
-      }if (!isNaN(parseInt(newFlow.save))) {
-        newIssues.totalSave = this.state.contents.totalSave + parseInt(newFlow.save);
+      var current = this.state.asset;
+      if (isNaN(parseInt(newFlow.income))) {
+        console.log("ISNAN");
       }
-
-      this.setState({ contents: newIssues });
+      var totalIncome = this.state.asset + parseInt(newFlow.income);
+      this.money(totalIncome);
     }
     //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
     //../images/dark-honeycomb.png
@@ -1794,7 +1818,7 @@ var Reports = function (_React$Component8) {
                 _react2.default.createElement(
                   'div',
                   { style: { borderRadius: "3rem" } },
-                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
+                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.asset, createInflow: this.createInflow })
                 )
               )
             )

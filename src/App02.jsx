@@ -2,16 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // This is a place holder for the initial application state.
-const contents = {
-  totalIncome: 0,
-  totalSpent: 0,
-  totalSave: 0
-}
-const totalIncome = 0
-const totalSpent = 0
-const totalSave = 0
-
-
 class Navbar extends React.Component {
   constructor(props) {
     super()
@@ -66,6 +56,17 @@ class GraphGrid extends React.Component {
 }
 
 function Stats(props) {
+  let spent = 0;
+  let budget = 0;
+  let savings = 0;
+  let i;
+  for (i in props.contents) {
+    spent += parseInt(props.contents[i].flow);
+    budget += parseInt(props.contents[i].budget);
+    if (props.contents[i].category === "Savings") {
+      savings += parseInt(props.contents[i].budget);
+    }
+  }
   return (
     <div style={{ padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
       <table className="table bg-white"style={{  borderRadius: ".5rem" }}>
@@ -81,8 +82,8 @@ function Stats(props) {
           <tr>
             <td></td>
             <td>{props.totalIncome}</td>
-            <td>{props.contents.totalSpent}</td>
-            <td>{props.contents.totalSave}</td>
+            <td>{spent}</td>
+            <td>{savings}</td>
           </tr>
         </tbody>
       </table>
@@ -91,8 +92,9 @@ function Stats(props) {
   )
 }
 class IncomeAdd extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
+    this.createInflow = props.createInflow;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -100,7 +102,7 @@ class IncomeAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let form = document.forms.IncomeAdd;
-    this.props.createInflow({ income: form.income.value, expense: form.expense.value, save: form.save.value });
+    this.props.createInflow({ income: form.income.value });
     // Clear the form for the next input.
     form.income.value = '';
     form.expense.value = '';
@@ -112,8 +114,6 @@ class IncomeAdd extends React.Component {
       <div style={{ width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "lightBlue", border: "3px solid white" }}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="income" placeholder="Income" />
-          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="expense" placeholder="Expenses" />
-          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="save" placeholder="Saved" />
           <button style={{ width: "auto", margin: "3% auto", backgroundColor: "navy" }} className="form-control btn-primary">Add</button>
         </form>
       </div>
@@ -216,24 +216,42 @@ export default class Reports extends React.Component {
   }
 
   loadData() {
-    setTimeout(() => {
-      this.setState({
-        contents: contents,
+    fetch('/api/Money', {
+      method: 'GET'
+    }).then(res => {
+      console.log("Got money app00:")
+      res.json().then(data => {
+        this.setState({ asset: data.money, contents: data.issues })
+        console.log(data.money)
       });
-    }, 500);
+    }).catch(err => err);
+  }
+
+  money(cash) {
+    let obj = {
+      "money": cash
+    }
+    console.log("here is obj: ", JSON.stringify(obj))
+    fetch('/api/Money', {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      console.log("RES: ", res)
+      return res;
+    }).catch(err => err)
+    this.setState({ asset: cash })
   }
 
   createInflow(newFlow) {
-    const newIssues = this.state.contents;
-    if (!isNaN(parseInt(newFlow.income))) {
-      newIssues.totalIncome = this.state.contents.totalIncome + parseInt(newFlow.income);
-    } if (!isNaN(parseInt(newFlow.expense))) {
-      newIssues.totalSpent = this.state.contents.totalSpent + parseInt(newFlow.expense);
-    } if (!isNaN(parseInt(newFlow.save))) {
-      newIssues.totalSave = this.state.contents.totalSave + parseInt(newFlow.save);
+    const current = this.state.asset;
+    if (isNaN(parseInt(newFlow.income))) {
+      console.log("ISNAN");
     }
-
-    this.setState({ contents: newIssues });
+    let totalIncome = this.state.asset + parseInt(newFlow.income);
+    this.money(totalIncome);
   }
 //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
 //../images/dark-honeycomb.png
@@ -279,7 +297,7 @@ export default class Reports extends React.Component {
                 
                 <div className="col-md-6" style={{  }}>
                   <div style={{ borderRadius: "3rem" }}>
-                  <Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} />
+                  <Stats contents={this.state.contents} totalIncome={this.state.asset} createInflow={this.createInflow} />
                   </div>
                 </div>
                 
