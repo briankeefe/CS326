@@ -66,27 +66,28 @@ function Stats(props) {
     }
   }
   return (
-    <div style={{ padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
-      <table className="table bg-white"style={{  borderRadius: ".5rem" }}>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Total Income</th>
-            <th>Total Expenditures</th>
-            <th>Total Savings</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td>{props.totalIncome}</td>
-            <td>{spent}</td>
-            <td>{savings}</td>
-          </tr>
-        </tbody>
-      </table>
-      <IncomeAdd contents={props.contents} createInflow={props.createInflow} />
+    <div className="card" style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" }}>
+      <div className="table-responsive" style={{borderRadius: "1rem"}} >
+        <table className="table table-bordered table-striped bg-white">
+          <thead>
+            <tr>
+              <th>Total Income</th>
+              <th>Total Expenditures</th>
+              <th>Total Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{props.totalIncome}</td>
+              <td>{spent}</td>
+              <td>{savings}</td>
+            </tr>
+          </tbody>
+        </table>
+        <IncomeAdd contents={props.contents} createInflow={props.createInflow} />
+      </div>
     </div>
+    
   )
 }
 class IncomeAdd extends React.Component {

@@ -1325,60 +1325,62 @@ function Stats(props) {
   }
   return _react2.default.createElement(
     'div',
-    { style: { padding: "6%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
+    { className: 'card', style: { padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto" } },
     _react2.default.createElement(
-      'table',
-      { className: 'table bg-white', style: { borderRadius: ".5rem" } },
+      'div',
+      { className: 'table-responsive', style: { borderRadius: "1rem" } },
       _react2.default.createElement(
-        'thead',
-        null,
+        'table',
+        { className: 'table table-bordered table-striped bg-white' },
         _react2.default.createElement(
-          'tr',
+          'thead',
           null,
-          _react2.default.createElement('th', null),
           _react2.default.createElement(
-            'th',
+            'tr',
             null,
-            'Total Income'
-          ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Total Income'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Total Expenditures'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Total Savings'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'tbody',
+          null,
           _react2.default.createElement(
-            'th',
+            'tr',
             null,
-            'Total Expenditures'
-          ),
-          _react2.default.createElement(
-            'th',
-            null,
-            'Total Savings'
+            _react2.default.createElement(
+              'td',
+              null,
+              props.totalIncome
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              spent
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              savings
+            )
           )
         )
       ),
-      _react2.default.createElement(
-        'tbody',
-        null,
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement('td', null),
-          _react2.default.createElement(
-            'td',
-            null,
-            props.totalIncome
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            spent
-          ),
-          _react2.default.createElement(
-            'td',
-            null,
-            savings
-          )
-        )
-      )
-    ),
-    _react2.default.createElement(IncomeAdd, { contents: props.contents, createInflow: props.createInflow })
+      _react2.default.createElement(IncomeAdd, { contents: props.contents, createInflow: props.createInflow })
+    )
   );
 }
 
