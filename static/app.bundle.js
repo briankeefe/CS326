@@ -1189,6 +1189,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // This is a place holder for the initial application state.
+
 var Navbar = function (_React$Component) {
   _inherits(Navbar, _React$Component);
 
@@ -1368,12 +1369,12 @@ function Stats(props) {
           _react2.default.createElement(
             'td',
             null,
-            spent
+            props.contents.totalSpent
           ),
           _react2.default.createElement(
             'td',
             null,
-            savings
+            props.contents.totalSave
           )
         )
       )
@@ -1385,12 +1386,11 @@ function Stats(props) {
 var IncomeAdd = function (_React$Component3) {
   _inherits(IncomeAdd, _React$Component3);
 
-  function IncomeAdd(props) {
+  function IncomeAdd() {
     _classCallCheck(this, IncomeAdd);
 
     var _this3 = _possibleConstructorReturn(this, (IncomeAdd.__proto__ || Object.getPrototypeOf(IncomeAdd)).call(this));
 
-    _this3.createInflow = props.createInflow;
     _this3.handleSubmit = _this3.handleSubmit.bind(_this3);
     return _this3;
   }
@@ -1400,7 +1400,7 @@ var IncomeAdd = function (_React$Component3) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.IncomeAdd;
-      this.props.createInflow({ income: form.income.value });
+      this.props.createInflow({ income: form.income.value, expense: form.expense.value, save: form.save.value });
       // Clear the form for the next input.
       form.income.value = '';
     }
@@ -1414,6 +1414,8 @@ var IncomeAdd = function (_React$Component3) {
           'form',
           { name: 'IncomeAdd', onSubmit: this.handleSubmit },
           _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'income', placeholder: 'Income' }),
+          _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'expense', placeholder: 'Expenses' }),
+          _react2.default.createElement('input', { style: { width: "90%", margin: "auto" }, className: 'form-control', type: 'text', name: 'save', placeholder: 'Saved' }),
           _react2.default.createElement(
             'button',
             { style: { width: "auto", margin: "3% auto", backgroundColor: "navy" }, className: 'form-control btn-primary' },
@@ -1527,7 +1529,7 @@ var Data = function (_React$Component5) {
 }(_react2.default.Component);
 
 function randQuote() {
-  var quotebucket = ["You've got this!", "We beleive in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!"];
+  var quotebucket = ["You've got this!", "We believe in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!", "You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott", "Everybody Stay Calm"];
   var picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
@@ -1825,7 +1827,7 @@ var Reports = function (_React$Component8) {
                 _react2.default.createElement(
                   'div',
                   { style: { borderRadius: "3rem" } },
-                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.asset, createInflow: this.createInflow })
+                  _react2.default.createElement(Stats, { contents: this.state.contents, totalIncome: this.state.contents.totalIncome, createInflow: this.createInflow })
                 )
               )
             )
