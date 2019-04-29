@@ -171,7 +171,7 @@ class Quote extends React.Component {
   render() {
     return(
       <div style={{ padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem"  }}>
-        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: " {randQuote()} "</p>
+        <p style={{textAlign:"center", paddingTop:"1%"}}>Inspirational Quote: " {randQuote()} "</p>
       </div>
     )
   }
