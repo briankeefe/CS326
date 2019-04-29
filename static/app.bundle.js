@@ -1554,7 +1554,7 @@ var Quote = function (_React$Component6) {
         _react2.default.createElement(
           'p',
           { style: { textAlign: "center", paddingTop: "1%" } },
-          'Inspirational Quote: " ',
+          'Insperational Quote: " ',
           randQuote(),
           ' "'
         )

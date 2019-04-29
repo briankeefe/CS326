@@ -160,7 +160,11 @@ class Data extends React.Component {
   }
 }
 function randQuote(){
+<<<<<<< HEAD
   let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!","You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott","Everybody Stay Calm"];
+=======
+  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!"];
+>>>>>>> b55cdbb7dd67042db994d2f082a591637c9d590a
   let picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
@@ -171,7 +175,7 @@ class Quote extends React.Component {
   render() {
     return(
       <div style={{ padding: "1%", backgroundColor: "navy", color: "white", borderRadius: "3rem"  }}>
-        <p style={{textAlign:"center", paddingTop:"1%"}}>Inspirational Quote: " {randQuote()} "</p>
+        <p style={{textAlign:"center", paddingTop:"1%"}}>Insperational Quote: " {randQuote()} "</p>
       </div>
     )
   }
