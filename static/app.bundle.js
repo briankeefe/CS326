@@ -1530,7 +1530,7 @@ var Data = function (_React$Component5) {
 }(_react2.default.Component);
 
 function randQuote() {
-  var quotebucket = ["You've got this!", "We beleive in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!", "You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott", "Everybody Stay Calm"];
+  var quotebucket = ["You've got this!", "We believe in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!", "You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott", "Everybody Stay Calm"];
   var picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
