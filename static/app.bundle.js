@@ -24,8 +24,6 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -553,7 +551,7 @@ var IssueList = function (_React$Component5) {
               { className: 'col', style: { margin: "auto" } },
               _react2.default.createElement(
                 'div',
-                { style: _defineProperty({ backgroundColor: "greenYellow", borderRadius: "1vh", padding: "8px", border: "3px solid white" }, 'borderRadius', "3vh") },
+                { style: { backgroundColor: "greenYellow", padding: "8px", border: "3px solid white", borderRadius: "3vh" } },
                 _react2.default.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
               ),
               _react2.default.createElement(IncomeAdd, { createInflow: this.createInflow })
@@ -566,7 +564,11 @@ var IssueList = function (_React$Component5) {
           { className: 'container', style: { margin: "auto" } },
           _react2.default.createElement(BudgetAdd, { enterInfo: this.enterInfo })
         ),
-        _react2.default.createElement(Jumbo, null)
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(Jumbo, null)
+        )
       );
     }
   }]);
@@ -972,17 +974,28 @@ var HomePage = function (_React$Component6) {
       }
 
       var total = assets + parseInt(newFlow.income);
-      fetch('/api/money', {
-        money: total
+      this.money(total);
+    }
+  }, {
+    key: 'money',
+    value: function money(cash) {
+      var obj = {
+        "money": cash
+      };
+      console.log("here is obj: ", JSON.stringify(obj));
+      fetch('/api/Money', {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }).then(function (res) {
-        console.log("Post method...");
-        console.log(res);
+        console.log("RES: ", res);
         return res;
       }).catch(function (err) {
-        console.log(err);
+        return err;
       });
-      this.loadData();
-      //this.setState({ asset: total2})
+      this.setState({ asset: cash });
     }
   }, {
     key: 'createOutflow',
@@ -994,7 +1007,7 @@ var HomePage = function (_React$Component6) {
       }
 
       var total = assets - parseInt(newFlow.spend);
-      this.setState({ asset: total });
+      this.money(total);
     }
   }, {
     key: 'render',
