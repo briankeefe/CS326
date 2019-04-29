@@ -241,17 +241,25 @@ export default class HomePage extends React.Component {
     }
 
     let total = assets + parseInt(newFlow.income);
-    fetch('/api/money', {
-      money: total
+    this.money(total);
+  }
+
+  money(cash) {
+    let obj = {
+      "money": cash
+    }
+    console.log("here is obj: ", JSON.stringify(obj))
+    fetch('/api/Money', {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).then(res => {
-      console.log("Post method...")
-      console.log(res);
+      console.log("RES: ", res)
       return res;
-    }).catch(err => {
-      console.log(err);
-    })
-    this.loadData();
-    //this.setState({ asset: total2})
+    }).catch(err => err)
+    this.setState({ asset: cash })
   }
 
   createOutflow(newFlow) {
@@ -262,7 +270,7 @@ export default class HomePage extends React.Component {
     }
 
     let total = assets - parseInt(newFlow.spend);
-    this.setState({ asset: total })
+    this.money(total)
   }
 
   render() {
