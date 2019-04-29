@@ -1531,7 +1531,7 @@ var Data = function (_React$Component5) {
 }(_react2.default.Component);
 
 function randQuote() {
-  var quotebucket = ["You've got this!", "We believe in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!"];
+  var quotebucket = ["You've got this!", "We beleive in you!", "You will meet your goal!", "A dollar a day adds up!", "Have a great day!"];
   var picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
@@ -1555,7 +1555,7 @@ var Quote = function (_React$Component6) {
         _react2.default.createElement(
           'p',
           { style: { textAlign: "center", paddingTop: "1%" } },
-          'Inspirational Quote: " ',
+          'Insperational Quote: " ',
           randQuote(),
           ' "'
         )
