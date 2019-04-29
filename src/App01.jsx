@@ -1,7 +1,6 @@
 import { Router, Route, hashHistory, withRouter, IndexRoute, Link } from 'react-router';
 import HomePage from './App00.jsx'
-
-const asset = 0;
+import React from 'react'
 var contentNode = document.getElementById("contents");
 
 const IssueRow = (props) => (
@@ -209,13 +208,29 @@ export default class IssueList extends React.Component {
     }).catch(err => {
       alert("Error in fetching data from server:", err);
     });
+    
+    fetch('/api/Money').then(res => {
+      if(res.ok){
+        console.log("Processing Money")
+        res.json().then(data => {
+          this.setState({ asset: data.money })
+          console.log("Spotting: ", data.money)
+        });
+      } else {
+        alert("Failure to fetch")
+      }
+      
+    }).catch(err => {
+      alert("Error in fetching data from the server:", err)
+    });
+
   }
 
   update(newIssue) {
     fetch('/api/SaveMe', {
       method: 'POST',
       body: JSON.stringify(newIssue),
-      headers: {
+      headers: {       
         'Content-Type': 'application/json'
       }
     }).then(res => {
@@ -223,13 +238,23 @@ export default class IssueList extends React.Component {
     }).catch(err => err);
   }
 
-  paid(money) {
-    fetch('/api/SaveMe', {
+  paid(income) {
+    let total = parseInt(this.state.asset) + parseInt(income)
+    let obj = {
+      "money": total
+    }
+    console.log("here is obj: ", JSON.stringify(obj))
+    fetch('/api/Money', {
       method: 'POST',
-      body: money
+      body: JSON.stringify(obj),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }).then(res => {
+      console.log("RES: ", res)
       return res;
     }).catch(err => err)
+    this.setState({asset: total})
   }
 
   enterInfo(newIssue) {
@@ -246,6 +271,7 @@ export default class IssueList extends React.Component {
           newIssues[i].flow += parseInt(newIssue.flow);
         }
         if (isNaN(parseInt(newIssue.budget))) {
+          console.log("Not Int");
         } else {
           newIssues[i].budget = newIssue.budget;
         }
@@ -265,9 +291,8 @@ export default class IssueList extends React.Component {
     if (isNaN(parseInt(newFlow.income))) {
       return;
     }
-    let total = assets + parseInt(newFlow.income);
-    this.setState({ asset: total });
-    this.paid(this.state.asset)
+    this.paid(newFlow.income)
+    console.log("Inflow created for: ", newFlow.income)
   }
 
   render() {

@@ -3,7 +3,6 @@
 // Connect to the issuetracker database. Note, if the issuetracker database
 // does not exist, it will create it with this call.
 db = new Mongo().getDB('SaveMe');
-
 // Next, we remove everything inside it. This is helpful to ensure that the
 // database starts from a known state.
 db.issues.remove({});

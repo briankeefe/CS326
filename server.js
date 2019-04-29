@@ -20,7 +20,7 @@ app.get('/api/SaveMe', (req, res) => {
     };
     res.json({
       _metadata: metadata,
-      assets: issues,
+      assets: issues
     })
   }).catch(error => {
     console.log(error);
@@ -40,6 +40,7 @@ app.post('/api/SaveMe', (req, res) => {
   //   res.status(422).json({ message: `Invalid request: ${err}` });
   //  return;
   // }
+  
 
   db.collection('SaveMe').insertOne(newIssue).then(result =>
     db.collection('SaveMe').find({
@@ -55,6 +56,40 @@ app.post('/api/SaveMe', (req, res) => {
   });
 });
 
+app.post('/api/Money', (req, res) => {
+  const cash = req.body.money;
+  if(isNaN(cash)){
+    console.log("NOT NUMBER")
+    return;
+  }
+  console.log("Updating without filter")
+  db.collection('Money').updateOne({}, { $set: {money: cash}}).then(result => {
+    res.json({
+      success: true,
+      money: cash
+    })
+  }).catch(err => err);
+})
+
+app.get('/api/Money', (req, res) => {
+  db.collection('Money').find().toArray().then(info => {
+    if(info.length == 0){
+      console.log("QUICKFIX ACTIVATED => MONEY SET TO 0 IN CASE OF NO INFO")
+      db.collection('Money').insertOne({
+        money: 0
+      })
+      info = db.collection('Money').find().toArray()
+    }
+    res.json({
+      money: info[0].money
+    })
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({
+      message: `Internal Server Error: ${error}`
+    });
+  });
+})
 
 
 //

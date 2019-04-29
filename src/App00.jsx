@@ -1,7 +1,8 @@
 import { Router, Route, hashHistory, withRouter, IndexRoute, Link } from 'react-router';
 import IssueList from "./App01.jsx"
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const asset = 0;
 var contentNode = document.getElementById("contents");
 
 class Filter extends React.Component {
@@ -193,12 +194,15 @@ export default class HomePage extends React.Component {
   }
 
   loadData() {
-    setTimeout(() => {
-      this.setState({
-        issues: this.state.issues,
-        asset: asset
+    fetch('/api/Money', {
+      method: 'GET'
+    }).then(res => {
+      console.log("Got money app00:")
+      res.json().then(data => {
+        this.setState({ asset: data.money })
+        console.log(data.money)
       });
-    }, 500);
+    }).catch(err => err);
   }
 
   enterInfo(newIssue) {
@@ -215,6 +219,7 @@ export default class HomePage extends React.Component {
           newIssues[i].flow += parseInt(newIssue.flow);
         }
         if (isNaN(parseInt(newIssue.budget))) {
+          let a;
         } else {
           newIssues[i].budget = newIssue.budget;
         }
@@ -236,8 +241,16 @@ export default class HomePage extends React.Component {
     }
 
     let total = assets + parseInt(newFlow.income);
-
-    this.setState({ asset: total });
+    fetch('/api/money', {
+      money: total
+    }).then(res => {
+      console.log("Post method...")
+      console.log(res);
+      return res;
+    }).catch(err => {
+      console.log(err);
+    })
+    this.loadData();
     //this.setState({ asset: total2})
   }
 
