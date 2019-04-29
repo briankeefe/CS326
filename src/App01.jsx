@@ -133,16 +133,16 @@ class Navbar extends React.Component {
 class Jumbo extends React.Component {
   render() {
     return (
-      <div className="jumbotron" style={{ margin: "auto", padding: "5%" }}>
-        <div className="container" style={{ border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" }}>
+      
+        <div className="container" style={{ padding: "5%", backgroundColor: "darkGreen", color: "white",border: "3px solid white", borderRadius: "3rem" }}>
           <h1 className="display-3">My Budget</h1>
           <p className="lead">Your Budgeting Calculator</p>
-          <hr className="my-2" style={{ border: "1px white dotted" }} />
+          <hr className="my-2" style={{ }} />
           <p className="lead" style={{ paddingTop: "6px" }}>
             <a className="btn btn-success btn-lg" href="#/reports" role="button">Jump to My Reports</a>
           </p>
         </div>
-      </div>
+      
     )
   }
 }
@@ -305,7 +305,9 @@ export default class IssueList extends React.Component {
               <BudgetTable issues={this.state.issues} />
             </div>
             <div className="col" style={{ margin: "auto" }}>
+              <div style={{  backgroundColor: "greenYellow",  borderRadius: "1vh" ,padding:"8px", border: "3px solid white", borderRadius: "3vh"}}>
               <BalanceTable asset={this.state.asset} issues={this.state.issues} />
+              </div>
               <IncomeAdd createInflow={this.createInflow} />
             </div>
           </div>

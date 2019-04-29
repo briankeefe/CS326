@@ -24,6 +24,8 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -320,29 +322,25 @@ var Jumbo = function (_React$Component3) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'jumbotron', style: { margin: "auto", padding: "5%" } },
+        { className: 'container', style: { padding: "5%", backgroundColor: "darkGreen", color: "white", border: "3px solid white", borderRadius: "3rem" } },
         _react2.default.createElement(
-          'div',
-          { className: 'container', style: { border: "1px solid black", borderStyle: "dotted", padding: "5%", backgroundColor: "darkGreen", color: "white" } },
+          'h1',
+          { className: 'display-3' },
+          'My Budget'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'lead' },
+          'Your Budgeting Calculator'
+        ),
+        _react2.default.createElement('hr', { className: 'my-2', style: {} }),
+        _react2.default.createElement(
+          'p',
+          { className: 'lead', style: { paddingTop: "6px" } },
           _react2.default.createElement(
-            'h1',
-            { className: 'display-3' },
-            'My Budget'
-          ),
-          _react2.default.createElement(
-            'p',
-            { className: 'lead' },
-            'Your Budgeting Calculator'
-          ),
-          _react2.default.createElement('hr', { className: 'my-2', style: { border: "1px white dotted" } }),
-          _react2.default.createElement(
-            'p',
-            { className: 'lead', style: { paddingTop: "6px" } },
-            _react2.default.createElement(
-              'a',
-              { className: 'btn btn-success btn-lg', href: '#/reports', role: 'button' },
-              'Jump to My Reports'
-            )
+            'a',
+            { className: 'btn btn-success btn-lg', href: '#/reports', role: 'button' },
+            'Jump to My Reports'
           )
         )
       );
@@ -553,7 +551,11 @@ var IssueList = function (_React$Component5) {
             _react2.default.createElement(
               'div',
               { className: 'col', style: { margin: "auto" } },
-              _react2.default.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues }),
+              _react2.default.createElement(
+                'div',
+                { style: _defineProperty({ backgroundColor: "greenYellow", borderRadius: "1vh", padding: "8px", border: "3px solid white" }, 'borderRadius', "3vh") },
+                _react2.default.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
+              ),
               _react2.default.createElement(IncomeAdd, { createInflow: this.createInflow })
             )
           )
@@ -668,7 +670,7 @@ function BalanceTable(props) {
     { style: { textAlign: "center" } },
     _react2.default.createElement(
       'table',
-      { style: { width: "100px", margin: "2%", marginLeft: "2%", float: "center" }, className: 'table table-light striped-table' },
+      { style: { width: "100px", margin: "auto", float: "center" }, className: 'table table-light striped-table' },
       _react2.default.createElement(
         'thead',
         { className: 'text-white', style: { backgroundColor: "#4d4d4d" } },
@@ -834,7 +836,7 @@ var IncomeAdd = function (_React$Component4) {
             _react2.default.createElement('input', { className: 'form-control', type: 'text', name: 'income', placeholder: 'Income' }),
             _react2.default.createElement(
               'button',
-              { className: 'form-control btn-primary' },
+              { className: 'form-control btn-success' },
               'Quick Add'
             )
           )
@@ -882,7 +884,7 @@ var IncomeSubtract = function (_React$Component5) {
           _react2.default.createElement('input', { className: 'form-control', type: 'text', name: 'spend', placeholder: 'Spend' }),
           _react2.default.createElement(
             'button',
-            { className: 'form-control btn-primary' },
+            { className: 'form-control btn-success' },
             'Quick Spend'
           )
         )
@@ -1003,18 +1005,18 @@ var HomePage = function (_React$Component6) {
         _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
-          { style: { width: "400px", marginTop: "2%", margin: "auto", paddingTop: "2%" } },
+          { style: { width: "400px", margin: "auto", paddingTop: "2%" } },
           _react2.default.createElement(
             'div',
-            { style: { backgroundColor: "green", color: "white", borderRadius: "3rem", float: "center" } },
-            _react2.default.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues })
+            { style: { margin: "auto", width: "70%", backgroundColor: "green", color: "white", borderRadius: "1rem", paddingTop: "4px", paddingBottom: "4px" } },
+            _react2.default.createElement(BalanceTable, { asset: this.state.asset, issues: this.state.issues, style: {} })
           ),
           _react2.default.createElement(
             'div',
-            { className: 'card', style: { marginTop: "10%", padding: "1vh" } },
+            { className: 'card', style: { marginTop: "10%", padding: "1vh", width: "80%", margin: "auto", borderRadius: "1rem" } },
             _react2.default.createElement(
               'div',
-              { className: 'card-body' },
+              { className: 'card-body', style: { margin: "auto" } },
               _react2.default.createElement(IncomeAdd, { createInflow: this.createInflow }),
               _react2.default.createElement(IncomeSubtract, { createOutflow: this.createOutflow })
             )
@@ -1446,7 +1448,7 @@ var Jumbo = function (_React$Component4) {
           { className: 'lead', style: { paddingTop: "6px" } },
           _react2.default.createElement(
             'a',
-            { className: 'btn btn-primary btn-lg', href: '/view01.html', role: 'button' },
+            { className: 'btn btn-primary btn-lg', href: '#/budget', role: 'button' },
             'Jump to My \'Budget\''
           )
         )
