@@ -317,9 +317,7 @@ export default class IssueList extends React.Component {
         <div className="container" style={{ margin: "auto" }}>
           <BudgetAdd enterInfo={this.enterInfo} />
         </div>
-        <div>
-          <Jumbo />
-        </div>
+        <Jumbo />
       </div>
     );
   }
