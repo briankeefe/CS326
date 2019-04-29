@@ -160,7 +160,7 @@ class Data extends React.Component {
   }
 }
 function randQuote(){
-  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!","You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott"];
+  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!","You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott","Everybody Stay Calm"];
   let picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
