@@ -1315,12 +1315,10 @@ var GraphGrid = function (_React$Component2) {
 
 function Stats(props) {
   var spent = 0;
-  var budget = 0;
   var savings = 0;
   var i = void 0;
   for (i in props.contents) {
     spent += parseInt(props.contents[i].flow);
-    budget += parseInt(props.contents[i].budget);
     if (props.contents[i].category === "Savings") {
       savings += parseInt(props.contents[i].budget);
     }
@@ -1405,8 +1403,6 @@ var IncomeAdd = function (_React$Component3) {
       this.props.createInflow({ income: form.income.value });
       // Clear the form for the next input.
       form.income.value = '';
-      form.expense.value = '';
-      form.save.value = '';
     }
   }, {
     key: 'render',
@@ -1685,13 +1681,24 @@ var Reports = function (_React$Component8) {
       fetch('/api/Money', {
         method: 'GET'
       }).then(function (res) {
+        console.log("App02 loading");
         console.log("Got money app00:");
         res.json().then(function (data) {
-          _this9.setState({ asset: data.money, contents: data.issues });
+          _this9.setState({ asset: data.money });
           console.log(data.money);
         });
       }).catch(function (err) {
-        return err;
+        console.log("ERROR: ", err);
+      });
+      fetch('/api/SaveMe', {
+        method: 'GET'
+      }).then(function (res) {
+        console.log("Getting SaveMe Data");
+        res.json().then(function (data) {
+          _this9.setState({ contents: data.assets });
+        });
+      }).catch(function (err) {
+        console.log("ERROR: ", err);
       });
     }
   }, {
@@ -1718,11 +1725,11 @@ var Reports = function (_React$Component8) {
   }, {
     key: 'createInflow',
     value: function createInflow(newFlow) {
-      var current = this.state.asset;
+      var current = parseInt(this.state.asset);
       if (isNaN(parseInt(newFlow.income))) {
         console.log("ISNAN");
       }
-      var totalIncome = this.state.asset + parseInt(newFlow.income);
+      var totalIncome = current + parseInt(newFlow.income);
       this.money(totalIncome);
     }
     //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>

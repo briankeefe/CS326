@@ -57,12 +57,10 @@ class GraphGrid extends React.Component {
 
 function Stats(props) {
   let spent = 0;
-  let budget = 0;
   let savings = 0;
   let i;
   for (i in props.contents) {
     spent += parseInt(props.contents[i].flow);
-    budget += parseInt(props.contents[i].budget);
     if (props.contents[i].category === "Savings") {
       savings += parseInt(props.contents[i].budget);
     }
@@ -105,8 +103,6 @@ class IncomeAdd extends React.Component {
     this.props.createInflow({ income: form.income.value });
     // Clear the form for the next input.
     form.income.value = '';
-    form.expense.value = '';
-    form.save.value = '';
   }
 
   render() {
@@ -219,12 +215,25 @@ export default class Reports extends React.Component {
     fetch('/api/Money', {
       method: 'GET'
     }).then(res => {
+      console.log("App02 loading")
       console.log("Got money app00:")
       res.json().then(data => {
-        this.setState({ asset: data.money, contents: data.issues })
+        this.setState({ asset: data.money })
         console.log(data.money)
       });
-    }).catch(err => err);
+    }).catch(err => {
+      console.log("ERROR: ", err);
+    });
+    fetch('/api/SaveMe', {
+      method: 'GET'
+    }).then(res => {
+      console.log("Getting SaveMe Data")
+      res.json().then(data => {
+        this.setState({contents: data.assets})
+      });
+    }).catch(err => {
+      console.log("ERROR: ", err);
+    })
   }
 
   money(cash) {
@@ -246,11 +255,11 @@ export default class Reports extends React.Component {
   }
 
   createInflow(newFlow) {
-    const current = this.state.asset;
+    const current = parseInt(this.state.asset);
     if (isNaN(parseInt(newFlow.income))) {
       console.log("ISNAN");
     }
-    let totalIncome = this.state.asset + parseInt(newFlow.income);
+    let totalIncome = current + parseInt(newFlow.income);
     this.money(totalIncome);
   }
 //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
