@@ -80,8 +80,8 @@ function Stats(props) {
           <tr>
             <td></td>
             <td>{props.totalIncome}</td>
-            <td>{props.contents.totalSpent}</td>
-            <td>{props.contents.totalSave}</td>
+            <td>{spent}</td>
+            <td>{savings}</td>
           </tr>
         </tbody>
       </table>
@@ -90,8 +90,9 @@ function Stats(props) {
   )
 }
 class IncomeAdd extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
+    this.createInflow = props.createInflow;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -99,7 +100,7 @@ class IncomeAdd extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let form = document.forms.IncomeAdd;
-    this.props.createInflow({ income: form.income.value, expense: form.expense.value, save: form.save.value });
+    this.props.createInflow({ income: form.income.value });
     // Clear the form for the next input.
     form.income.value = '';
   }
@@ -109,8 +110,6 @@ class IncomeAdd extends React.Component {
       <div style={{ width: "50%", paddingTop: "3%", margin: "2% auto", backgroundColor: "lightBlue", border: "3px solid white" }}>
         <form name="IncomeAdd" onSubmit={this.handleSubmit}>
           <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="income" placeholder="Income" />
-          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="expense" placeholder="Expenses" />
-          <input style={{ width: "90%", margin: "auto" }} className="form-control" type="text" name="save" placeholder="Saved" />
           <button style={{ width: "auto", margin: "3% auto", backgroundColor: "navy" }} className="form-control btn-primary">Add</button>
         </form>
       </div>
@@ -157,7 +156,7 @@ class Data extends React.Component {
   }
 }
 function randQuote(){
-  let quotebucket = ["You've got this!","We believe in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!","You miss 100% if the shots you don't take- Wayne Gretzky- Micheal Scott","Everybody Stay Calm"];
+  let quotebucket = ["You've got this!","We beleive in you!","You will meet your goal!","A dollar a day adds up!","Have a great day!"];
   let picked = "";
   picked = quotebucket[Math.floor(Math.random() * quotebucket.length)];
   return picked;
@@ -307,7 +306,7 @@ export default class Reports extends React.Component {
                 
                 <div className="col-md-6" style={{  }}>
                   <div style={{ borderRadius: "3rem" }}>
-                  <Stats contents={this.state.contents} totalIncome={this.state.contents.totalIncome} createInflow={this.createInflow} />
+                  <Stats contents={this.state.contents} totalIncome={this.state.asset} createInflow={this.createInflow} />
                   </div>
                 </div>
                 
