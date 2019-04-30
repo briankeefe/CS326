@@ -1,6 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+//import React from 'react';
+import Plot from 'react-plotly.js';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Plot
+        data={[
+          {
+            x: [1, 2, 3],
+            y: [2, 6, 3],
+            type: 'scatter',
+            mode: 'lines+points',
+            marker: {color: 'red'},
+          },
+          {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+        ]}
+        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+      />
+    );
+  }
+}
+
+
 // This is a place holder for the initial application state.
 class Navbar extends React.Component {
   constructor(props) {
@@ -286,6 +310,7 @@ export default class Reports extends React.Component {
                 <div className="card" style={{ borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
                     <Graph name="Expenses" />
+                    <App/>
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
                   </div>
