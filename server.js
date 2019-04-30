@@ -56,6 +56,46 @@ app.post('/api/SaveMe', (req, res) => {
   });
 });
 
+app.post('/api/SaveAll', (req, res) => {
+  console.log("start-----------------")
+  let list = req.body;
+  console.log("List: ", list);
+  let ending = []
+  for(let i = 0; i < list.length; i++){
+    console.log("Run ", i, list[i].category)
+    db.collection('SaveMe').updateOne({category: list[i].category}, 
+      {$set: {category: list[i].category, 
+        budget: list[i].budget, 
+        flow: list[i].flow}}).then(ans => {
+          if(ans.result.ok && ans.result.n){
+            console.log("Accepted ", list[i].category);
+            ending.push(list[i])
+          }else{
+            console.log("Rejected")
+          }
+        }).catch (error => {
+          console.log("SAVEALL ERROR")
+          res.status(500).json({
+            message: `Internal Server Error: ${error}`
+          })
+        })
+  }
+  setTimeout(() => {
+    console.log("ENDING:", ending)
+    if(ending.length > 0){
+      res.json({
+        failure: "False",
+        results: ending
+      })
+    }else{
+      res.json({
+        failure: "TRUE",
+        results: ending
+      })
+    }
+  }, 500)
+})
+
 app.post('/api/Money', (req, res) => {
   const cash = req.body.money;
   if(isNaN(cash)){

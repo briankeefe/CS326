@@ -9,6 +9,7 @@ db.issues.remove({});
 
 // Now, we insert some mock data that mirrors the data that we have in the
 // in-memory version of the `server.js` code.
+/*
 db.issues.insert([
   {
     status: 'Open', owner: 'Ravan',
@@ -19,10 +20,12 @@ db.issues.insert([
     created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'),
     title: 'Missing bottom border on panel',
   },]);
-
+*/
 // Lastly, we create "indexes" to make searching faster. For this particular
 // application we know that searching on the status, owner, and created properties
 // will be common, so we create indexes on those.
+/*
 db.issues.createIndex({ status: 1 });
 db.issues.createIndex({ owner: 1 });
 db.issues.createIndex({ created: 1 });
+*/

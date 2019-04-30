@@ -38,7 +38,7 @@ var IssueRow = function IssueRow(props) {
     null,
     _react2.default.createElement(
       'td',
-      { contentEditable: true },
+      null,
       props.issue.category
     ),
     _react2.default.createElement(
@@ -58,6 +58,7 @@ var IssueRow = function IssueRow(props) {
     )
   );
 };
+
 function BudgetTable(props) {
   var issueRows = props.issues.map(function (issue) {
     return _react2.default.createElement(IssueRow, { key: issue.id, issue: issue });
@@ -67,7 +68,7 @@ function BudgetTable(props) {
     { className: 'form-group', style: { margin: "2%", border: "3px solid white" } },
     _react2.default.createElement(
       'table',
-      { className: 'table table-striped table-dark', style: { float: "left" } },
+      { className: 'table table-striped table-dark', style: { float: "left", marginBottom: "0px" } },
       _react2.default.createElement(
         'thead',
         { className: 'thead-dark' },
@@ -101,6 +102,13 @@ function BudgetTable(props) {
         null,
         issueRows
       )
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: function onClick() {
+          props.onAdd(props.issues);
+        }, className: 'btn btn-block btn-primary' },
+      'Save All'
     )
   );
 }
@@ -452,6 +460,23 @@ var IssueList = function (_React$Component5) {
       });
     }
   }, {
+    key: 'updateAll',
+    value: function updateAll(issues) {
+      console.log("UPDATING ALL");
+      console.log("Issues: ", issues);
+      fetch('/api/SaveAll', {
+        method: 'POST',
+        body: JSON.stringify(issues),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(function (res) {
+        return res;
+      }).catch(function (err) {
+        return err;
+      });
+    }
+  }, {
     key: 'update',
     value: function update(newIssue) {
       fetch('/api/SaveMe', {
@@ -533,7 +558,7 @@ var IssueList = function (_React$Component5) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%", height: "100vh" } },
+        { className: 'bg-success', style: { backgroundImage: "url('images/dark-honeycomb.png')", backgroundSize: "auto", paddingBottom: "2%" } },
         _react2.default.createElement(Navbar, null),
         _react2.default.createElement(
           'div',
@@ -544,7 +569,7 @@ var IssueList = function (_React$Component5) {
             _react2.default.createElement(
               'div',
               { className: 'col', style: { backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" } },
-              _react2.default.createElement(BudgetTable, { issues: this.state.issues })
+              _react2.default.createElement(BudgetTable, { onAdd: this.updateAll, issues: this.state.issues })
             ),
             _react2.default.createElement(
               'div',
