@@ -16,7 +16,7 @@ class App extends React.Component {
           },
          
         ]}
-        layout={ {width: 300, height: 300, title: 'A Fancy Plot'} }
+        layout={ {width: 400, height: 400, title: 'A Fancy Plot'} }
       />
     );
   }
@@ -33,7 +33,7 @@ class App2 extends React.Component {
           },
          
         ]}
-        layout={ {width: 300, height: 300, title: 'Pie', autosize:true} }
+        layout={ {width: 400, height: 400, title: 'Pie', automargin:false} }
       />
     );
   }
