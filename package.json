@@ -16,7 +16,9 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongodb": "^3.2.2",
-    "react-contenteditable": "^3.2.6"
+    "react-contenteditable": "^3.2.6",
+    "plotly.js": "^1.47.4",
+    "react-plotly.js": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

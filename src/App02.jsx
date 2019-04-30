@@ -1,6 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Plot from 'react-plotly.js';
+
+class App extends React.Component {
+  render() {
+    return (
+      <Plot
+        data={[
+          {
+            x: [1, 2, 3],
+            y: [2, 6, 3],
+            type: 'bar',
+            marker: {color: 'red'},
+          },
+         
+        ]}
+        layout={ {width: 300, height: 300, title: 'A Fancy Plot'} }
+      />
+    );
+  }
+}
+class App2 extends React.Component {
+  render() {
+    return (
+      <Plot
+        data={[
+          {
+            values: [19, 26, 55],
+            labels: ['Residential', 'Non-Residential', 'Utility'],
+            type: 'pie'
+          },
+         
+        ]}
+        layout={ {width: 300, height: 300, title: 'Pie', autosize:true} }
+      />
+    );
+  }
+}
+class Goalgraph extends React.Component {
+  render() {
+    return (
+      <Plot style={{borderRadius:"3rem"}}
+        data={[
+          {
+            x: [3, 2],
+            y: ["Budget", "Savings"],
+            type: 'bar',
+          },   
+        ]}
+        layout={ {width: 300, height: 200, title: 'Your Goal'} }
+      />
+    );
+  }
+}
+
+
 // This is a place holder for the initial application state.
 class Navbar extends React.Component {
   constructor(props) {
@@ -35,6 +90,11 @@ function Graph(props) {
       </table>
 
     </div>
+  )
+}
+function Graph2(props){
+  return(
+    <App/>
   )
 }
 
@@ -135,23 +195,12 @@ class Jumbo extends React.Component {
     )
   }
 }
+//may go away
 class Data extends React.Component {
   render() {
     return (
         <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
-        <table className="bordered-table" style={{ marginLeft:"auto", marginRight:"auto" }}>
-          <thead>
-            <tr>
-              <i><b>Placeholder for reports</b></i>
-              <hr />
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="https://via.placeholder.com/200" alt="" /></td>
-            </tr>
-          </tbody>
-        </table>
+       <Goalgraph/>
         </div>
     )
   }
@@ -265,7 +314,7 @@ export default class Reports extends React.Component {
   }
 //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
 //../images/dark-honeycomb.png
-
+//
   render() {
     return (
       <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "cover", paddingBottom: "2%",  }}>
@@ -275,7 +324,7 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{  borderRadius: "3rem" }}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                    <Graph name="Income" />
+                    <App name="Income" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Income</p>
                   </div>
@@ -285,7 +334,8 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{ borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                    <Graph name="Expenses" />
+                  <App2 name="Expenses" />
+                    
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
                   </div>
