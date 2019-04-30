@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//import React from 'react';
 import Plot from 'react-plotly.js';
 
 class App extends React.Component {
@@ -59,6 +58,11 @@ function Graph(props) {
       </table>
 
     </div>
+  )
+}
+function Graph2(props){
+  return(
+    <App/>
   )
 }
 
@@ -289,7 +293,7 @@ export default class Reports extends React.Component {
   }
 //        <div style={{ float: "center", marginLeft: "12%", marginRight: "12%", paddingBottom: "3%", backgroundImage: "require('../images/1200px-Sunset_2007-1.jpg')"}}>
 //../images/dark-honeycomb.png
-
+//
   render() {
     return (
       <div className="bg-success" style={{backgroundImage: "url('images/blue-wave.png')" , backgroundSize: "cover", paddingBottom: "2%",  }}>
@@ -299,7 +303,7 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{  borderRadius: "3rem" }}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                    <Graph name="Income" />
+                    <App name="Income" />
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #1</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Income</p>
                   </div>
@@ -309,8 +313,8 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{ borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                    <Graph name="Expenses" />
-                    <App/>
+                  <App name="Expenses" />
+                    
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
                   </div>
