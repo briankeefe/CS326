@@ -5,19 +5,20 @@ var contentNode = document.getElementById("contents");
 
 const IssueRow = (props) => (
   <tr>
-    <td contentEditable>{props.issue.category}</td>
+    <td>{props.issue.category}</td>
     <td contentEditable>{props.issue.budget}</td>
     <td contentEditable>{props.issue.flow}</td>
     <td>{props.issue.budget - props.issue.flow}</td>
   </tr>
 );
+
 function BudgetTable(props) {
   const issueRows = props.issues.map(issue => (
     <IssueRow key={issue.id} issue={issue} />
   ));
   return (
     <div className="form-group" style={{ margin: "2%", border: "3px solid white" }}>
-      <table className="table table-striped table-dark" style={{ float: "left" }}>
+      <table className="table table-striped table-dark" style={{ float: "left", marginBottom: "0px" }}>
         <thead className="thead-dark">
           <tr>
             <th>Category</th>
@@ -28,6 +29,9 @@ function BudgetTable(props) {
         </thead>
         <tbody>{issueRows}</tbody>
       </table>
+      <button onClick={() => {
+        props.onAdd(props.issues)}
+        } className="btn btn-block btn-primary">Save All</button>
     </div>
   );
 }
@@ -226,6 +230,20 @@ export default class IssueList extends React.Component {
 
   }
 
+  updateAll(issues){
+    console.log("UPDATING ALL")
+    console.log("Issues: ", issues)
+    fetch('/api/SaveAll', {
+      method: 'POST',
+      body: JSON.stringify(issues),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      return res;
+    }).catch(err => err)
+  }
+
   update(newIssue) {
     fetch('/api/SaveMe', {
       method: 'POST',
@@ -237,7 +255,6 @@ export default class IssueList extends React.Component {
       return res;
     }).catch(err => err);
   }
-
   paid(income) {
     let total = parseInt(this.state.asset) + parseInt(income)
     let obj = {
@@ -297,12 +314,12 @@ export default class IssueList extends React.Component {
 
   render() {
     return (
-      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%", height: "100vh"  }}>
+      <div className="bg-success" style={{backgroundImage: "url('images/dark-honeycomb.png')" , backgroundSize: "auto", paddingBottom: "2%" }}>
         <Navbar />
         <div className="container" style={{ margin: "2% auto" }}>
           <div className="row">
             <div className="col" style={{ backgroundColor: "lightGreen", border: "3px solid white", borderRadius: "3vh" }}>
-              <BudgetTable issues={this.state.issues} />
+              <BudgetTable onAdd={this.updateAll} issues={this.state.issues} />
             </div>
             <div className="col" style={{ margin: "auto" }}>
               <div style={{  backgroundColor: "greenYellow",padding:"8px", border: "3px solid white", borderRadius: "3vh"}}>
