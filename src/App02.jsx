@@ -11,13 +11,45 @@ class App extends React.Component {
           {
             x: [1, 2, 3],
             y: [2, 6, 3],
-            type: 'scatter',
-            mode: 'lines+points',
+            type: 'bar',
             marker: {color: 'red'},
           },
-          {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+         
         ]}
-        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+        layout={ {width: 300, height: 300, title: 'A Fancy Plot'} }
+      />
+    );
+  }
+}
+class App2 extends React.Component {
+  render() {
+    return (
+      <Plot
+        data={[
+          {
+            values: [19, 26, 55],
+            labels: ['Residential', 'Non-Residential', 'Utility'],
+            type: 'pie'
+          },
+         
+        ]}
+        layout={ {width: 300, height: 300, title: 'Pie', autosize:true} }
+      />
+    );
+  }
+}
+class Goalgraph extends React.Component {
+  render() {
+    return (
+      <Plot style={{borderRadius:"3rem"}}
+        data={[
+          {
+            x: [3, 2],
+            y: ["Budget", "Savings"],
+            type: 'bar',
+          },   
+        ]}
+        layout={ {width: 300, height: 200, title: 'Your Goal'} }
       />
     );
   }
@@ -163,23 +195,12 @@ class Jumbo extends React.Component {
     )
   }
 }
+//may go away
 class Data extends React.Component {
   render() {
     return (
         <div style={{ padding: "5%", backgroundColor: "navy", color: "white", borderRadius: "3rem", margin: "5% auto"  }}>
-        <table className="bordered-table" style={{ marginLeft:"auto", marginRight:"auto" }}>
-          <thead>
-            <tr>
-              <i><b>Placeholder for reports</b></i>
-              <hr />
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="https://via.placeholder.com/200" alt="" /></td>
-            </tr>
-          </tbody>
-        </table>
+       <Goalgraph/>
         </div>
     )
   }
@@ -313,7 +334,7 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{ borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                  <App name="Expenses" />
+                  <App2 name="Expenses" />
                     
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>
