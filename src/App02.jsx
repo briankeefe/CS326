@@ -22,12 +22,17 @@ class App extends React.Component {
   }
 }
 class App2 extends React.Component {
+  constructor(props){
+    super(props);
+    console.log("STUFF: ", props)
+  }
   render() {
+    console.log("Props:")
     return (
       <Plot
         data={[
           {
-            values: [19, 26, 55],
+            values: this.stuff,
             labels: ['Residential', 'Non-Residential', 'Utility'],
             type: 'pie'
           },
@@ -277,8 +282,8 @@ export default class Reports extends React.Component {
     fetch('/api/SaveMe', {
       method: 'GET'
     }).then(res => {
-      console.log("Getting SaveMe Data")
       res.json().then(data => {
+        console.log("Getting SaveMe Data: ", data.assets)
         this.setState({contents: data.assets})
       });
     }).catch(err => {
@@ -334,7 +339,7 @@ export default class Reports extends React.Component {
               <div className="col-md-6">
                 <div className="card" style={{ borderRadius: "3rem"}}>
                   <div className="card-body" style={{ marginBottom: "5%" ,borderRadius: "3rem"}}>
-                  <App2 name="Expenses" />
+                  <App2 contents={this.state} name="Expenses" />
                     
                     <h4 className="card-title" style={{ margin: "0 auto", textAlign: "center" }}>Graph #2</h4>
                     <p className="card-text" style={{ margin: "0 auto", textAlign: "center" }}>Graph of Expenses</p>

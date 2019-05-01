@@ -18,7 +18,7 @@ function BudgetTable(props) {
   ));
   return (
     <div className="form-group" style={{ margin: "2%", border: "3px solid white" }}>
-      <table className="table table-striped table-dark" style={{ float: "left", marginBottom: "0px" }}>
+      <table className="table table-striped table-dark" style={{ float: "left"}}>
         <thead className="thead-dark">
           <tr>
             <th>Category</th>
@@ -29,9 +29,6 @@ function BudgetTable(props) {
         </thead>
         <tbody>{issueRows}</tbody>
       </table>
-      <button onClick={() => {
-        props.onAdd(props.issues)}
-        } className="btn btn-block btn-primary">Save All</button>
     </div>
   );
 }
